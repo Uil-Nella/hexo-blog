@@ -1,0 +1,814 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java,Thread,面试," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="本文为译文。多线程和并发问题是Java技术面试中面试官比较喜欢问的问题之一。在这里，从面试的角度列出了大部分重要的问题，但是你仍然应该牢固的掌握Java多线程基础知识来对应日后碰到的问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaTread经典面试题">
+<meta property="og:url" content="http://yoursite.com/2015/07/30/2015-07-30-javatreadjing-dian-mian-shi-ti/index.html">
+<meta property="og:site_name" content="似水流年">
+<meta property="og:description" content="本文为译文。多线程和并发问题是Java技术面试中面试官比较喜欢问的问题之一。在这里，从面试的角度列出了大部分重要的问题，但是你仍然应该牢固的掌握Java多线程基础知识来对应日后碰到的问题。">
+<meta property="og:updated_time" content="2016-02-14T07:43:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaTread经典面试题">
+<meta name="twitter:description" content="本文为译文。多线程和并发问题是Java技术面试中面试官比较喜欢问的问题之一。在这里，从面试的角度列出了大部分重要的问题，但是你仍然应该牢固的掌握Java多线程基础知识来对应日后碰到的问题。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> JavaTread经典面试题 | 似水流年 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57dc8fe71dcb1f47a14d77d6fc6eff20";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">似水流年</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">勤奋的搬运工</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaTread经典面试题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-07-30T16:36:55+08:00" content="2015-07-30">
+              2015-07-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/07/30/2015-07-30-javatreadjing-dian-mian-shi-ti/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/07/30/2015-07-30-javatreadjing-dian-mian-shi-ti/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          <span>&nbsp; | &nbsp;
+          <span id="busuanzi_value_page_pv" ></span>次阅读
+          </span>    
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文为译文。<br>多线程和并发问题是Java技术面试中面试官比较喜欢问的问题之一。在这里，从面试的角度列出了大部分重要的问题，但是你仍然应该牢固的掌握Java多线程基础知识来对应日后碰到的问题。  </p>
+</blockquote>
+<a id="more"></a>
+<h3 id="1-进程和线程之间有什么不同？"><a href="#1-进程和线程之间有什么不同？" class="headerlink" title="1. 进程和线程之间有什么不同？"></a>1. 进程和线程之间有什么不同？</h3><p>一个进程是一个独立(self contained)的运行环境，它可以被看作一个程序或者一个应用。而线程是在进程中执行的一个任务。Java运行环境是一个包含了不同的类和程序的单一进程。线程可以被称为轻量级进程。线程需要较少的资源来创建和驻留在进程中，并且可以共享进程中的资源。</p>
+<h3 id="2-多线程编程的好处是什么？"><a href="#2-多线程编程的好处是什么？" class="headerlink" title="2. 多线程编程的好处是什么？"></a>2. 多线程编程的好处是什么？</h3><p>在多线程程序中，多个线程被并发的执行以提高程序的效率，CPU不会因为某个线程需要等待资源而进入空闲状态。多个线程共享堆内存(heap memory)，因此创建多个线程去执行一些任务会比创建多个进程更好。举个例子，Servlets比CGI更好，是因为Servlets支持多线程而CGI不支持。</p>
+<h3 id="3-用户线程和守护线程有什么区别？"><a href="#3-用户线程和守护线程有什么区别？" class="headerlink" title="3. 用户线程和守护线程有什么区别？"></a>3. 用户线程和守护线程有什么区别？</h3><p>当我们在Java程序中创建一个线程，它就被称为用户线程。一个守护线程是在后台执行并且不会阻止JVM终止的线程。当没有用户线程在运行的时候，JVM关闭程序并且退出。一个守护线程创建的子线程依然是守护线程。</p>
+<h3 id="4-我们如何创建一个线程？"><a href="#4-我们如何创建一个线程？" class="headerlink" title="4. 我们如何创建一个线程？"></a>4. 我们如何创建一个线程？</h3><p>有两种创建线程的方法：一是实现Runnable接口，然后将它传递给Thread的构造函数，创建一个Thread对象；二是直接继承Thread类。若想了解更多可以阅读这篇关于如何在Java中创建线程的文章。</p>
+<h3 id="5-有哪些不同的线程生命周期？"><a href="#5-有哪些不同的线程生命周期？" class="headerlink" title="5. 有哪些不同的线程生命周期？"></a>5. 有哪些不同的线程生命周期？</h3><p>当我们在Java程序中新建一个线程时，它的状态是New。当我们调用线程的start()方法时，状态被改变为Runnable。线程调度器会为Runnable线程池中的线程分配CPU时间并且讲它们的状态改变为Running。其他的线程状态还有Waiting，Blocked 和Dead。读这篇文章可以了解更多关于线程生命周期的知识。</p>
+<h3 id="6-可以直接调用Thread类的run-方法么？"><a href="#6-可以直接调用Thread类的run-方法么？" class="headerlink" title="6. 可以直接调用Thread类的run()方法么？"></a>6. 可以直接调用Thread类的run()方法么？</h3><p>当然可以，但是如果我们调用了Thread的run()方法，它的行为就会和普通的方法一样，为了在新的线程中执行我们的代码，必须使用Thread.start()方法。</p>
+<h3 id="7-如何让正在运行的线程暂停一段时间？"><a href="#7-如何让正在运行的线程暂停一段时间？" class="headerlink" title="7. 如何让正在运行的线程暂停一段时间？"></a>7. 如何让正在运行的线程暂停一段时间？</h3><p>我们可以使用Thread类的Sleep()方法让线程暂停一段时间。需要注意的是，这并不会让线程终止，一旦从休眠中唤醒线程，线程的状态将会被改变为Runnable，并且根据线程调度，它将得到执行。</p>
+<h3 id="8-你对线程优先级的理解是什么？"><a href="#8-你对线程优先级的理解是什么？" class="headerlink" title="8. 你对线程优先级的理解是什么？"></a>8. 你对线程优先级的理解是什么？</h3><p>每一个线程都是有优先级的，一般来说，高优先级的线程在运行时会具有优先权，但这依赖于线程调度的实现，这个实现是和操作系统相关的(OS dependent)。我们可以定义线程的优先级，但是这并不能保证高优先级的线程会在低优先级的线程前执行。线程优先级是一个int变量(从1-10)，1代表最低优先级，10代表最高优先级。</p>
+<h3 id="9-什么是线程调度器-Thread-Scheduler-和时间分片-Time-Slicing-？"><a href="#9-什么是线程调度器-Thread-Scheduler-和时间分片-Time-Slicing-？" class="headerlink" title="9. 什么是线程调度器(Thread Scheduler)和时间分片(Time Slicing)？"></a>9. 什么是线程调度器(Thread Scheduler)和时间分片(Time Slicing)？</h3><p>线程调度器是一个操作系统服务，它负责为Runnable状态的线程分配CPU时间。一旦我们创建一个线程并启动它，它的执行便依赖于线程调度器的实现。时间分片是指将可用的CPU时间分配给可用的Runnable线程的过程。分配CPU时间可以基于线程优先级或者线程等待的时间。线程调度并不受到Java虚拟机控制，所以由应用程序来控制它是更好的选择（也就是说不要让你的程序依赖于线程的优先级）。</p>
+<h3 id="10-在多线程中，什么是上下文切换-context-switching-？"><a href="#10-在多线程中，什么是上下文切换-context-switching-？" class="headerlink" title="10. 在多线程中，什么是上下文切换(context-switching)？"></a>10. 在多线程中，什么是上下文切换(context-switching)？</h3><p>上下文切换是存储和恢复CPU状态的过程，它使得线程执行能够从中断点恢复执行。上下文切换是多任务操作系统和多线程环境的基本特征。</p>
+<h3 id="11-你如何确保main-方法所在的线程是Java程序最后结束的线程？"><a href="#11-你如何确保main-方法所在的线程是Java程序最后结束的线程？" class="headerlink" title="11. 你如何确保main()方法所在的线程是Java程序最后结束的线程？"></a>11. 你如何确保main()方法所在的线程是Java程序最后结束的线程？</h3><p>我们可以使用Thread类的joint()方法来确保所有程序创建的线程在main()方法退出前结束。这里有一篇文章关于Thread类的joint()方法。</p>
+<h3 id="12-线程之间是如何通信的？"><a href="#12-线程之间是如何通信的？" class="headerlink" title="12. 线程之间是如何通信的？"></a>12. 线程之间是如何通信的？</h3><p>当线程间是可以共享资源时，线程间通信是协调它们的重要的手段。Object类中wait()\notify()\notifyAll()方法可以用于线程间通信关于资源的锁的状态。点击这里有更多关于线程wait, notify和notifyAll.</p>
+<h3 id="13-为什么线程通信的方法wait-notify-和notifyAll-被定义在Object类里？"><a href="#13-为什么线程通信的方法wait-notify-和notifyAll-被定义在Object类里？" class="headerlink" title="13. 为什么线程通信的方法wait(), notify()和notifyAll()被定义在Object类里？"></a>13. 为什么线程通信的方法wait(), notify()和notifyAll()被定义在Object类里？</h3><p>Java的每个对象中都有一个锁(monitor，也可以成为监视器) 并且wait()，notify()等方法用于等待对象的锁或者通知其他线程对象的监视器可用。在Java的线程中并没有可供任何对象使用的锁和同步器。这就是为什么这些方法是Object类的一部分，这样Java的每一个类都有用于线程间通信的基本方法</p>
+<h3 id="14-为什么wait-notify-和notifyAll-必须在同步方法或者同步块中被调用？"><a href="#14-为什么wait-notify-和notifyAll-必须在同步方法或者同步块中被调用？" class="headerlink" title="14. 为什么wait(), notify()和notifyAll()必须在同步方法或者同步块中被调用？"></a>14. 为什么wait(), notify()和notifyAll()必须在同步方法或者同步块中被调用？</h3><p>当一个线程需要调用对象的wait()方法的时候，这个线程必须拥有该对象的锁，接着它就会释放这个对象锁并进入等待状态直到其他线程调用这个对象上的notify()方法。同样的，当一个线程需要调用对象的notify()方法时，它会释放这个对象的锁，以便其他在等待的线程就可以得到这个对象锁。由于所有的这些方法都需要线程持有对象的锁，这样就只能通过同步来实现，所以他们只能在同步方法或者同步块中被调用。</p>
+<h3 id="15-为什么Thread类的sleep-和yield-方法是静态的？"><a href="#15-为什么Thread类的sleep-和yield-方法是静态的？" class="headerlink" title="15. 为什么Thread类的sleep()和yield()方法是静态的？"></a>15. 为什么Thread类的sleep()和yield()方法是静态的？</h3><p>Thread类的sleep()和yield()方法将在当前正在执行的线程上运行。所以在其他处于等待状态的线程上调用这些方法是没有意义的。这就是为什么这些方法是静态的。它们可以在当前正在执行的线程中工作，并避免程序员错误的认为可以在其他非运行线程调用这些方法。</p>
+<h3 id="16-如何确保线程安全？"><a href="#16-如何确保线程安全？" class="headerlink" title="16. 如何确保线程安全？"></a>16. 如何确保线程安全？</h3><p>在Java中可以有很多方法来保证线程安全——同步，使用原子类(atomic concurrent classes)，实现并发锁，使用volatile关键字，使用不变类和线程安全类。在线程安全教程中，你可以学到更多。</p>
+<h3 id="17-volatile关键字在Java中有什么作用？"><a href="#17-volatile关键字在Java中有什么作用？" class="headerlink" title="17. volatile关键字在Java中有什么作用？"></a>17. volatile关键字在Java中有什么作用？</h3><p>当我们使用volatile关键字去修饰变量的时候，所以线程都会直接读取该变量并且不缓存它。这就确保了线程读取到的变量是同内存中是一致的。</p>
+<h3 id="18-同步方法和同步块，哪个是更好的选择？"><a href="#18-同步方法和同步块，哪个是更好的选择？" class="headerlink" title="18. 同步方法和同步块，哪个是更好的选择？"></a>18. 同步方法和同步块，哪个是更好的选择？</h3><p>同步块是更好的选择，因为它不会锁住整个对象（当然你也可以让它锁住整个对象）。同步方法会锁住整个对象，哪怕这个类中有多个不相关联的同步块，这通常会导致他们停止执行并需要等待获得这个对象上的锁。</p>
+<h3 id="19-如何创建守护线程？"><a href="#19-如何创建守护线程？" class="headerlink" title="19. 如何创建守护线程？"></a>19. 如何创建守护线程？</h3><p>使用Thread类的setDaemon(true)方法可以将线程设置为守护线程，需要注意的是，需要在调用start()方法前调用这个方法，否则会抛出IllegalThreadStateException异常。</p>
+<h3 id="20-什么是ThreadLocal"><a href="#20-什么是ThreadLocal" class="headerlink" title="20. 什么是ThreadLocal?"></a>20. 什么是ThreadLocal?</h3><p>ThreadLocal用于创建线程的本地变量，我们知道一个对象的所有线程会共享它的全局变量，所以这些变量不是线程安全的，我们可以使用同步技术。但是当我们不想使用同步的时候，我们可以选择ThreadLocal变量。</p>
+<p>每个线程都会拥有他们自己的Thread变量，它们可以使用get()\set()方法去获取他们的默认值或者在线程内部改变他们的值。ThreadLocal实例通常是希望它们同线程状态关联起来是private static属性。在ThreadLocal例子这篇文章中你可以看到一个关于ThreadLocal的小程序。</p>
+<h3 id="21-什么是Thread-Group？为什么建议使用它？"><a href="#21-什么是Thread-Group？为什么建议使用它？" class="headerlink" title="21. 什么是Thread Group？为什么建议使用它？"></a>21. 什么是Thread Group？为什么建议使用它？</h3><p>ThreadGroup是一个类，它的目的是提供关于线程组的信息。</p>
+<p>ThreadGroup API比较薄弱，它并没有比Thread提供了更多的功能。它有两个主要的功能：一是获取线程组中处于活跃状态线程的列表；二是设置为线程设置未捕获异常处理器(ncaught exception handler)。但在Java 1.5中Thread类也添加了setUncaughtExceptionHandler(UncaughtExceptionHandler eh) 方法，所以ThreadGroup是已经过时的，不建议继续使用。</p>
+<pre><code class="java">t1.setUncaughtExceptionHandler(<span class="keyword">new</span> UncaughtExceptionHandler(){
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">uncaughtException</span><span class="params">(Thread t, Throwable e)</span> </span>{
+   System.out.println(<span class="string">"exception occured:"</span>+e.getMessage());
+  }
+        });
+</code></pre>
+<h3 id="22-什么是Java线程转储-Thread-Dump-，如何得到它？"><a href="#22-什么是Java线程转储-Thread-Dump-，如何得到它？" class="headerlink" title="22. 什么是Java线程转储(Thread Dump)，如何得到它？"></a>22. 什么是Java线程转储(Thread Dump)，如何得到它？</h3><p>线程转储是一个JVM活动线程的列表，它对于分析系统瓶颈和死锁非常有用。有很多方法可以获取线程转储——使用Profiler，Kill -3命令，jstack工具等等。我更喜欢jstack工具，因为它容易使用并且是JDK自带的。由于它是一个基于终端的工具，所以我们可以编写一些脚本去定时的产生线程转储以待分析。读这篇文档可以了解更多关于产生线程转储的知识。</p>
+<h3 id="23-什么是死锁-Deadlock-？如何分析和避免死锁？"><a href="#23-什么是死锁-Deadlock-？如何分析和避免死锁？" class="headerlink" title="23. 什么是死锁(Deadlock)？如何分析和避免死锁？"></a>23. 什么是死锁(Deadlock)？如何分析和避免死锁？</h3><p> 死锁是指两个以上的线程永远阻塞的情况，这种情况产生至少需要两个以上的线程和两个以上的资源。</p>
+<p> 分析死锁，我们需要查看Java应用程序的线程转储。我们需要找出那些状态为BLOCKED的线程和他们等待的资源。每个资源都有一个唯一的id，用这个id我们可以找出哪些线程已经拥有了它的对象锁。</p>
+<p>  避免嵌套锁，只在需要的地方使用锁和避免无限期等待是避免死锁的通常办法，阅读这篇文章去学习如何分析死锁。</p>
+<h3 id="24-什么是Java-Timer类？如何创建一个有特定时间间隔的任务？"><a href="#24-什么是Java-Timer类？如何创建一个有特定时间间隔的任务？" class="headerlink" title="24. 什么是Java Timer类？如何创建一个有特定时间间隔的任务？"></a>24. 什么是Java Timer类？如何创建一个有特定时间间隔的任务？</h3><p>java.util.Timer是一个工具类，可以用于安排一个线程在未来的某个特定时间执行。Timer类可以用安排一次性任务或者周期任务。</p>
+<p> java.util.TimerTask是一个实现了Runnable接口的抽象类，我们需要去继承这个类来创建我们自己的定时任务并使用Timer去安排它的执行。</p>
+<p> 这里有关于java Timer的例子。</p>
+<h3 id="25-什么是线程池？如何创建一个Java线程池？"><a href="#25-什么是线程池？如何创建一个Java线程池？" class="headerlink" title="25. 什么是线程池？如何创建一个Java线程池？"></a>25. 什么是线程池？如何创建一个Java线程池？</h3><p>一个线程池管理了一组工作线程，同时它还包括了一个用于放置等待执行的任务的队列。<br>java.util.concurrent.Executors提供了一个 java.util.concurrent.Executor接口的实现用于创建线程池。线程池例子展现了如何创建和使用线程池，或者阅读ScheduledThreadPoolExecutor例子，了解如何创建一个周期任务。</p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+            <a href="/tags/Thread/" rel="tag">#Thread</a>
+          
+            <a href="/tags/面试/" rel="tag">#面试</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/29/2015-07-29-develpmentandcontributing/" rel="next" title="DevelpmentAndContributing">
+                <i class="fa fa-chevron-left"></i> DevelpmentAndContributing
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/07/30/2015-07-30-javatreadbing-fa-mian-shi-ti/" rel="prev" title="JavaTread并发面试题">
+                JavaTread并发面试题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/headpic.png"
+               alt="Xinyu LIU" />
+          <p class="site-author-name" itemprop="name">Xinyu LIU</p>
+          <p class="site-description motion-element" itemprop="description">行胜于言</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qq291462491" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/liu-xin-yu-79-68" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> zhihu
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://macshuo.com/" target="_blank">MacTalk</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-进程和线程之间有什么不同？"><span class="nav-number">1.</span> <span class="nav-text">1. 进程和线程之间有什么不同？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-多线程编程的好处是什么？"><span class="nav-number">2.</span> <span class="nav-text">2. 多线程编程的好处是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-用户线程和守护线程有什么区别？"><span class="nav-number">3.</span> <span class="nav-text">3. 用户线程和守护线程有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-我们如何创建一个线程？"><span class="nav-number">4.</span> <span class="nav-text">4. 我们如何创建一个线程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-有哪些不同的线程生命周期？"><span class="nav-number">5.</span> <span class="nav-text">5. 有哪些不同的线程生命周期？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-可以直接调用Thread类的run-方法么？"><span class="nav-number">6.</span> <span class="nav-text">6. 可以直接调用Thread类的run()方法么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-如何让正在运行的线程暂停一段时间？"><span class="nav-number">7.</span> <span class="nav-text">7. 如何让正在运行的线程暂停一段时间？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-你对线程优先级的理解是什么？"><span class="nav-number">8.</span> <span class="nav-text">8. 你对线程优先级的理解是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-什么是线程调度器-Thread-Scheduler-和时间分片-Time-Slicing-？"><span class="nav-number">9.</span> <span class="nav-text">9. 什么是线程调度器(Thread Scheduler)和时间分片(Time Slicing)？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-在多线程中，什么是上下文切换-context-switching-？"><span class="nav-number">10.</span> <span class="nav-text">10. 在多线程中，什么是上下文切换(context-switching)？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-你如何确保main-方法所在的线程是Java程序最后结束的线程？"><span class="nav-number">11.</span> <span class="nav-text">11. 你如何确保main()方法所在的线程是Java程序最后结束的线程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-线程之间是如何通信的？"><span class="nav-number">12.</span> <span class="nav-text">12. 线程之间是如何通信的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-为什么线程通信的方法wait-notify-和notifyAll-被定义在Object类里？"><span class="nav-number">13.</span> <span class="nav-text">13. 为什么线程通信的方法wait(), notify()和notifyAll()被定义在Object类里？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-为什么wait-notify-和notifyAll-必须在同步方法或者同步块中被调用？"><span class="nav-number">14.</span> <span class="nav-text">14. 为什么wait(), notify()和notifyAll()必须在同步方法或者同步块中被调用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-为什么Thread类的sleep-和yield-方法是静态的？"><span class="nav-number">15.</span> <span class="nav-text">15. 为什么Thread类的sleep()和yield()方法是静态的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-如何确保线程安全？"><span class="nav-number">16.</span> <span class="nav-text">16. 如何确保线程安全？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-volatile关键字在Java中有什么作用？"><span class="nav-number">17.</span> <span class="nav-text">17. volatile关键字在Java中有什么作用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-同步方法和同步块，哪个是更好的选择？"><span class="nav-number">18.</span> <span class="nav-text">18. 同步方法和同步块，哪个是更好的选择？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19-如何创建守护线程？"><span class="nav-number">19.</span> <span class="nav-text">19. 如何创建守护线程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20-什么是ThreadLocal"><span class="nav-number">20.</span> <span class="nav-text">20. 什么是ThreadLocal?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21-什么是Thread-Group？为什么建议使用它？"><span class="nav-number">21.</span> <span class="nav-text">21. 什么是Thread Group？为什么建议使用它？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-什么是Java线程转储-Thread-Dump-，如何得到它？"><span class="nav-number">22.</span> <span class="nav-text">22. 什么是Java线程转储(Thread Dump)，如何得到它？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-什么是死锁-Deadlock-？如何分析和避免死锁？"><span class="nav-number">23.</span> <span class="nav-text">23. 什么是死锁(Deadlock)？如何分析和避免死锁？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24-什么是Java-Timer类？如何创建一个有特定时间间隔的任务？"><span class="nav-number">24.</span> <span class="nav-text">24. 什么是Java Timer类？如何创建一个有特定时间间隔的任务？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#25-什么是线程池？如何创建一个Java线程池？"><span class="nav-number">25.</span> <span class="nav-text">25. 什么是线程池？如何创建一个Java线程池？</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xinyu LIU</span>
+</div>
+
+<div class="theme-info">
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+您是第<span id="busuanzi_value_site_uv"></span>个来到的小伙伴
+
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'BugkillersBlog';
+      var disqus_identifier = '2015/07/30/2015-07-30-javatreadjing-dian-mian-shi-ti/';
+      var disqus_title = 'JavaTread经典面试题';
+      var disqus_url = 'http://yoursite.com/2015/07/30/2015-07-30-javatreadjing-dian-mian-shi-ti/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+
+  
+  
+
+
+</body>
+</html>

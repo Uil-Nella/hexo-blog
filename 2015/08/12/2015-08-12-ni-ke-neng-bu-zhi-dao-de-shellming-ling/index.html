@@ -1,0 +1,797 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="linux,shell,命令," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="!$!$是一个特殊的环境变量，它代表了上一个命令的最后一个字符串。如：你可能会这样：123$mkdir mydir$mv mydir yourdir$cd yourdir
+可以改成：123$mkdir mydir$mv !$ yourdir$cd !$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你可能不知道的Shell命令">
+<meta property="og:url" content="http://yoursite.com/2015/08/12/2015-08-12-ni-ke-neng-bu-zhi-dao-de-shellming-ling/index.html">
+<meta property="og:site_name" content="似水流年">
+<meta property="og:description" content="!$!$是一个特殊的环境变量，它代表了上一个命令的最后一个字符串。如：你可能会这样：123$mkdir mydir$mv mydir yourdir$cd yourdir
+可以改成：123$mkdir mydir$mv !$ yourdir$cd !$">
+<meta property="og:updated_time" content="2016-02-14T07:41:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="你可能不知道的Shell命令">
+<meta name="twitter:description" content="!$!$是一个特殊的环境变量，它代表了上一个命令的最后一个字符串。如：你可能会这样：123$mkdir mydir$mv mydir yourdir$cd yourdir
+可以改成：123$mkdir mydir$mv !$ yourdir$cd !$">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 你可能不知道的Shell命令 | 似水流年 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57dc8fe71dcb1f47a14d77d6fc6eff20";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">似水流年</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">勤奋的搬运工</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                你可能不知道的Shell命令
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-08-12T15:02:31+08:00" content="2015-08-12">
+              2015-08-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/12/2015-08-12-ni-ke-neng-bu-zhi-dao-de-shellming-ling/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/08/12/2015-08-12-ni-ke-neng-bu-zhi-dao-de-shellming-ling/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          <span>&nbsp; | &nbsp;
+          <span id="busuanzi_value_page_pv" ></span>次阅读
+          </span>    
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id=""><a href="#" class="headerlink" title="!$"></a>!$</h3><p>!$是一个特殊的环境变量，它代表了上一个命令的最后一个字符串。如：你可能会这样：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$mkdir</span> mydir</span><br><span class="line"><span class="variable">$mv</span> mydir yourdir</span><br><span class="line"><span class="variable">$cd</span> yourdir</span><br></pre></td></tr></table></figure></p>
+<p>可以改成：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$mkdir</span> mydir</span><br><span class="line"><span class="variable">$mv</span> !$ yourdir</span><br><span class="line"><span class="variable">$cd</span> !$</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h3 id="sudo"><a href="#sudo" class="headerlink" title="sudo !!"></a>sudo !!</h3><p>以root的身份执行上一条命令 。<br>场景举例：比如Ubuntu里用apt-get安装软件包的时候是需要root身份的，我们经常会忘记在apt-get前加sudo。每次不得不加上sudo再重新键入这行命令，这时可以很方便的用sudo !!完事。<br>（陈皓注：在shell下，有时候你会输入很长的命令，你可以使用!xxx来重复最近的一次命令，比如，你以前输入过，vi /where/the/file/is, 下次你可以使用 !vi 重得上次最近一次的vi命令。）</p>
+<h3 id="cd-–"><a href="#cd-–" class="headerlink" title="cd –"></a>cd –</h3><p>回到上一次的目录 。<br>场景举例：当前目录为/home/a，用cd ../b切换到/home/b。这时可以通过反复执行cd –命令在/home/a和/home/b之间来回方便的切换。<br>（注：cd ~ 是回到自己的Home目录，cd ~user，是进入某个用户的Home目录）</p>
+<h3 id="old-new"><a href="#old-new" class="headerlink" title="^old^new"></a>^old^new</h3><p>替换前一条命令里的部分字符串。<br>场景：echo “wanderful”，其实是想输出echo “wonderful”。只需要^a^o就行了，对很长的命令的错误拼写有很大的帮助。（注：也可以使用 !!:gs/old/new）</p>
+<h3 id="du-s-sort-n-tail"><a href="#du-s-sort-n-tail" class="headerlink" title="du -s * | sort -n | tail"></a>du -s * | sort -n | tail</h3><p>列出当前目录里最大的10个文件。</p>
+<h3 id="w-sudo-tee"><a href="#w-sudo-tee" class="headerlink" title=":w !sudo tee %"></a>:w !sudo tee %</h3><p>在vi中保存一个只有root可以写的文件</p>
+<h3 id="date-d-1234567890"><a href="#date-d-1234567890" class="headerlink" title="date -d@1234567890"></a>date -d@1234567890</h3><p>时间戳转时间<br>date -d20130203 +%s  得到某个时间的时间戳</p>
+<h3 id="gt-file-txt"><a href="#gt-file-txt" class="headerlink" title="&gt; file.txt"></a>&gt; file.txt</h3><p>创建一个文件。</p>
+<h3 id="mtr-meituan-com"><a href="#mtr-meituan-com" class="headerlink" title="mtr meituan.com"></a>mtr meituan.com</h3><p>mtr命令比traceroute要好</p>
+<h3 id="在命令行前加空格，该命令不会进入history里。"><a href="#在命令行前加空格，该命令不会进入history里。" class="headerlink" title="在命令行前加空格，该命令不会进入history里。"></a>在命令行前加空格，该命令不会进入history里。</h3><h3 id="echo-“ls-l”-at-midnight"><a href="#echo-“ls-l”-at-midnight" class="headerlink" title="echo “ls -l” | at midnight"></a>echo “ls -l” | at midnight</h3><p>在某个时间运行某个命令。</p>
+<h3 id="ps-aux-sort-nk-4-tail"><a href="#ps-aux-sort-nk-4-tail" class="headerlink" title="ps aux | sort -nk +4 | tail"></a>ps aux | sort -nk +4 | tail</h3><p>列出头十个最耗内存的进程</p>
+<h3 id="man-ascii"><a href="#man-ascii" class="headerlink" title="man ascii"></a>man ascii</h3><p>ascii 对照表</p>
+<h3 id="tail-f-path-to-file-log-sed-‘-Finished-SUCCESS-q’"><a href="#tail-f-path-to-file-log-sed-‘-Finished-SUCCESS-q’" class="headerlink" title="tail -f /path/to/file.log | sed ‘/^Finished: SUCCESS$/ q’"></a>tail -f /path/to/file.log | sed ‘/^Finished: SUCCESS$/ q’</h3><p>当file.log里出现Finished: SUCCESS时候就退出tail，这个命令用于实时监控并过滤log是否出现了某条记录。</p>
+<h3 id="ssh-user-server-bash-lt-path-to-local-script-sh"><a href="#ssh-user-server-bash-lt-path-to-local-script-sh" class="headerlink" title="ssh user@server bash &lt; /path/to/local/script.sh"></a>ssh user@server bash &lt; /path/to/local/script.sh</h3><p>在远程机器上运行一段脚本。这条命令最大的好处就是不用把脚本拷到远程机器上。</p>
+<h3 id="ssh-user-host-cat-path-to-remotefile-diff-path-to-localfile-–"><a href="#ssh-user-host-cat-path-to-remotefile-diff-path-to-localfile-–" class="headerlink" title="ssh user@host cat /path/to/remotefile | diff /path/to/localfile –"></a>ssh user@host cat /path/to/remotefile | diff /path/to/localfile –</h3><p>比较一个远程文件和一个本地文件</p>
+<h3 id="net-rpc-shutdown-I-ipAddressOfWindowsPC-U-username-password"><a href="#net-rpc-shutdown-I-ipAddressOfWindowsPC-U-username-password" class="headerlink" title="net rpc shutdown -I ipAddressOfWindowsPC -U username%password"></a>net rpc shutdown -I ipAddressOfWindowsPC -U username%password</h3><p>远程关闭一台Windows的机器</p>
+<h3 id="screen-d-m-S-some-name-ping-my-router"><a href="#screen-d-m-S-some-name-ping-my-router" class="headerlink" title="screen -d -m -S some_name ping my_router"></a>screen -d -m -S some_name ping my_router</h3><p>后台运行一段不终止的程序，并可以随时查看它的状态。-d -m参数启动“分离”模式，-S指定了一个session的标识。可以通过-R命令来重新“挂载”一个标识的session。更多细节请参考screen用法 man screen。</p>
+<h3 id="wget-–random-wait-r-p-e-robots-off-U-mozilla-http-www-example-com"><a href="#wget-–random-wait-r-p-e-robots-off-U-mozilla-http-www-example-com" class="headerlink" title="wget –random-wait -r -p -e robots=off -U mozilla http://www.example.com"></a>wget –random-wait -r -p -e robots=off -U mozilla <a href="http://www.example.com" target="_blank" rel="external">http://www.example.com</a></h3><p>下载整个www.example.com网站。（注：别太过分，大部分网站都有防爬功能了：））</p>
+<h3 id="curl-ifconfig-me"><a href="#curl-ifconfig-me" class="headerlink" title="curl ifconfig.me"></a>curl ifconfig.me</h3><p>当你的机器在内网的时候，可以通过这个命令查看外网的IP。</p>
+<h3 id="convert-input-png-gravity-NorthWest-background-transparent-extent-720×200-output-png"><a href="#convert-input-png-gravity-NorthWest-background-transparent-extent-720×200-output-png" class="headerlink" title="convert input.png -gravity NorthWest -background transparent -extent 720×200  output.png"></a>convert input.png -gravity NorthWest -background transparent -extent 720×200  output.png</h3><p>改一下图片的大小尺寸</p>
+<h3 id="lsof-–i"><a href="#lsof-–i" class="headerlink" title="lsof –i"></a>lsof –i</h3><p>实时查看本机网络服务的活动状态。</p>
+<h3 id="vim-scp-username-host-path-to-somefile"><a href="#vim-scp-username-host-path-to-somefile" class="headerlink" title="vim scp://username@host//path/to/somefile"></a>vim scp://username@host//path/to/somefile</h3><p>vim一个远程文件</p>
+<p>###python -m SimpleHTTPServer<br>一句话实现一个HTTP服务，把当前目录设为HTTP服务目录，可以通过<a href="http://localhost:8000访问" target="_blank" rel="external">http://localhost:8000访问</a> 这也许是这个星球上最简单的HTTP服务器的实现了。</p>
+<h3 id="history-awk-‘-CMD-2-count-END-for-a-in-CMD-print-CMD-a-“-“-CMD-a-count-100-“-“-a-’-grep-v-“-“-column-c3-s-“-“-t-sort-nr-nl-head-n10"><a href="#history-awk-‘-CMD-2-count-END-for-a-in-CMD-print-CMD-a-“-“-CMD-a-count-100-“-“-a-’-grep-v-“-“-column-c3-s-“-“-t-sort-nr-nl-head-n10" class="headerlink" title="history | awk ‘{CMD[$2]++;count++;} END { for (a in CMD )print CMD[a] “ “ CMD[a]/count*100 “% “ a }’ | grep -v “./“ | column -c3 -s “ “ -t | sort -nr | nl | head -n10"></a>history | awk ‘{CMD[$2]++;count++;} END { for (a in CMD )print CMD[a] “ “ CMD[a]/count*100 “% “ a }’ | grep -v “./“ | column -c3 -s “ “ -t | sort -nr | nl | head -n10</h3><p>(陈皓注：有点复杂了，history|awk ‘{print $2}’|awk ‘BEGIN {FS=”|”} {print $1}’|sort|uniq -c|sort -rn|head -10)<br>这行脚本能输出你最常用的十条命令，由此甚至可以洞察你是一个什么类型的程序员</p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/shell/" rel="tag">#shell</a>
+          
+            <a href="/tags/命令/" rel="tag">#命令</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/11/2015-08-11-dao-mu-bi-ji/" rel="next" title="盗墓笔记">
+                <i class="fa fa-chevron-left"></i> 盗墓笔记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/headpic.png"
+               alt="Xinyu LIU" />
+          <p class="site-author-name" itemprop="name">Xinyu LIU</p>
+          <p class="site-description motion-element" itemprop="description">行胜于言</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qq291462491" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/liu-xin-yu-79-68" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> zhihu
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://macshuo.com/" target="_blank">MacTalk</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">!$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sudo"><span class="nav-number">2.</span> <span class="nav-text">sudo !!</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cd-–"><span class="nav-number">3.</span> <span class="nav-text">cd –</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#old-new"><span class="nav-number">4.</span> <span class="nav-text">^old^new</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#du-s-sort-n-tail"><span class="nav-number">5.</span> <span class="nav-text">du -s * | sort -n | tail</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#w-sudo-tee"><span class="nav-number">6.</span> <span class="nav-text">:w !sudo tee %</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#date-d-1234567890"><span class="nav-number">7.</span> <span class="nav-text">date -d@1234567890</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gt-file-txt"><span class="nav-number">8.</span> <span class="nav-text">> file.txt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mtr-meituan-com"><span class="nav-number">9.</span> <span class="nav-text">mtr meituan.com</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在命令行前加空格，该命令不会进入history里。"><span class="nav-number">10.</span> <span class="nav-text">在命令行前加空格，该命令不会进入history里。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#echo-“ls-l”-at-midnight"><span class="nav-number">11.</span> <span class="nav-text">echo “ls -l” | at midnight</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ps-aux-sort-nk-4-tail"><span class="nav-number">12.</span> <span class="nav-text">ps aux | sort -nk +4 | tail</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#man-ascii"><span class="nav-number">13.</span> <span class="nav-text">man ascii</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tail-f-path-to-file-log-sed-‘-Finished-SUCCESS-q’"><span class="nav-number">14.</span> <span class="nav-text">tail -f /path/to/file.log | sed ‘/^Finished: SUCCESS$/ q’</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh-user-server-bash-lt-path-to-local-script-sh"><span class="nav-number">15.</span> <span class="nav-text">ssh user@server bash < /path/to/local/script.sh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh-user-host-cat-path-to-remotefile-diff-path-to-localfile-–"><span class="nav-number">16.</span> <span class="nav-text">ssh user@host cat /path/to/remotefile | diff /path/to/localfile –</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#net-rpc-shutdown-I-ipAddressOfWindowsPC-U-username-password"><span class="nav-number">17.</span> <span class="nav-text">net rpc shutdown -I ipAddressOfWindowsPC -U username%password</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#screen-d-m-S-some-name-ping-my-router"><span class="nav-number">18.</span> <span class="nav-text">screen -d -m -S some_name ping my_router</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wget-–random-wait-r-p-e-robots-off-U-mozilla-http-www-example-com"><span class="nav-number">19.</span> <span class="nav-text">wget –random-wait -r -p -e robots=off -U mozilla http://www.example.com</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#curl-ifconfig-me"><span class="nav-number">20.</span> <span class="nav-text">curl ifconfig.me</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#convert-input-png-gravity-NorthWest-background-transparent-extent-720×200-output-png"><span class="nav-number">21.</span> <span class="nav-text">convert input.png -gravity NorthWest -background transparent -extent 720×200  output.png</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lsof-–i"><span class="nav-number">22.</span> <span class="nav-text">lsof –i</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim-scp-username-host-path-to-somefile"><span class="nav-number">23.</span> <span class="nav-text">vim scp://username@host//path/to/somefile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#history-awk-‘-CMD-2-count-END-for-a-in-CMD-print-CMD-a-“-“-CMD-a-count-100-“-“-a-’-grep-v-“-“-column-c3-s-“-“-t-sort-nr-nl-head-n10"><span class="nav-number">24.</span> <span class="nav-text">history | awk ‘{CMD[$2]++;count++;} END { for (a in CMD )print CMD[a] “ “ CMD[a]/count*100 “% “ a }’ | grep -v “./“ | column -c3 -s “ “ -t | sort -nr | nl | head -n10</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xinyu LIU</span>
+</div>
+
+<div class="theme-info">
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+您是第<span id="busuanzi_value_site_uv"></span>个来到的小伙伴
+
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'BugkillersBlog';
+      var disqus_identifier = '2015/08/12/2015-08-12-ni-ke-neng-bu-zhi-dao-de-shellming-ling/';
+      var disqus_title = '你可能不知道的Shell命令';
+      var disqus_url = 'http://yoursite.com/2015/08/12/2015-08-12-ni-ke-neng-bu-zhi-dao-de-shellming-ling/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+
+  
+  
+
+
+</body>
+</html>
