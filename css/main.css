@@ -478,9 +478,9 @@ body {
   }
 }
 @media (max-width: 767px) {
-  .footer-inner .main-inner,
-  .footer-inner .header-inner,
-  .footer-inner .footer-inner {
+  .main-inner,
+  .header-inner,
+  .footer-inner {
     width: auto;
   }
 }
@@ -1535,7 +1535,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #d7ffff;
+  background: #36ac4f;
 }
 .sidebar-nav {
   margin: 0 0 20px;
