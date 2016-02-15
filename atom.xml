@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>似水流年</title>
+  <subtitle>勤奋的搬运工</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://blog.bugk.info/"/>
+  <updated>2016-02-15T03:58:13.000Z</updated>
+  <id>http://blog.bugk.info/</id>
+  
+  <author>
+    <name>Xinyu LIU</name>
+    <email>291462491@qq.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Test POST</title>
+    <link href="http://blog.bugk.info/2016/02/15/Test-POST/"/>
+    <id>http://blog.bugk.info/2016/02/15/Test-POST/</id>
+    <published>2016-02-15T03:58:13.000Z</published>
+    <updated>2016-02-15T03:58:13.000Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>你可能不知道的Shell命令</title>
+    <link href="http://blog.bugk.info/2015/08/12/2015-08-12-ni-ke-neng-bu-zhi-dao-de-shellming-ling/"/>
+    <id>http://blog.bugk.info/2015/08/12/2015-08-12-ni-ke-neng-bu-zhi-dao-de-shellming-ling/</id>
+    <published>2015-08-12T07:02:31.000Z</published>
+    <updated>2016-02-14T07:41:04.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;!$&quot;&gt;&lt;/a&gt;!$&lt;/h3&gt;&lt;p&gt;!$是一个特殊的环境变量，它代表了上一个命令的最后一个字符串。如：你可能会这样：&lt;br&gt;&lt;figure class=&quot;highlight xquery&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$mkdir&lt;/span&gt; mydir&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$mv&lt;/span&gt; mydir yourdir&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$cd&lt;/span&gt; yourdir&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;可以改成：&lt;br&gt;&lt;figure class=&quot;highlight xquery&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$mkdir&lt;/span&gt; mydir&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$mv&lt;/span&gt; !$ yourdir&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$cd&lt;/span&gt; !$&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;sudo&quot;&gt;&lt;a href=&quot;#sudo&quot; class=&quot;headerlink&quot; title=&quot;sudo !!&quot;&gt;&lt;/a&gt;sudo !!&lt;/h3&gt;&lt;p&gt;以root的身份执行上一条命令 。&lt;br&gt;场景举例：比如Ubuntu里用apt-get安装软件包的时候是需要root身份的，我们经常会忘记在apt-get前加sudo。每次不得不加上sudo再重新键入这行命令，这时可以很方便的用sudo !!完事。&lt;br&gt;（陈皓注：在shell下，有时候你会输入很长的命令，你可以使用!xxx来重复最近的一次命令，比如，你以前输入过，vi /where/the/file/is, 下次你可以使用 !vi 重得上次最近一次的vi命令。）&lt;/p&gt;
+&lt;h3 id=&quot;cd-–&quot;&gt;&lt;a href=&quot;#cd-–&quot; class=&quot;headerlink&quot; title=&quot;cd –&quot;&gt;&lt;/a&gt;cd –&lt;/h3&gt;&lt;p&gt;回到上一次的目录 。&lt;br&gt;场景举例：当前目录为/home/a，用cd ../b切换到/home/b。这时可以通过反复执行cd –命令在/home/a和/home/b之间来回方便的切换。&lt;br&gt;（注：cd ~ 是回到自己的Home目录，cd ~user，是进入某个用户的Home目录）&lt;/p&gt;
+&lt;h3 id=&quot;old-new&quot;&gt;&lt;a href=&quot;#old-new&quot; class=&quot;headerlink&quot; title=&quot;^old^new&quot;&gt;&lt;/a&gt;^old^new&lt;/h3&gt;&lt;p&gt;替换前一条命令里的部分字符串。&lt;br&gt;场景：echo “wanderful”，其实是想输出echo “wonderful”。只需要^a^o就行了，对很长的命令的错误拼写有很大的帮助。（注：也可以使用 !!:gs/old/new）&lt;/p&gt;
+&lt;h3 id=&quot;du-s-sort-n-tail&quot;&gt;&lt;a href=&quot;#du-s-sort-n-tail&quot; class=&quot;headerlink&quot; title=&quot;du -s * | sort -n | tail&quot;&gt;&lt;/a&gt;du -s * | sort -n | tail&lt;/h3&gt;&lt;p&gt;列出当前目录里最大的10个文件。&lt;/p&gt;
+&lt;h3 id=&quot;w-sudo-tee&quot;&gt;&lt;a href=&quot;#w-sudo-tee&quot; class=&quot;headerlink&quot; title=&quot;:w !sudo tee %&quot;&gt;&lt;/a&gt;:w !sudo tee %&lt;/h3&gt;&lt;p&gt;在vi中保存一个只有root可以写的文件&lt;/p&gt;
+&lt;h3 id=&quot;date-d-1234567890&quot;&gt;&lt;a href=&quot;#date-d-1234567890&quot; class=&quot;headerlink&quot; title=&quot;date -d@1234567890&quot;&gt;&lt;/a&gt;date -d@1234567890&lt;/h3&gt;&lt;p&gt;时间戳转时间&lt;br&gt;date -d20130203 +%s  得到某个时间的时间戳&lt;/p&gt;
+&lt;h3 id=&quot;gt-file-txt&quot;&gt;&lt;a href=&quot;#gt-file-txt&quot; class=&quot;headerlink&quot; title=&quot;&amp;gt; file.txt&quot;&gt;&lt;/a&gt;&amp;gt; file.txt&lt;/h3&gt;&lt;p&gt;创建一个文件。&lt;/p&gt;
+&lt;h3 id=&quot;mtr-meituan-com&quot;&gt;&lt;a href=&quot;#mtr-meituan-com&quot; class=&quot;headerlink&quot; title=&quot;mtr meituan.com&quot;&gt;&lt;/a&gt;mtr meituan.com&lt;/h3&gt;&lt;p&gt;mtr命令比traceroute要好&lt;/p&gt;
+&lt;h3 id=&quot;在命令行前加空格，该命令不会进入history里。&quot;&gt;&lt;a href=&quot;#在命令行前加空格，该命令不会进入history里。&quot; class=&quot;headerlink&quot; title=&quot;在命令行前加空格，该命令不会进入history里。&quot;&gt;&lt;/a&gt;在命令行前加空格，该命令不会进入history里。&lt;/h3&gt;&lt;h3 id=&quot;echo-“ls-l”-at-midnight&quot;&gt;&lt;a href=&quot;#echo-“ls-l”-at-midnight&quot; class=&quot;headerlink&quot; title=&quot;echo “ls -l” | at midnight&quot;&gt;&lt;/a&gt;echo “ls -l” | at midnight&lt;/h3&gt;&lt;p&gt;在某个时间运行某个命令。&lt;/p&gt;
+&lt;h3 id=&quot;ps-aux-sort-nk-4-tail&quot;&gt;&lt;a href=&quot;#ps-aux-sort-nk-4-tail&quot; class=&quot;headerlink&quot; title=&quot;ps aux | sort -nk +4 | tail&quot;&gt;&lt;/a&gt;ps aux | sort -nk +4 | tail&lt;/h3&gt;&lt;p&gt;列出头十个最耗内存的进程&lt;/p&gt;
+&lt;h3 id=&quot;man-ascii&quot;&gt;&lt;a href=&quot;#man-ascii&quot; class=&quot;headerlink&quot; title=&quot;man ascii&quot;&gt;&lt;/a&gt;man ascii&lt;/h3&gt;&lt;p&gt;ascii 对照表&lt;/p&gt;
+&lt;h3 id=&quot;tail-f-path-to-file-log-sed-‘-Finished-SUCCESS-q’&quot;&gt;&lt;a href=&quot;#tail-f-path-to-file-log-sed-‘-Finished-SUCCESS-q’&quot; class=&quot;headerlink&quot; title=&quot;tail -f /path/to/file.log | sed ‘/^Finished: SUCCESS$/ q’&quot;&gt;&lt;/a&gt;tail -f /path/to/file.log | sed ‘/^Finished: SUCCESS$/ q’&lt;/h3&gt;&lt;p&gt;当file.log里出现Finished: SUCCESS时候就退出tail，这个命令用于实时监控并过滤log是否出现了某条记录。&lt;/p&gt;
+&lt;h3 id=&quot;ssh-user-server-bash-lt-path-to-local-script-sh&quot;&gt;&lt;a href=&quot;#ssh-user-server-bash-lt-path-to-local-script-sh&quot; class=&quot;headerlink&quot; title=&quot;ssh user@server bash &amp;lt; /path/to/local/script.sh&quot;&gt;&lt;/a&gt;ssh user@server bash &amp;lt; /path/to/local/script.sh&lt;/h3&gt;&lt;p&gt;在远程机器上运行一段脚本。这条命令最大的好处就是不用把脚本拷到远程机器上。&lt;/p&gt;
+&lt;h3 id=&quot;ssh-user-host-cat-path-to-remotefile-diff-path-to-localfile-–&quot;&gt;&lt;a href=&quot;#ssh-user-host-cat-path-to-remotefile-diff-path-to-localfile-–&quot; class=&quot;headerlink&quot; title=&quot;ssh user@host cat /path/to/remotefile | diff /path/to/localfile –&quot;&gt;&lt;/a&gt;ssh user@host cat /path/to/remotefile | diff /path/to/localfile –&lt;/h3&gt;&lt;p&gt;比较一个远程文件和一个本地文件&lt;/p&gt;
+&lt;h3 id=&quot;net-rpc-shutdown-I-ipAddressOfWindowsPC-U-username-password&quot;&gt;&lt;a href=&quot;#net-rpc-shutdown-I-ipAddressOfWindowsPC-U-username-password&quot; class=&quot;headerlink&quot; title=&quot;net rpc shutdown -I ipAddressOfWindowsPC -U username%password&quot;&gt;&lt;/a&gt;net rpc shutdown -I ipAddressOfWindowsPC -U username%password&lt;/h3&gt;&lt;p&gt;远程关闭一台Windows的机器&lt;/p&gt;
+&lt;h3 id=&quot;screen-d-m-S-some-name-ping-my-router&quot;&gt;&lt;a href=&quot;#screen-d-m-S-some-name-ping-my-router&quot; class=&quot;headerlink&quot; title=&quot;screen -d -m -S some_name ping my_router&quot;&gt;&lt;/a&gt;screen -d -m -S some_name ping my_router&lt;/h3&gt;&lt;p&gt;后台运行一段不终止的程序，并可以随时查看它的状态。-d -m参数启动“分离”模式，-S指定了一个session的标识。可以通过-R命令来重新“挂载”一个标识的session。更多细节请参考screen用法 man screen。&lt;/p&gt;
+&lt;h3 id=&quot;wget-–random-wait-r-p-e-robots-off-U-mozilla-http-www-example-com&quot;&gt;&lt;a href=&quot;#wget-–random-wait-r-p-e-robots-off-U-mozilla-http-www-example-com&quot; class=&quot;headerlink&quot; title=&quot;wget –random-wait -r -p -e robots=off -U mozilla http://www.example.com&quot;&gt;&lt;/a&gt;wget –random-wait -r -p -e robots=off -U mozilla &lt;a href=&quot;http://www.example.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.example.com&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;下载整个www.example.com网站。（注：别太过分，大部分网站都有防爬功能了：））&lt;/p&gt;
+&lt;h3 id=&quot;curl-ifconfig-me&quot;&gt;&lt;a href=&quot;#curl-ifconfig-me&quot; class=&quot;headerlink&quot; title=&quot;curl ifconfig.me&quot;&gt;&lt;/a&gt;curl ifconfig.me&lt;/h3&gt;&lt;p&gt;当你的机器在内网的时候，可以通过这个命令查看外网的IP。&lt;/p&gt;
+&lt;h3 id=&quot;convert-input-png-gravity-NorthWest-background-transparent-extent-720×200-output-png&quot;&gt;&lt;a href=&quot;#convert-input-png-gravity-NorthWest-background-transparent-extent-720×200-output-png&quot; class=&quot;headerlink&quot; title=&quot;convert input.png -gravity NorthWest -background transparent -extent 720×200  output.png&quot;&gt;&lt;/a&gt;convert input.png -gravity NorthWest -background transparent -extent 720×200  output.png&lt;/h3&gt;&lt;p&gt;改一下图片的大小尺寸&lt;/p&gt;
+&lt;h3 id=&quot;lsof-–i&quot;&gt;&lt;a href=&quot;#lsof-–i&quot; class=&quot;headerlink&quot; title=&quot;lsof –i&quot;&gt;&lt;/a&gt;lsof –i&lt;/h3&gt;&lt;p&gt;实时查看本机网络服务的活动状态。&lt;/p&gt;
+&lt;h3 id=&quot;vim-scp-username-host-path-to-somefile&quot;&gt;&lt;a href=&quot;#vim-scp-username-host-path-to-somefile&quot; class=&quot;headerlink&quot; title=&quot;vim scp://username@host//path/to/somefile&quot;&gt;&lt;/a&gt;vim scp://username@host//path/to/somefile&lt;/h3&gt;&lt;p&gt;vim一个远程文件&lt;/p&gt;
+&lt;p&gt;###python -m SimpleHTTPServer&lt;br&gt;一句话实现一个HTTP服务，把当前目录设为HTTP服务目录，可以通过&lt;a href=&quot;http://localhost:8000访问&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:8000访问&lt;/a&gt; 这也许是这个星球上最简单的HTTP服务器的实现了。&lt;/p&gt;
+&lt;h3 id=&quot;history-awk-‘-CMD-2-count-END-for-a-in-CMD-print-CMD-a-“-“-CMD-a-count-100-“-“-a-’-grep-v-“-“-column-c3-s-“-“-t-sort-nr-nl-head-n10&quot;&gt;&lt;a href=&quot;#history-awk-‘-CMD-2-count-END-for-a-in-CMD-print-CMD-a-“-“-CMD-a-count-100-“-“-a-’-grep-v-“-“-column-c3-s-“-“-t-sort-nr-nl-head-n10&quot; class=&quot;headerlink&quot; title=&quot;history | awk ‘{CMD[$2]++;count++;} END { for (a in CMD )print CMD[a] “ “ CMD[a]/count*100 “% “ a }’ | grep -v “./“ | column -c3 -s “ “ -t | sort -nr | nl | head -n10&quot;&gt;&lt;/a&gt;history | awk ‘{CMD[$2]++;count++;} END { for (a in CMD )print CMD[a] “ “ CMD[a]/count*100 “% “ a }’ | grep -v “./“ | column -c3 -s “ “ -t | sort -nr | nl | head -n10&lt;/h3&gt;&lt;p&gt;(陈皓注：有点复杂了，history|awk ‘{print $2}’|awk ‘BEGIN {FS=”|”} {print $1}’|sort|uniq -c|sort -rn|head -10)&lt;br&gt;这行脚本能输出你最常用的十条命令，由此甚至可以洞察你是一个什么类型的程序员&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;!$&quot;&gt;&lt;/a&gt;!$&lt;/h3&gt;&lt;p&gt;!$是一个特殊的环境变量，它代表了上一个命令的最后一个字符串。如：你可能会这样：&lt;br&gt;&lt;figure class=&quot;highlight xquery&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$mkdir&lt;/span&gt; mydir&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$mv&lt;/span&gt; mydir yourdir&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$cd&lt;/span&gt; yourdir&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;可以改成：&lt;br&gt;&lt;figure class=&quot;highlight xquery&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$mkdir&lt;/span&gt; mydir&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$mv&lt;/span&gt; !$ yourdir&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$cd&lt;/span&gt; !$&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="linux" scheme="http://blog.bugk.info/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="http://blog.bugk.info/tags/linux/"/>
+    
+      <category term="shell" scheme="http://blog.bugk.info/tags/shell/"/>
+    
+      <category term="命令" scheme="http://blog.bugk.info/tags/%E5%91%BD%E4%BB%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>盗墓笔记</title>
+    <link href="http://blog.bugk.info/2015/08/11/2015-08-11-dao-mu-bi-ji/"/>
+    <id>http://blog.bugk.info/2015/08/11/2015-08-11-dao-mu-bi-ji/</id>
+    <published>2015-08-11T06:43:26.000Z</published>
+    <updated>2016-02-14T03:43:46.000Z</updated>
+    
+    <content type="html">&lt;p&gt;比鬼神更可怕的是人心！&lt;br&gt;鲁王宫、沉船墓、秦岭树、云顶宫。&lt;br&gt;青海蛇沼解谜、广西巴乃寻忆。&lt;br&gt;辉煌生命终离去，独留空谈几何许。&lt;br&gt;千年谜团围绕、可叹生命已老。&lt;br&gt;愿回往日逍遥、怎奈岁月不饶。&lt;br&gt;十年命运空煎熬，梦啊！你破碎可好…    &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;比鬼神更可怕的是人心！&lt;br&gt;鲁王宫、沉船墓、秦岭树、云顶宫。&lt;br&gt;青海蛇沼解谜、广西巴乃寻忆。&lt;br&gt;辉煌生命终离去，独留空谈几何许。&lt;br&gt;千年谜团围绕、可叹生命已老。&lt;br&gt;愿回往日逍遥、怎奈岁月不饶。&lt;br&gt;十年命运空煎熬，梦啊！你破碎可好…    &lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="杂" scheme="http://blog.bugk.info/categories/%E6%9D%82/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>VIM学习</title>
+    <link href="http://blog.bugk.info/2015/08/07/2015-08-07-vimxue-xi/"/>
+    <id>http://blog.bugk.info/2015/08/07/2015-08-07-vimxue-xi/</id>
+    <published>2015-08-07T07:57:16.000Z</published>
+    <updated>2016-02-14T07:36:56.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;文章&quot;&gt;&lt;a href=&quot;#文章&quot; class=&quot;headerlink&quot; title=&quot;文章&quot;&gt;&lt;/a&gt;文章&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://coolshell.cn/articles/5426.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://coolshell.cn/articles/5426.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;文章&quot;&gt;&lt;a href=&quot;#文章&quot; class=&quot;headerlink&quot; title=&quot;文章&quot;&gt;&lt;/a&gt;文章&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://coolshell.cn/articles/5426.html&quot; target=&quot;_blank&quot;
+    
+    </summary>
+    
+      <category term="linux" scheme="http://blog.bugk.info/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="http://blog.bugk.info/tags/linux/"/>
+    
+      <category term="vim" scheme="http://blog.bugk.info/tags/vim/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaTread并发面试题</title>
+    <link href="http://blog.bugk.info/2015/07/30/2015-07-30-javatreadbing-fa-mian-shi-ti/"/>
+    <id>http://blog.bugk.info/2015/07/30/2015-07-30-javatreadbing-fa-mian-shi-ti/</id>
+    <published>2015-07-30T08:58:38.000Z</published>
+    <updated>2016-02-14T07:39:02.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;1-什么是原子操作？在Java-Concurrency-API中有哪些原子类-atomic-classes-？&quot;&gt;&lt;a href=&quot;#1-什么是原子操作？在Java-Concurrency-API中有哪些原子类-atomic-classes-？&quot; class=&quot;headerlink&quot; title=&quot;1. 什么是原子操作？在Java Concurrency API中有哪些原子类(atomic classes)？&quot;&gt;&lt;/a&gt;1. 什么是原子操作？在Java Concurrency API中有哪些原子类(atomic classes)？&lt;/h3&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;原子操作是指一个不受其他操作影响的操作任务单元。原子操作是在多线程环境下避免数据不一致必须的手段。&lt;/p&gt;
+&lt;p&gt;int++并不是一个原子操作，所以当一个线程读取它的值并加1时，另外一个线程有可能会读到之前的值，这就会引发错误。&lt;/p&gt;
+&lt;p&gt;为了解决这个问题，必须保证增加操作是原子的，在JDK1.5之前我们可以使用同步技术来做到这一点。到JDK1.5，java.util.concurrent.atomic包提供了int和long类型的装类，它们可以自动的保证对于他们的操作是原子的并且不需要使用同步。可以阅读这篇文章来了解Java的atomic类。&lt;/p&gt;
+&lt;h3 id=&quot;2-Java-Concurrency-API中的Lock接口-Lock-interface-是什么？对比同步它有什么优势？&quot;&gt;&lt;a href=&quot;#2-Java-Concurrency-API中的Lock接口-Lock-interface-是什么？对比同步它有什么优势？&quot; class=&quot;headerlink&quot; title=&quot;2. Java Concurrency API中的Lock接口(Lock interface)是什么？对比同步它有什么优势？&quot;&gt;&lt;/a&gt;2. Java Concurrency API中的Lock接口(Lock interface)是什么？对比同步它有什么优势？&lt;/h3&gt;&lt;p&gt;Lock接口比同步方法和同步块提供了更具扩展性的锁操作。他们允许更灵活的结构，可以具有完全不同的性质，并且可以支持多个相关类的条件对象。&lt;/p&gt;
+&lt;p&gt;它的优势有：&lt;/p&gt;
+&lt;p&gt;可以使锁更公平&lt;br&gt;可以使线程在等待锁的时候响应中断&lt;br&gt;可以让线程尝试获取锁，并在无法获取锁的时候立即返回或者等待一段时间&lt;br&gt;可以在不同的范围，以不同的顺序获取和释放锁&lt;br&gt;阅读更多关于锁的例子&lt;/p&gt;
+&lt;h3 id=&quot;3-什么是Executors框架？&quot;&gt;&lt;a href=&quot;#3-什么是Executors框架？&quot; class=&quot;headerlink&quot; title=&quot;3. 什么是Executors框架？&quot;&gt;&lt;/a&gt;3. 什么是Executors框架？&lt;/h3&gt;&lt;p&gt;Executor框架同java.util.concurrent.Executor 接口在Java 5中被引入。Executor框架是一个根据一组执行策略调用，调度，执行和控制的异步任务的框架。&lt;/p&gt;
+&lt;p&gt;无限制的创建线程会引起应用程序内存溢出。所以创建一个线程池是个更好的的解决方案，因为可以限制线程的数量并且可以回收再利用这些线程。利用Executors框架可以非常方便的创建一个线程池，阅读这篇文章可以了解如何使用Executor框架创建一个线程池。&lt;/p&gt;
+&lt;h3 id=&quot;4-什么是阻塞队列？如何使用阻塞队列来实现生产者-消费者模型？&quot;&gt;&lt;a href=&quot;#4-什么是阻塞队列？如何使用阻塞队列来实现生产者-消费者模型？&quot; class=&quot;headerlink&quot; title=&quot;4. 什么是阻塞队列？如何使用阻塞队列来实现生产者-消费者模型？&quot;&gt;&lt;/a&gt;4. 什么是阻塞队列？如何使用阻塞队列来实现生产者-消费者模型？&lt;/h3&gt;&lt;p&gt;java.util.concurrent.BlockingQueue的特性是：当队列是空的时，从队列中获取或删除元素的操作将会被阻塞，或者当队列是满时，往队列里添加元素的操作会被阻塞。&lt;/p&gt;
+&lt;p&gt;阻塞队列不接受空值，当你尝试向队列中添加空值的时候，它会抛出NullPointerException。&lt;/p&gt;
+&lt;p&gt;阻塞队列的实现都是线程安全的，所有的查询方法都是原子的并且使用了内部锁或者其他形式的并发控制。&lt;/p&gt;
+&lt;p&gt;BlockingQueue 接口是java collections框架的一部分，它主要用于实现生产者-消费者问题。&lt;/p&gt;
+&lt;p&gt;阅读这篇文章了解如何使用阻塞队列实现生产者-消费者问题。&lt;/p&gt;
+&lt;h3 id=&quot;5-什么是Callable和Future&quot;&gt;&lt;a href=&quot;#5-什么是Callable和Future&quot; class=&quot;headerlink&quot; title=&quot;5. 什么是Callable和Future?&quot;&gt;&lt;/a&gt;5. 什么是Callable和Future?&lt;/h3&gt;&lt;p&gt;Java 5在concurrency包中引入了java.util.concurrent.Callable 接口，它和Runnable接口很相似，但它可以返回一个对象或者抛出一个异常。&lt;/p&gt;
+&lt;p&gt;Callable接口使用泛型去定义它的返回类型。Executors类提供了一些有用的方法去在线程池中执行Callable内的任务。由于Callable任务是并行的，我们必须等待它返回的结果。java.util.concurrent.Future对象为我们解决了这个问题。在线程池提交Callable任务后返回了一个Future对象，使用它我们可以知道Callable任务的状态和得到Callable返回的执行结果。Future提供了get()方法让我们可以等待Callable结束并获取它的执行结果。&lt;/p&gt;
+&lt;p&gt;阅读这篇文章了解更多关于Callable，Future的例子。&lt;/p&gt;
+&lt;h3 id=&quot;6-什么是FutureTask&quot;&gt;&lt;a href=&quot;#6-什么是FutureTask&quot; class=&quot;headerlink&quot; title=&quot;6. 什么是FutureTask?&quot;&gt;&lt;/a&gt;6. 什么是FutureTask?&lt;/h3&gt;&lt;p&gt;FutureTask是Future的一个基础实现，我们可以将它同Executors使用处理异步任务。通常我们不需要使用FutureTask类，单当我们打算重写Future接口的一些方法并保持原来基础的实现是，它就变得非常有用。我们可以仅仅继承于它并重写我们需要的方法。阅读Java FutureTask例子，学习如何使用它。&lt;/p&gt;
+&lt;h3 id=&quot;7-什么是并发容器的实现？&quot;&gt;&lt;a href=&quot;#7-什么是并发容器的实现？&quot; class=&quot;headerlink&quot; title=&quot;7.什么是并发容器的实现？&quot;&gt;&lt;/a&gt;7.什么是并发容器的实现？&lt;/h3&gt;&lt;p&gt;Java集合类都是快速失败的，这就意味着当集合被改变且一个线程在使用迭代器遍历集合的时候，迭代器的next()方法将抛出ConcurrentModificationException异常。&lt;/p&gt;
+&lt;p&gt;并发容器支持并发的遍历和并发的更新。&lt;/p&gt;
+&lt;p&gt;主要的类有ConcurrentHashMap, CopyOnWriteArrayList 和CopyOnWriteArraySet，阅读这篇文章了解如何避免ConcurrentModificationException。&lt;/p&gt;
+&lt;h3 id=&quot;8-Executors类是什么？&quot;&gt;&lt;a href=&quot;#8-Executors类是什么？&quot; class=&quot;headerlink&quot; title=&quot;8. Executors类是什么？&quot;&gt;&lt;/a&gt;8. Executors类是什么？&lt;/h3&gt;&lt;p&gt;Executors为Executor，ExecutorService，ScheduledExecutorService，ThreadFactory和Callable类提供了一些工具方法。&lt;/p&gt;
+&lt;p&gt;Executors可以用于方便的创建线程池。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;1-什么是原子操作？在Java-Concurrency-API中有哪些原子类-atomic-classes-？&quot;&gt;&lt;a href=&quot;#1-什么是原子操作？在Java-Concurrency-API中有哪些原子类-atomic-classes-？&quot; class=&quot;headerlink&quot; title=&quot;1. 什么是原子操作？在Java Concurrency API中有哪些原子类(atomic classes)？&quot;&gt;&lt;/a&gt;1. 什么是原子操作？在Java Concurrency API中有哪些原子类(atomic classes)？&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://blog.bugk.info/categories/java/"/>
+    
+    
+      <category term="Java" scheme="http://blog.bugk.info/tags/Java/"/>
+    
+      <category term="线程" scheme="http://blog.bugk.info/tags/%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="面试题" scheme="http://blog.bugk.info/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaTread经典面试题</title>
+    <link href="http://blog.bugk.info/2015/07/30/2015-07-30-javatreadjing-dian-mian-shi-ti/"/>
+    <id>http://blog.bugk.info/2015/07/30/2015-07-30-javatreadjing-dian-mian-shi-ti/</id>
+    <published>2015-07-30T08:36:55.000Z</published>
+    <updated>2016-02-14T07:43:14.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;本文为译文。&lt;br&gt;多线程和并发问题是Java技术面试中面试官比较喜欢问的问题之一。在这里，从面试的角度列出了大部分重要的问题，但是你仍然应该牢固的掌握Java多线程基础知识来对应日后碰到的问题。  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;1-进程和线程之间有什么不同？&quot;&gt;&lt;a href=&quot;#1-进程和线程之间有什么不同？&quot; class=&quot;headerlink&quot; title=&quot;1. 进程和线程之间有什么不同？&quot;&gt;&lt;/a&gt;1. 进程和线程之间有什么不同？&lt;/h3&gt;&lt;p&gt;一个进程是一个独立(self contained)的运行环境，它可以被看作一个程序或者一个应用。而线程是在进程中执行的一个任务。Java运行环境是一个包含了不同的类和程序的单一进程。线程可以被称为轻量级进程。线程需要较少的资源来创建和驻留在进程中，并且可以共享进程中的资源。&lt;/p&gt;
+&lt;h3 id=&quot;2-多线程编程的好处是什么？&quot;&gt;&lt;a href=&quot;#2-多线程编程的好处是什么？&quot; class=&quot;headerlink&quot; title=&quot;2. 多线程编程的好处是什么？&quot;&gt;&lt;/a&gt;2. 多线程编程的好处是什么？&lt;/h3&gt;&lt;p&gt;在多线程程序中，多个线程被并发的执行以提高程序的效率，CPU不会因为某个线程需要等待资源而进入空闲状态。多个线程共享堆内存(heap memory)，因此创建多个线程去执行一些任务会比创建多个进程更好。举个例子，Servlets比CGI更好，是因为Servlets支持多线程而CGI不支持。&lt;/p&gt;
+&lt;h3 id=&quot;3-用户线程和守护线程有什么区别？&quot;&gt;&lt;a href=&quot;#3-用户线程和守护线程有什么区别？&quot; class=&quot;headerlink&quot; title=&quot;3. 用户线程和守护线程有什么区别？&quot;&gt;&lt;/a&gt;3. 用户线程和守护线程有什么区别？&lt;/h3&gt;&lt;p&gt;当我们在Java程序中创建一个线程，它就被称为用户线程。一个守护线程是在后台执行并且不会阻止JVM终止的线程。当没有用户线程在运行的时候，JVM关闭程序并且退出。一个守护线程创建的子线程依然是守护线程。&lt;/p&gt;
+&lt;h3 id=&quot;4-我们如何创建一个线程？&quot;&gt;&lt;a href=&quot;#4-我们如何创建一个线程？&quot; class=&quot;headerlink&quot; title=&quot;4. 我们如何创建一个线程？&quot;&gt;&lt;/a&gt;4. 我们如何创建一个线程？&lt;/h3&gt;&lt;p&gt;有两种创建线程的方法：一是实现Runnable接口，然后将它传递给Thread的构造函数，创建一个Thread对象；二是直接继承Thread类。若想了解更多可以阅读这篇关于如何在Java中创建线程的文章。&lt;/p&gt;
+&lt;h3 id=&quot;5-有哪些不同的线程生命周期？&quot;&gt;&lt;a href=&quot;#5-有哪些不同的线程生命周期？&quot; class=&quot;headerlink&quot; title=&quot;5. 有哪些不同的线程生命周期？&quot;&gt;&lt;/a&gt;5. 有哪些不同的线程生命周期？&lt;/h3&gt;&lt;p&gt;当我们在Java程序中新建一个线程时，它的状态是New。当我们调用线程的start()方法时，状态被改变为Runnable。线程调度器会为Runnable线程池中的线程分配CPU时间并且讲它们的状态改变为Running。其他的线程状态还有Waiting，Blocked 和Dead。读这篇文章可以了解更多关于线程生命周期的知识。&lt;/p&gt;
+&lt;h3 id=&quot;6-可以直接调用Thread类的run-方法么？&quot;&gt;&lt;a href=&quot;#6-可以直接调用Thread类的run-方法么？&quot; class=&quot;headerlink&quot; title=&quot;6. 可以直接调用Thread类的run()方法么？&quot;&gt;&lt;/a&gt;6. 可以直接调用Thread类的run()方法么？&lt;/h3&gt;&lt;p&gt;当然可以，但是如果我们调用了Thread的run()方法，它的行为就会和普通的方法一样，为了在新的线程中执行我们的代码，必须使用Thread.start()方法。&lt;/p&gt;
+&lt;h3 id=&quot;7-如何让正在运行的线程暂停一段时间？&quot;&gt;&lt;a href=&quot;#7-如何让正在运行的线程暂停一段时间？&quot; class=&quot;headerlink&quot; title=&quot;7. 如何让正在运行的线程暂停一段时间？&quot;&gt;&lt;/a&gt;7. 如何让正在运行的线程暂停一段时间？&lt;/h3&gt;&lt;p&gt;我们可以使用Thread类的Sleep()方法让线程暂停一段时间。需要注意的是，这并不会让线程终止，一旦从休眠中唤醒线程，线程的状态将会被改变为Runnable，并且根据线程调度，它将得到执行。&lt;/p&gt;
+&lt;h3 id=&quot;8-你对线程优先级的理解是什么？&quot;&gt;&lt;a href=&quot;#8-你对线程优先级的理解是什么？&quot; class=&quot;headerlink&quot; title=&quot;8. 你对线程优先级的理解是什么？&quot;&gt;&lt;/a&gt;8. 你对线程优先级的理解是什么？&lt;/h3&gt;&lt;p&gt;每一个线程都是有优先级的，一般来说，高优先级的线程在运行时会具有优先权，但这依赖于线程调度的实现，这个实现是和操作系统相关的(OS dependent)。我们可以定义线程的优先级，但是这并不能保证高优先级的线程会在低优先级的线程前执行。线程优先级是一个int变量(从1-10)，1代表最低优先级，10代表最高优先级。&lt;/p&gt;
+&lt;h3 id=&quot;9-什么是线程调度器-Thread-Scheduler-和时间分片-Time-Slicing-？&quot;&gt;&lt;a href=&quot;#9-什么是线程调度器-Thread-Scheduler-和时间分片-Time-Slicing-？&quot; class=&quot;headerlink&quot; title=&quot;9. 什么是线程调度器(Thread Scheduler)和时间分片(Time Slicing)？&quot;&gt;&lt;/a&gt;9. 什么是线程调度器(Thread Scheduler)和时间分片(Time Slicing)？&lt;/h3&gt;&lt;p&gt;线程调度器是一个操作系统服务，它负责为Runnable状态的线程分配CPU时间。一旦我们创建一个线程并启动它，它的执行便依赖于线程调度器的实现。时间分片是指将可用的CPU时间分配给可用的Runnable线程的过程。分配CPU时间可以基于线程优先级或者线程等待的时间。线程调度并不受到Java虚拟机控制，所以由应用程序来控制它是更好的选择（也就是说不要让你的程序依赖于线程的优先级）。&lt;/p&gt;
+&lt;h3 id=&quot;10-在多线程中，什么是上下文切换-context-switching-？&quot;&gt;&lt;a href=&quot;#10-在多线程中，什么是上下文切换-context-switching-？&quot; class=&quot;headerlink&quot; title=&quot;10. 在多线程中，什么是上下文切换(context-switching)？&quot;&gt;&lt;/a&gt;10. 在多线程中，什么是上下文切换(context-switching)？&lt;/h3&gt;&lt;p&gt;上下文切换是存储和恢复CPU状态的过程，它使得线程执行能够从中断点恢复执行。上下文切换是多任务操作系统和多线程环境的基本特征。&lt;/p&gt;
+&lt;h3 id=&quot;11-你如何确保main-方法所在的线程是Java程序最后结束的线程？&quot;&gt;&lt;a href=&quot;#11-你如何确保main-方法所在的线程是Java程序最后结束的线程？&quot; class=&quot;headerlink&quot; title=&quot;11. 你如何确保main()方法所在的线程是Java程序最后结束的线程？&quot;&gt;&lt;/a&gt;11. 你如何确保main()方法所在的线程是Java程序最后结束的线程？&lt;/h3&gt;&lt;p&gt;我们可以使用Thread类的joint()方法来确保所有程序创建的线程在main()方法退出前结束。这里有一篇文章关于Thread类的joint()方法。&lt;/p&gt;
+&lt;h3 id=&quot;12-线程之间是如何通信的？&quot;&gt;&lt;a href=&quot;#12-线程之间是如何通信的？&quot; class=&quot;headerlink&quot; title=&quot;12. 线程之间是如何通信的？&quot;&gt;&lt;/a&gt;12. 线程之间是如何通信的？&lt;/h3&gt;&lt;p&gt;当线程间是可以共享资源时，线程间通信是协调它们的重要的手段。Object类中wait()\notify()\notifyAll()方法可以用于线程间通信关于资源的锁的状态。点击这里有更多关于线程wait, notify和notifyAll.&lt;/p&gt;
+&lt;h3 id=&quot;13-为什么线程通信的方法wait-notify-和notifyAll-被定义在Object类里？&quot;&gt;&lt;a href=&quot;#13-为什么线程通信的方法wait-notify-和notifyAll-被定义在Object类里？&quot; class=&quot;headerlink&quot; title=&quot;13. 为什么线程通信的方法wait(), notify()和notifyAll()被定义在Object类里？&quot;&gt;&lt;/a&gt;13. 为什么线程通信的方法wait(), notify()和notifyAll()被定义在Object类里？&lt;/h3&gt;&lt;p&gt;Java的每个对象中都有一个锁(monitor，也可以成为监视器) 并且wait()，notify()等方法用于等待对象的锁或者通知其他线程对象的监视器可用。在Java的线程中并没有可供任何对象使用的锁和同步器。这就是为什么这些方法是Object类的一部分，这样Java的每一个类都有用于线程间通信的基本方法&lt;/p&gt;
+&lt;h3 id=&quot;14-为什么wait-notify-和notifyAll-必须在同步方法或者同步块中被调用？&quot;&gt;&lt;a href=&quot;#14-为什么wait-notify-和notifyAll-必须在同步方法或者同步块中被调用？&quot; class=&quot;headerlink&quot; title=&quot;14. 为什么wait(), notify()和notifyAll()必须在同步方法或者同步块中被调用？&quot;&gt;&lt;/a&gt;14. 为什么wait(), notify()和notifyAll()必须在同步方法或者同步块中被调用？&lt;/h3&gt;&lt;p&gt;当一个线程需要调用对象的wait()方法的时候，这个线程必须拥有该对象的锁，接着它就会释放这个对象锁并进入等待状态直到其他线程调用这个对象上的notify()方法。同样的，当一个线程需要调用对象的notify()方法时，它会释放这个对象的锁，以便其他在等待的线程就可以得到这个对象锁。由于所有的这些方法都需要线程持有对象的锁，这样就只能通过同步来实现，所以他们只能在同步方法或者同步块中被调用。&lt;/p&gt;
+&lt;h3 id=&quot;15-为什么Thread类的sleep-和yield-方法是静态的？&quot;&gt;&lt;a href=&quot;#15-为什么Thread类的sleep-和yield-方法是静态的？&quot; class=&quot;headerlink&quot; title=&quot;15. 为什么Thread类的sleep()和yield()方法是静态的？&quot;&gt;&lt;/a&gt;15. 为什么Thread类的sleep()和yield()方法是静态的？&lt;/h3&gt;&lt;p&gt;Thread类的sleep()和yield()方法将在当前正在执行的线程上运行。所以在其他处于等待状态的线程上调用这些方法是没有意义的。这就是为什么这些方法是静态的。它们可以在当前正在执行的线程中工作，并避免程序员错误的认为可以在其他非运行线程调用这些方法。&lt;/p&gt;
+&lt;h3 id=&quot;16-如何确保线程安全？&quot;&gt;&lt;a href=&quot;#16-如何确保线程安全？&quot; class=&quot;headerlink&quot; title=&quot;16. 如何确保线程安全？&quot;&gt;&lt;/a&gt;16. 如何确保线程安全？&lt;/h3&gt;&lt;p&gt;在Java中可以有很多方法来保证线程安全——同步，使用原子类(atomic concurrent classes)，实现并发锁，使用volatile关键字，使用不变类和线程安全类。在线程安全教程中，你可以学到更多。&lt;/p&gt;
+&lt;h3 id=&quot;17-volatile关键字在Java中有什么作用？&quot;&gt;&lt;a href=&quot;#17-volatile关键字在Java中有什么作用？&quot; class=&quot;headerlink&quot; title=&quot;17. volatile关键字在Java中有什么作用？&quot;&gt;&lt;/a&gt;17. volatile关键字在Java中有什么作用？&lt;/h3&gt;&lt;p&gt;当我们使用volatile关键字去修饰变量的时候，所以线程都会直接读取该变量并且不缓存它。这就确保了线程读取到的变量是同内存中是一致的。&lt;/p&gt;
+&lt;h3 id=&quot;18-同步方法和同步块，哪个是更好的选择？&quot;&gt;&lt;a href=&quot;#18-同步方法和同步块，哪个是更好的选择？&quot; class=&quot;headerlink&quot; title=&quot;18. 同步方法和同步块，哪个是更好的选择？&quot;&gt;&lt;/a&gt;18. 同步方法和同步块，哪个是更好的选择？&lt;/h3&gt;&lt;p&gt;同步块是更好的选择，因为它不会锁住整个对象（当然你也可以让它锁住整个对象）。同步方法会锁住整个对象，哪怕这个类中有多个不相关联的同步块，这通常会导致他们停止执行并需要等待获得这个对象上的锁。&lt;/p&gt;
+&lt;h3 id=&quot;19-如何创建守护线程？&quot;&gt;&lt;a href=&quot;#19-如何创建守护线程？&quot; class=&quot;headerlink&quot; title=&quot;19. 如何创建守护线程？&quot;&gt;&lt;/a&gt;19. 如何创建守护线程？&lt;/h3&gt;&lt;p&gt;使用Thread类的setDaemon(true)方法可以将线程设置为守护线程，需要注意的是，需要在调用start()方法前调用这个方法，否则会抛出IllegalThreadStateException异常。&lt;/p&gt;
+&lt;h3 id=&quot;20-什么是ThreadLocal&quot;&gt;&lt;a href=&quot;#20-什么是ThreadLocal&quot; class=&quot;headerlink&quot; title=&quot;20. 什么是ThreadLocal?&quot;&gt;&lt;/a&gt;20. 什么是ThreadLocal?&lt;/h3&gt;&lt;p&gt;ThreadLocal用于创建线程的本地变量，我们知道一个对象的所有线程会共享它的全局变量，所以这些变量不是线程安全的，我们可以使用同步技术。但是当我们不想使用同步的时候，我们可以选择ThreadLocal变量。&lt;/p&gt;
+&lt;p&gt;每个线程都会拥有他们自己的Thread变量，它们可以使用get()\set()方法去获取他们的默认值或者在线程内部改变他们的值。ThreadLocal实例通常是希望它们同线程状态关联起来是private static属性。在ThreadLocal例子这篇文章中你可以看到一个关于ThreadLocal的小程序。&lt;/p&gt;
+&lt;h3 id=&quot;21-什么是Thread-Group？为什么建议使用它？&quot;&gt;&lt;a href=&quot;#21-什么是Thread-Group？为什么建议使用它？&quot; class=&quot;headerlink&quot; title=&quot;21. 什么是Thread Group？为什么建议使用它？&quot;&gt;&lt;/a&gt;21. 什么是Thread Group？为什么建议使用它？&lt;/h3&gt;&lt;p&gt;ThreadGroup是一个类，它的目的是提供关于线程组的信息。&lt;/p&gt;
+&lt;p&gt;ThreadGroup API比较薄弱，它并没有比Thread提供了更多的功能。它有两个主要的功能：一是获取线程组中处于活跃状态线程的列表；二是设置为线程设置未捕获异常处理器(ncaught exception handler)。但在Java 1.5中Thread类也添加了setUncaughtExceptionHandler(UncaughtExceptionHandler eh) 方法，所以ThreadGroup是已经过时的，不建议继续使用。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;java&quot;&gt;t1.setUncaughtExceptionHandler(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; UncaughtExceptionHandler(){
+  &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;
+  &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;uncaughtException&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Thread t, Throwable e)&lt;/span&gt; &lt;/span&gt;{
+   System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;exception occured:&quot;&lt;/span&gt;+e.getMessage());
+  }
+        });
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;22-什么是Java线程转储-Thread-Dump-，如何得到它？&quot;&gt;&lt;a href=&quot;#22-什么是Java线程转储-Thread-Dump-，如何得到它？&quot; class=&quot;headerlink&quot; title=&quot;22. 什么是Java线程转储(Thread Dump)，如何得到它？&quot;&gt;&lt;/a&gt;22. 什么是Java线程转储(Thread Dump)，如何得到它？&lt;/h3&gt;&lt;p&gt;线程转储是一个JVM活动线程的列表，它对于分析系统瓶颈和死锁非常有用。有很多方法可以获取线程转储——使用Profiler，Kill -3命令，jstack工具等等。我更喜欢jstack工具，因为它容易使用并且是JDK自带的。由于它是一个基于终端的工具，所以我们可以编写一些脚本去定时的产生线程转储以待分析。读这篇文档可以了解更多关于产生线程转储的知识。&lt;/p&gt;
+&lt;h3 id=&quot;23-什么是死锁-Deadlock-？如何分析和避免死锁？&quot;&gt;&lt;a href=&quot;#23-什么是死锁-Deadlock-？如何分析和避免死锁？&quot; class=&quot;headerlink&quot; title=&quot;23. 什么是死锁(Deadlock)？如何分析和避免死锁？&quot;&gt;&lt;/a&gt;23. 什么是死锁(Deadlock)？如何分析和避免死锁？&lt;/h3&gt;&lt;p&gt; 死锁是指两个以上的线程永远阻塞的情况，这种情况产生至少需要两个以上的线程和两个以上的资源。&lt;/p&gt;
+&lt;p&gt; 分析死锁，我们需要查看Java应用程序的线程转储。我们需要找出那些状态为BLOCKED的线程和他们等待的资源。每个资源都有一个唯一的id，用这个id我们可以找出哪些线程已经拥有了它的对象锁。&lt;/p&gt;
+&lt;p&gt;  避免嵌套锁，只在需要的地方使用锁和避免无限期等待是避免死锁的通常办法，阅读这篇文章去学习如何分析死锁。&lt;/p&gt;
+&lt;h3 id=&quot;24-什么是Java-Timer类？如何创建一个有特定时间间隔的任务？&quot;&gt;&lt;a href=&quot;#24-什么是Java-Timer类？如何创建一个有特定时间间隔的任务？&quot; class=&quot;headerlink&quot; title=&quot;24. 什么是Java Timer类？如何创建一个有特定时间间隔的任务？&quot;&gt;&lt;/a&gt;24. 什么是Java Timer类？如何创建一个有特定时间间隔的任务？&lt;/h3&gt;&lt;p&gt;java.util.Timer是一个工具类，可以用于安排一个线程在未来的某个特定时间执行。Timer类可以用安排一次性任务或者周期任务。&lt;/p&gt;
+&lt;p&gt; java.util.TimerTask是一个实现了Runnable接口的抽象类，我们需要去继承这个类来创建我们自己的定时任务并使用Timer去安排它的执行。&lt;/p&gt;
+&lt;p&gt; 这里有关于java Timer的例子。&lt;/p&gt;
+&lt;h3 id=&quot;25-什么是线程池？如何创建一个Java线程池？&quot;&gt;&lt;a href=&quot;#25-什么是线程池？如何创建一个Java线程池？&quot; class=&quot;headerlink&quot; title=&quot;25. 什么是线程池？如何创建一个Java线程池？&quot;&gt;&lt;/a&gt;25. 什么是线程池？如何创建一个Java线程池？&lt;/h3&gt;&lt;p&gt;一个线程池管理了一组工作线程，同时它还包括了一个用于放置等待执行的任务的队列。&lt;br&gt;java.util.concurrent.Executors提供了一个 java.util.concurrent.Executor接口的实现用于创建线程池。线程池例子展现了如何创建和使用线程池，或者阅读ScheduledThreadPoolExecutor例子，了解如何创建一个周期任务。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本文为译文。&lt;br&gt;多线程和并发问题是Java技术面试中面试官比较喜欢问的问题之一。在这里，从面试的角度列出了大部分重要的问题，但是你仍然应该牢固的掌握Java多线程基础知识来对应日后碰到的问题。  &lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://blog.bugk.info/categories/java/"/>
+    
+    
+      <category term="Java" scheme="http://blog.bugk.info/tags/Java/"/>
+    
+      <category term="Thread" scheme="http://blog.bugk.info/tags/Thread/"/>
+    
+      <category term="面试" scheme="http://blog.bugk.info/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DevelpmentAndContributing</title>
+    <link href="http://blog.bugk.info/2015/07/29/2015-07-29-develpmentandcontributing/"/>
+    <id>http://blog.bugk.info/2015/07/29/2015-07-29-develpmentandcontributing/</id>
+    <published>2015-07-29T05:41:20.000Z</published>
+    <updated>2016-02-14T03:43:46.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;开发环境&quot;&gt;&lt;a href=&quot;#开发环境&quot; class=&quot;headerlink&quot; title=&quot;开发环境&quot;&gt;&lt;/a&gt;开发环境&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;idea intellij 14+&lt;/li&gt;
+&lt;li&gt;java 1.7+&lt;/li&gt;
+&lt;li&gt;Maven 3.1.1+&lt;/li&gt;
+&lt;li&gt;Mysql 5.6&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;•&lt;br&gt;&lt;br&gt;### 搭建流程&lt;br&gt;####1. fork代码&lt;br&gt;访问代码仓库：&lt;a href=&quot;https://github.com/qq291462491/bugkillers&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;bugkillers&lt;/a&gt;&lt;br&gt;点击右上角的fork将代码fork到自己的仓库,然后clone fork到的项目,注意一定要是ssh的方式clone。&lt;br&gt;&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git clone ssh:&lt;span class=&quot;comment&quot;&gt;//github.com/$yours/bugkillers&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; git使用指南：[Git Book](https:&lt;span class=&quot;comment&quot;&gt;//git-scm.com/book/zh/v1)      &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; github使用指南：[Github秘籍](https:&lt;span class=&quot;comment&quot;&gt;//github.com/bugkillerz/github-cheat-sheet/blob/master/README.zh-cn.md)     &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; github协作指南：[原文](http:&lt;span class=&quot;comment&quot;&gt;//code.tutsplus.com/articles/team-collaboration-with-github--net-29876)、[中文](http://blog.csdn.net/lw5180822/article/details/14121751)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;####&lt;span class=&quot;number&quot;&gt;2.&lt;/span&gt; 项目目录结构&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;#####&lt;span class=&quot;number&quot;&gt;2.1&lt;/span&gt; bugkillers-core         &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;后台API服务项目，提供REST服务和RPC服务代码   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;#####&lt;span class=&quot;number&quot;&gt;2.2&lt;/span&gt; bugkillers-web          &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;前端页面项目代码 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;#####&lt;span class=&quot;number&quot;&gt;2.3&lt;/span&gt; ~~~bugkillers-back~~~       &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;目前已经废弃&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;#####&lt;span class=&quot;number&quot;&gt;2.4&lt;/span&gt; mou      &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;MarkDown文档目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;#####&lt;span class=&quot;number&quot;&gt;2.5&lt;/span&gt; res        &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;资源目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;####&lt;span class=&quot;number&quot;&gt;3.&lt;/span&gt; 运行项目&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;#####&lt;span class=&quot;number&quot;&gt;3.1&lt;/span&gt; bugkillers-core      &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;将项目下的other目录的`tables.sql`的脚本执行，并修改mysql.properties下的配置改成你自己的配置。        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;切换到bugkillers-core目录下执行&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;mvn package -U -Dmaven.test.skip=true jetty:run&lt;br&gt;&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;然后访问本机`http:&lt;span class=&quot;comment&quot;&gt;//127.0.0.1:9081/api/`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;出现API文档说明搭建成功&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;#####&lt;span class=&quot;number&quot;&gt;3.2&lt;/span&gt; bugkillers-web    &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;切换到bugkillers-web目录下执行&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;mvn package -U  jetty:run&lt;br&gt;&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;然后访问本机`http:&lt;span class=&quot;comment&quot;&gt;//127.0.0.1:9082/dist/index.html`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;####&lt;span class=&quot;number&quot;&gt;4.&lt;/span&gt; coding&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;在做修改之前最好创建一个自己的分支，代码修改完毕后提pr，pr被merge后废弃，有新的改动重新建立分支（建议）        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;#####&lt;span class=&quot;number&quot;&gt;4.1&lt;/span&gt; 查看目前的分支，并切换到根分支，在创建。&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;git branch -a&lt;br&gt;git checkout origin master&lt;br&gt;&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;#####&lt;span class=&quot;number&quot;&gt;4.2&lt;/span&gt;  创建自己的分支(分支名可自由取)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;git branch feature-xxx-xxx&lt;br&gt;&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;#####&lt;span class=&quot;number&quot;&gt;4.3&lt;/span&gt;  切换到新分支coding,并定期commit&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;git checkout feature-xxx-xxx&lt;br&gt;```&lt;/p&gt;
+&lt;p&gt;#####4.4  提Pull Request   &lt;/p&gt;
+&lt;p&gt;在提pull request之前需要将代码和现在最新的代码，master分支上的代码做一下rebase或者merge。&lt;br&gt;pr参考：&lt;a href=&quot;http://codeinthehole.com/writing/pull-requests-and-other-good-practices-for-teams-using-github/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Creating Effective Pull Requests&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;加入组织&quot;&gt;&lt;a href=&quot;#加入组织&quot; class=&quot;headerlink&quot; title=&quot;加入组织&quot;&gt;&lt;/a&gt;加入组织&lt;/h3&gt;&lt;p&gt;在贡献达到一定程度后，便可申请加入组织&lt;a href=&quot;https://github.com/bugkillerz&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;bugkillerz&lt;/a&gt;,加入组织后便不用每次修改都要提pr，直接&lt;code&gt;push&lt;/code&gt;即可。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;开发环境&quot;&gt;&lt;a href=&quot;#开发环境&quot; class=&quot;headerlink&quot; title=&quot;开发环境&quot;&gt;&lt;/a&gt;开发环境&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;idea intellij 14+&lt;/li&gt;
+&lt;li&gt;java 1.7+&lt;/li&gt;
+&lt;li&gt;Maven 3.1.1+&lt;/li&gt;
+&lt;li&gt;Mysql 5.6&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Start</title>
+    <link href="http://blog.bugk.info/1992/07/18/1992-07-18-start/"/>
+    <id>http://blog.bugk.info/1992/07/18/1992-07-18-start/</id>
+    <published>1992-07-18T01:15:16.000Z</published>
+    <updated>2016-02-14T08:04:40.000Z</updated>
+    
+    <content type="html">&lt;p&gt;The story starts here!&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;The story starts here!&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="总结" scheme="http://blog.bugk.info/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="start" scheme="http://blog.bugk.info/tags/start/"/>
+    
+  </entry>
+  
+</feed>
