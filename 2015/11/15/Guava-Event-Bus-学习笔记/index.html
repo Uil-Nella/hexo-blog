@@ -74,12 +74,12 @@
 
 1. 背景简介EventBus是google的一个Java工具包其中的一个工具类，类似的有多个版本其中包括移植到Android端的greenrobot-EventBus和改良的square-otto，功能基本都是一样的。此处主要是对Guava版的EventBus分析，关于guava代码地址。">
 <meta property="og:image" content="http://blog.bugk.info/images/pre-eventBus.png">
-<meta property="og:image" content="http://blog.bugk.info/imagesEventBusDiagram.png">
+<meta property="og:image" content="http://blog.bugk.info/images/EventBusDiagram.png">
 <meta property="og:image" content="http://blog.bugk.info/images/create.png">
 <meta property="og:image" content="http://blog.bugk.info/images/register-progress.png">
 <meta property="og:image" content="http://blog.bugk.info/images/unregister.png">
 <meta property="og:image" content="http://blog.bugk.info/images/post.png">
-<meta property="og:updated_time" content="2016-02-15T07:20:19.000Z">
+<meta property="og:updated_time" content="2016-02-15T07:39:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Guava-Event-Bus 学习笔记">
 <meta name="twitter:description" content="Guava的EventBus源码学习，基于Guava的18.0版本
@@ -368,7 +368,7 @@
 <p>ps:忽略类名后的下划线     </p>
 </blockquote>
 <h5 id="3-1-1-EventBus简要类图"><a href="#3-1-1-EventBus简要类图" class="headerlink" title="3.1.1 EventBus简要类图"></a>3.1.1 EventBus简要类图</h5><p><img src="/images/pre-eventBus.png" alt="pre-eventbus img"> </p>
-<h5 id="3-1-2-EventBus详细类图"><a href="#3-1-2-EventBus详细类图" class="headerlink" title="3.1.2 EventBus详细类图"></a>3.1.2 EventBus详细类图</h5><p><img src="/imagesEventBusDiagram.png" alt="eventbus img">  </p>
+<h5 id="3-1-2-EventBus详细类图"><a href="#3-1-2-EventBus详细类图" class="headerlink" title="3.1.2 EventBus详细类图"></a>3.1.2 EventBus详细类图</h5><p><img src="/images/EventBusDiagram.png" alt="eventbus img">  </p>
 <h4 id="3-2-流程设计"><a href="#3-2-流程设计" class="headerlink" title="3.2 流程设计"></a>3.2 流程设计</h4><h5 id="3-2-1-创建流程"><a href="#3-2-1-创建流程" class="headerlink" title="3.2.1 创建流程"></a>3.2.1 创建流程</h5><p><img src="/images/create.png" alt="create img">  </p>
 <h5 id="3-2-2-register流程"><a href="#3-2-2-register流程" class="headerlink" title="3.2.2 register流程"></a>3.2.2 register流程</h5><p><img src="/images/register-progress.png" alt="register-progress img">  </p>
 <h5 id="3-2-3-unregister流程"><a href="#3-2-3-unregister流程" class="headerlink" title="3.2.3 unregister流程"></a>3.2.3 unregister流程</h5><p><img src="/images/unregister.png" alt="unregister img">  </p>
