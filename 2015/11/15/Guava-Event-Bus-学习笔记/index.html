@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Guava,Java,学习," />
 
 
 
@@ -59,16 +59,34 @@
 
 
 
-<meta name="description" content="比鬼神更可怕的是人心！鲁王宫、沉船墓、秦岭树、云顶宫。青海蛇沼解谜、广西巴乃寻忆。辉煌生命终离去，独留空谈几何许。千年谜团围绕、可叹生命已老。愿回往日逍遥、怎奈岁月不饶。十年命运空煎熬，梦啊！你破碎可好…">
+<meta name="description" content="Guava-Event-Bus 学习笔记Guava的EventBus源码学习，基于Guava的18.0版本
+
+分析者：Allen
+
+1. 背景简介EventBus是google的一个Java工具包其中的一个工具类，类似的有多个版本其中包括移植到Android端的greenrobot-EventBus和改良的square-otto，功能基本都是一样的。此处主要是对Guava版的EventBus分析，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="盗墓笔记">
-<meta property="og:url" content="http://blog.bugk.info/2015/08/11/2015-08-11-dao-mu-bi-ji/index.html">
+<meta property="og:title" content="Guava-Event-Bus 学习笔记">
+<meta property="og:url" content="http://blog.bugk.info/2015/11/15/Guava-Event-Bus-学习笔记/index.html">
 <meta property="og:site_name" content="似水流年">
-<meta property="og:description" content="比鬼神更可怕的是人心！鲁王宫、沉船墓、秦岭树、云顶宫。青海蛇沼解谜、广西巴乃寻忆。辉煌生命终离去，独留空谈几何许。千年谜团围绕、可叹生命已老。愿回往日逍遥、怎奈岁月不饶。十年命运空煎熬，梦啊！你破碎可好…">
-<meta property="og:updated_time" content="2016-02-14T03:43:46.000Z">
+<meta property="og:description" content="Guava-Event-Bus 学习笔记Guava的EventBus源码学习，基于Guava的18.0版本
+
+分析者：Allen
+
+1. 背景简介EventBus是google的一个Java工具包其中的一个工具类，类似的有多个版本其中包括移植到Android端的greenrobot-EventBus和改良的square-otto，功能基本都是一样的。此处主要是对Guava版的EventBus分析，">
+<meta property="og:image" content="http://blog.bugk.info/../images/pre-eventBus.png">
+<meta property="og:image" content="http://blog.bugk.info/../imagesEventBusDiagram.png">
+<meta property="og:image" content="http://blog.bugk.info/../images/create.png">
+<meta property="og:image" content="http://blog.bugk.info/../images/register-progress.png">
+<meta property="og:image" content="http://blog.bugk.info/../images/unregister.png">
+<meta property="og:image" content="http://blog.bugk.info/../images/post.png">
+<meta property="og:updated_time" content="2016-02-15T06:23:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="盗墓笔记">
-<meta name="twitter:description" content="比鬼神更可怕的是人心！鲁王宫、沉船墓、秦岭树、云顶宫。青海蛇沼解谜、广西巴乃寻忆。辉煌生命终离去，独留空谈几何许。千年谜团围绕、可叹生命已老。愿回往日逍遥、怎奈岁月不饶。十年命运空煎熬，梦啊！你破碎可好…">
+<meta name="twitter:title" content="Guava-Event-Bus 学习笔记">
+<meta name="twitter:description" content="Guava-Event-Bus 学习笔记Guava的EventBus源码学习，基于Guava的18.0版本
+
+分析者：Allen
+
+1. 背景简介EventBus是google的一个Java工具包其中的一个工具类，类似的有多个版本其中包括移植到Android端的greenrobot-EventBus和改良的square-otto，功能基本都是一样的。此处主要是对Guava版的EventBus分析，">
 
 
 
@@ -86,7 +104,7 @@
   };
 </script>
 
-  <title> 盗墓笔记 | 似水流年 </title>
+  <title> Guava-Event-Bus 学习笔记 | 似水流年 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -245,7 +263,7 @@
             
             
               
-                盗墓笔记
+                Guava-Event-Bus 学习笔记
               
             
           </h1>
@@ -257,8 +275,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-11T14:43:26+08:00" content="2015-08-11">
-              2015-08-11
+            <time itemprop="dateCreated" datetime="2015-11-15T14:12:56+08:00" content="2015-11-15">
+              2015-11-15
             </time>
           </span>
 
@@ -271,8 +289,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/杂/" itemprop="url" rel="index">
-                    <span itemprop="name">杂</span>
+                  <a href="/categories/Guava/" itemprop="url" rel="index">
+                    <span itemprop="name">Guava</span>
                   </a>
                 </span>
 
@@ -287,8 +305,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/11/2015-08-11-dao-mu-bi-ji/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/08/11/2015-08-11-dao-mu-bi-ji/" itemprop="commentsCount"></span>
+                <a href="/2015/11/15/Guava-Event-Bus-学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/15/Guava-Event-Bus-学习笔记/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -315,28 +333,68 @@
       
 
       
-        <p>比鬼神更可怕的是人心！<br>鲁王宫、沉船墓、秦岭树、云顶宫。<br>青海蛇沼解谜、广西巴乃寻忆。<br>辉煌生命终离去，独留空谈几何许。<br>千年谜团围绕、可叹生命已老。<br>愿回往日逍遥、怎奈岁月不饶。<br>十年命运空煎熬，梦啊！你破碎可好…    </p>
-
+        <h1 id="Guava-Event-Bus-学习笔记"><a href="#Guava-Event-Bus-学习笔记" class="headerlink" title="Guava-Event-Bus 学习笔记"></a>Guava-Event-Bus 学习笔记</h1><p>Guava的EventBus源码学习，基于Guava的18.0版本</p>
+<blockquote>
+<p>分析者：<a href="https://github.com/qq291462491" target="_blank" rel="external">Allen</a></p>
+</blockquote>
+<h3 id="1-背景简介"><a href="#1-背景简介" class="headerlink" title="1. 背景简介"></a>1. 背景简介</h3><p>EventBus是google的一个Java工具包其中的一个工具类，类似的有多个版本其中包括移植到Android端的<a href="https://github.com/greenrobot/EventBus" target="_blank" rel="external">greenrobot-EventBus</a><br>和改良的<a href="https://github.com/square/otto" target="_blank" rel="external">square-otto</a>，功能基本都是一样的。此处主要是对Guava版的EventBus分析，关于<a href="https://github.com/google/guava" target="_blank" rel="external">guava代码地址</a>。</p>
+<a id="more"></a>
+<h3 id="2-功能简介"><a href="#2-功能简介" class="headerlink" title="2. 功能简介"></a>2. 功能简介</h3><h4 id="2-1-EventBus介绍"><a href="#2-1-EventBus介绍" class="headerlink" title="2.1 EventBus介绍"></a>2.1 EventBus介绍</h4><p>EventBus 是一个基于事件的一个发布/订阅框架，通过解耦发布者和订阅者简化事件传递，这里的事件可以理解为消息，本文中统一称为事件也就是 Event。通过EventBus可以简化生产者/消费者<br>这种模型，同时又可以通过Executor来控制线程，使用起来非常优雅灵活。异步的则使用AsyncEventBus，如果需要强制使EventBus同步执行则可以使用<code>@AllowConcurrentEvent</code>注释方法。</p>
+<h4 id="2-2-关键词"><a href="#2-2-关键词" class="headerlink" title="2.2 关键词"></a>2.2 关键词</h4><p><strong>事件(Event)：</strong>又可称为消息，本文中统一用事件表示。其实就是一个对象，可以是网络请求返回的字符串，也可以是某个开关状态等等，用于订阅者和发布者之间的消息传递媒介。<code>事件类型(EventType)</code>可以自由定义，一般是一个消息对象。<br>例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MessageEvent</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String message;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MessageEvent</span><span class="params">(String message)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.message = message;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> message;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>EventBus支持一个订阅者来订阅多个类型的事件，Event的子类也可以被传递。  </p>
+<p><strong>订阅者(Subscriber)：</strong>订阅某种事件类型的对象，使用<code>@Subscribe</code>注解来标明一个方法是用于订阅事件的方法。当有发布者发布这类事件后，被加注解的方法便可以执行，<code>事件响应函数</code>。<br>使用EventBus将订阅者通过 register 接口订阅来定义，unregister 接口退订。  </p>
+<p><strong>发布者(Publisher)：</strong>发布某事件的对象，注册完订阅者之后便可以使用EventBus的 post方法来发布消息，每个消息仅被接收处理一次。 </p>
+<p><strong>无关事件(DeadEvent)：</strong>如果EventBus发送的消息都不是订阅者关心的称之为Dead Event，这时我们可以通过log的方式来记录这种状态。</p>
+<h3 id="3-总体设计"><a href="#3-总体设计" class="headerlink" title="3. 总体设计"></a>3. 总体设计</h3><h4 id="3-1-类图设计"><a href="#3-1-类图设计" class="headerlink" title="3.1 类图设计"></a>3.1 类图设计</h4><blockquote>
+<p>ps:忽略类名后的下划线     </p>
+</blockquote>
+<h5 id="3-1-1-EventBus简要类图"><a href="#3-1-1-EventBus简要类图" class="headerlink" title="3.1.1 EventBus简要类图"></a>3.1.1 EventBus简要类图</h5><p><img src="../images/pre-eventBus.png" alt="pre-eventbus img"> </p>
+<h5 id="3-1-2-EventBus详细类图"><a href="#3-1-2-EventBus详细类图" class="headerlink" title="3.1.2 EventBus详细类图"></a>3.1.2 EventBus详细类图</h5><p><img src="../imagesEventBusDiagram.png" alt="eventbus img">  </p>
+<h4 id="3-2-流程设计"><a href="#3-2-流程设计" class="headerlink" title="3.2 流程设计"></a>3.2 流程设计</h4><h5 id="3-2-1-创建流程"><a href="#3-2-1-创建流程" class="headerlink" title="3.2.1 创建流程"></a>3.2.1 创建流程</h5><p><img src="../images/create.png" alt="create img">  </p>
+<h5 id="3-2-2-register流程"><a href="#3-2-2-register流程" class="headerlink" title="3.2.2 register流程"></a>3.2.2 register流程</h5><p><img src="../images/register-progress.png" alt="register-progress img">  </p>
+<h5 id="3-2-3-unregister流程"><a href="#3-2-3-unregister流程" class="headerlink" title="3.2.3 unregister流程"></a>3.2.3 unregister流程</h5><p><img src="../images/unregister.png" alt="unregister img">  </p>
+<h5 id="3-2-4-post流程"><a href="#3-2-4-post流程" class="headerlink" title="3.2.4 post流程"></a>3.2.4 post流程</h5><p><img src="../images/post.png" alt="post img">  </p>
+<h3 id="4-源码详细分析"><a href="#4-源码详细分析" class="headerlink" title="4. 源码详细分析"></a>4. 源码详细分析</h3><p><strong>线程安全注解：</strong> <code>AllowConcurrentEvents</code>      </p>
+<p><strong>方法订阅注解：</strong> <code>Subscribe</code></p>
+<p><strong>标准消息总线：</strong> <code>EventBus</code></p>
+<p><strong>异步消息总线：</strong> <code>AsyncEventBus</code></p>
+<p><strong>订阅者注册表：</strong> <code>SubscriberRegistry</code></p>
+<p><strong>异常上下文：</strong> <code>SubscriberExceptionContext</code></p>
+<p><strong>订阅者：</strong> <code>Subscriber</code></p>
+<p><strong>分发器：</strong> <code>Dispatcher</code></p>
+<p><strong>异常Handler：</strong> <code>SubscriberExceptionHandler</code></p>
+<p><strong>DeadEvent：</strong> <code>DeadEvent</code></p>
+<h3 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h3><h4 id="5-1-并发编程，JDK并发包Executor"><a href="#5-1-并发编程，JDK并发包Executor" class="headerlink" title="5.1 并发编程，JDK并发包Executor"></a>5.1 并发编程，JDK并发包Executor</h4><h4 id="5-2-guava断言checkNotNull"><a href="#5-2-guava断言checkNotNull" class="headerlink" title="5.2 guava断言checkNotNull"></a>5.2 guava断言checkNotNull</h4><h4 id="5-3-静态导入"><a href="#5-3-静态导入" class="headerlink" title="5.3 静态导入"></a>5.3 静态导入</h4><h4 id="5-4-注解方法cache"><a href="#5-4-注解方法cache" class="headerlink" title="5.4 注解方法cache"></a>5.4 注解方法cache</h4><h4 id="5-5-缓存配置ImmutableList不可变list"><a href="#5-5-缓存配置ImmutableList不可变list" class="headerlink" title="5.5 缓存配置ImmutableList不可变list"></a>5.5 缓存配置ImmutableList不可变list</h4><h4 id="5-6-获取类型TypeToken"><a href="#5-6-获取类型TypeToken" class="headerlink" title="5.6 获取类型TypeToken"></a>5.6 获取类型TypeToken</h4><h4 id="5-7-ThreadLocal"><a href="#5-7-ThreadLocal" class="headerlink" title="5.7 ThreadLocal"></a>5.7 ThreadLocal</h4><h4 id="5-8-test-update"><a href="#5-8-test-update" class="headerlink" title="5.8 test update"></a>5.8 test update</h4>
       
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Guava/" rel="tag">#Guava</a>
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+            <a href="/tags/学习/" rel="tag">#学习</a>
+          
+        </div>
       
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/07/2015-08-07-vimxue-xi/" rel="next" title="VIM学习">
-                <i class="fa fa-chevron-left"></i> VIM学习
+              <a href="/2015/08/12/2015-08-12-ni-ke-neng-bu-zhi-dao-de-shellming-ling/" rel="next" title="你可能不知道的Shell命令">
+                <i class="fa fa-chevron-left"></i> 你可能不知道的Shell命令
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/08/12/2015-08-12-ni-ke-neng-bu-zhi-dao-de-shellming-ling/" rel="prev" title="你可能不知道的Shell命令">
-                你可能不知道的Shell命令 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/02/15/Test-POST/" rel="prev" title="Test POST">
+                Test POST <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -494,7 +552,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Guava-Event-Bus-学习笔记"><span class="nav-number">1.</span> <span class="nav-text">Guava-Event-Bus 学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-背景简介"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. 背景简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-功能简介"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 功能简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-EventBus介绍"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">2.1 EventBus介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-关键词"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">2.2 关键词</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-总体设计"><span class="nav-number">1.0.3.</span> <span class="nav-text">3. 总体设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-类图设计"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">3.1 类图设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-1-EventBus简要类图"><span class="nav-number">1.0.3.1.1.</span> <span class="nav-text">3.1.1 EventBus简要类图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-2-EventBus详细类图"><span class="nav-number">1.0.3.1.2.</span> <span class="nav-text">3.1.2 EventBus详细类图</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-流程设计"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">3.2 流程设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-1-创建流程"><span class="nav-number">1.0.3.2.1.</span> <span class="nav-text">3.2.1 创建流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-2-register流程"><span class="nav-number">1.0.3.2.2.</span> <span class="nav-text">3.2.2 register流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-3-unregister流程"><span class="nav-number">1.0.3.2.3.</span> <span class="nav-text">3.2.3 unregister流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-4-post流程"><span class="nav-number">1.0.3.2.4.</span> <span class="nav-text">3.2.4 post流程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-源码详细分析"><span class="nav-number">1.0.4.</span> <span class="nav-text">4. 源码详细分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-总结"><span class="nav-number">1.0.5.</span> <span class="nav-text">5. 总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-并发编程，JDK并发包Executor"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">5.1 并发编程，JDK并发包Executor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-guava断言checkNotNull"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">5.2 guava断言checkNotNull</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-静态导入"><span class="nav-number">1.0.5.3.</span> <span class="nav-text">5.3 静态导入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-注解方法cache"><span class="nav-number">1.0.5.4.</span> <span class="nav-text">5.4 注解方法cache</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-5-缓存配置ImmutableList不可变list"><span class="nav-number">1.0.5.5.</span> <span class="nav-text">5.5 缓存配置ImmutableList不可变list</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-6-获取类型TypeToken"><span class="nav-number">1.0.5.6.</span> <span class="nav-text">5.6 获取类型TypeToken</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-7-ThreadLocal"><span class="nav-number">1.0.5.7.</span> <span class="nav-text">5.7 ThreadLocal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-8-test-update"><span class="nav-number">1.0.5.8.</span> <span class="nav-text">5.8 test update</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -749,9 +807,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'BugkillersBlog';
-      var disqus_identifier = '2015/08/11/2015-08-11-dao-mu-bi-ji/';
-      var disqus_title = '盗墓笔记';
-      var disqus_url = 'http://blog.bugk.info/2015/08/11/2015-08-11-dao-mu-bi-ji/';
+      var disqus_identifier = '2015/11/15/Guava-Event-Bus-学习笔记/';
+      var disqus_title = 'Guava-Event-Bus 学习笔记';
+      var disqus_url = 'http://blog.bugk.info/2015/11/15/Guava-Event-Bus-学习笔记/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');

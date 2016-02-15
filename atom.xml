@@ -40,6 +40,67 @@
   </entry>
   
   <entry>
+    <title>Guava-Event-Bus 学习笔记</title>
+    <link href="http://blog.bugk.info/2015/11/15/Guava-Event-Bus-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://blog.bugk.info/2015/11/15/Guava-Event-Bus-学习笔记/</id>
+    <published>2015-11-15T06:12:56.000Z</published>
+    <updated>2016-02-15T06:23:13.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Guava-Event-Bus-学习笔记&quot;&gt;&lt;a href=&quot;#Guava-Event-Bus-学习笔记&quot; class=&quot;headerlink&quot; title=&quot;Guava-Event-Bus 学习笔记&quot;&gt;&lt;/a&gt;Guava-Event-Bus 学习笔记&lt;/h1&gt;&lt;p&gt;Guava的EventBus源码学习，基于Guava的18.0版本&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;分析者：&lt;a href=&quot;https://github.com/qq291462491&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Allen&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;1-背景简介&quot;&gt;&lt;a href=&quot;#1-背景简介&quot; class=&quot;headerlink&quot; title=&quot;1. 背景简介&quot;&gt;&lt;/a&gt;1. 背景简介&lt;/h3&gt;&lt;p&gt;EventBus是google的一个Java工具包其中的一个工具类，类似的有多个版本其中包括移植到Android端的&lt;a href=&quot;https://github.com/greenrobot/EventBus&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;greenrobot-EventBus&lt;/a&gt;&lt;br&gt;和改良的&lt;a href=&quot;https://github.com/square/otto&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;square-otto&lt;/a&gt;，功能基本都是一样的。此处主要是对Guava版的EventBus分析，关于&lt;a href=&quot;https://github.com/google/guava&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;guava代码地址&lt;/a&gt;。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;2-功能简介&quot;&gt;&lt;a href=&quot;#2-功能简介&quot; class=&quot;headerlink&quot; title=&quot;2. 功能简介&quot;&gt;&lt;/a&gt;2. 功能简介&lt;/h3&gt;&lt;h4 id=&quot;2-1-EventBus介绍&quot;&gt;&lt;a href=&quot;#2-1-EventBus介绍&quot; class=&quot;headerlink&quot; title=&quot;2.1 EventBus介绍&quot;&gt;&lt;/a&gt;2.1 EventBus介绍&lt;/h4&gt;&lt;p&gt;EventBus 是一个基于事件的一个发布/订阅框架，通过解耦发布者和订阅者简化事件传递，这里的事件可以理解为消息，本文中统一称为事件也就是 Event。通过EventBus可以简化生产者/消费者&lt;br&gt;这种模型，同时又可以通过Executor来控制线程，使用起来非常优雅灵活。异步的则使用AsyncEventBus，如果需要强制使EventBus同步执行则可以使用&lt;code&gt;@AllowConcurrentEvent&lt;/code&gt;注释方法。&lt;/p&gt;
+&lt;h4 id=&quot;2-2-关键词&quot;&gt;&lt;a href=&quot;#2-2-关键词&quot; class=&quot;headerlink&quot; title=&quot;2.2 关键词&quot;&gt;&lt;/a&gt;2.2 关键词&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;事件(Event)：&lt;/strong&gt;又可称为消息，本文中统一用事件表示。其实就是一个对象，可以是网络请求返回的字符串，也可以是某个开关状态等等，用于订阅者和发布者之间的消息传递媒介。&lt;code&gt;事件类型(EventType)&lt;/code&gt;可以自由定义，一般是一个消息对象。&lt;br&gt;例如：&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MessageEvent&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; String message;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MessageEvent&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String message)&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.message = message;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; String &lt;span class=&quot;title&quot;&gt;getMessage&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; message;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;EventBus支持一个订阅者来订阅多个类型的事件，Event的子类也可以被传递。  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;订阅者(Subscriber)：&lt;/strong&gt;订阅某种事件类型的对象，使用&lt;code&gt;@Subscribe&lt;/code&gt;注解来标明一个方法是用于订阅事件的方法。当有发布者发布这类事件后，被加注解的方法便可以执行，&lt;code&gt;事件响应函数&lt;/code&gt;。&lt;br&gt;使用EventBus将订阅者通过 register 接口订阅来定义，unregister 接口退订。  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;发布者(Publisher)：&lt;/strong&gt;发布某事件的对象，注册完订阅者之后便可以使用EventBus的 post方法来发布消息，每个消息仅被接收处理一次。 &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;无关事件(DeadEvent)：&lt;/strong&gt;如果EventBus发送的消息都不是订阅者关心的称之为Dead Event，这时我们可以通过log的方式来记录这种状态。&lt;/p&gt;
+&lt;h3 id=&quot;3-总体设计&quot;&gt;&lt;a href=&quot;#3-总体设计&quot; class=&quot;headerlink&quot; title=&quot;3. 总体设计&quot;&gt;&lt;/a&gt;3. 总体设计&lt;/h3&gt;&lt;h4 id=&quot;3-1-类图设计&quot;&gt;&lt;a href=&quot;#3-1-类图设计&quot; class=&quot;headerlink&quot; title=&quot;3.1 类图设计&quot;&gt;&lt;/a&gt;3.1 类图设计&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;ps:忽略类名后的下划线     &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&quot;3-1-1-EventBus简要类图&quot;&gt;&lt;a href=&quot;#3-1-1-EventBus简要类图&quot; class=&quot;headerlink&quot; title=&quot;3.1.1 EventBus简要类图&quot;&gt;&lt;/a&gt;3.1.1 EventBus简要类图&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;../images/pre-eventBus.png&quot; alt=&quot;pre-eventbus img&quot;&gt; &lt;/p&gt;
+&lt;h5 id=&quot;3-1-2-EventBus详细类图&quot;&gt;&lt;a href=&quot;#3-1-2-EventBus详细类图&quot; class=&quot;headerlink&quot; title=&quot;3.1.2 EventBus详细类图&quot;&gt;&lt;/a&gt;3.1.2 EventBus详细类图&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;../imagesEventBusDiagram.png&quot; alt=&quot;eventbus img&quot;&gt;  &lt;/p&gt;
+&lt;h4 id=&quot;3-2-流程设计&quot;&gt;&lt;a href=&quot;#3-2-流程设计&quot; class=&quot;headerlink&quot; title=&quot;3.2 流程设计&quot;&gt;&lt;/a&gt;3.2 流程设计&lt;/h4&gt;&lt;h5 id=&quot;3-2-1-创建流程&quot;&gt;&lt;a href=&quot;#3-2-1-创建流程&quot; class=&quot;headerlink&quot; title=&quot;3.2.1 创建流程&quot;&gt;&lt;/a&gt;3.2.1 创建流程&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;../images/create.png&quot; alt=&quot;create img&quot;&gt;  &lt;/p&gt;
+&lt;h5 id=&quot;3-2-2-register流程&quot;&gt;&lt;a href=&quot;#3-2-2-register流程&quot; class=&quot;headerlink&quot; title=&quot;3.2.2 register流程&quot;&gt;&lt;/a&gt;3.2.2 register流程&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;../images/register-progress.png&quot; alt=&quot;register-progress img&quot;&gt;  &lt;/p&gt;
+&lt;h5 id=&quot;3-2-3-unregister流程&quot;&gt;&lt;a href=&quot;#3-2-3-unregister流程&quot; class=&quot;headerlink&quot; title=&quot;3.2.3 unregister流程&quot;&gt;&lt;/a&gt;3.2.3 unregister流程&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;../images/unregister.png&quot; alt=&quot;unregister img&quot;&gt;  &lt;/p&gt;
+&lt;h5 id=&quot;3-2-4-post流程&quot;&gt;&lt;a href=&quot;#3-2-4-post流程&quot; class=&quot;headerlink&quot; title=&quot;3.2.4 post流程&quot;&gt;&lt;/a&gt;3.2.4 post流程&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;../images/post.png&quot; alt=&quot;post img&quot;&gt;  &lt;/p&gt;
+&lt;h3 id=&quot;4-源码详细分析&quot;&gt;&lt;a href=&quot;#4-源码详细分析&quot; class=&quot;headerlink&quot; title=&quot;4. 源码详细分析&quot;&gt;&lt;/a&gt;4. 源码详细分析&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;线程安全注解：&lt;/strong&gt; &lt;code&gt;AllowConcurrentEvents&lt;/code&gt;      &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方法订阅注解：&lt;/strong&gt; &lt;code&gt;Subscribe&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;标准消息总线：&lt;/strong&gt; &lt;code&gt;EventBus&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;异步消息总线：&lt;/strong&gt; &lt;code&gt;AsyncEventBus&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;订阅者注册表：&lt;/strong&gt; &lt;code&gt;SubscriberRegistry&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;异常上下文：&lt;/strong&gt; &lt;code&gt;SubscriberExceptionContext&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;订阅者：&lt;/strong&gt; &lt;code&gt;Subscriber&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;分发器：&lt;/strong&gt; &lt;code&gt;Dispatcher&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;异常Handler：&lt;/strong&gt; &lt;code&gt;SubscriberExceptionHandler&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DeadEvent：&lt;/strong&gt; &lt;code&gt;DeadEvent&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;5-总结&quot;&gt;&lt;a href=&quot;#5-总结&quot; class=&quot;headerlink&quot; title=&quot;5. 总结&quot;&gt;&lt;/a&gt;5. 总结&lt;/h3&gt;&lt;h4 id=&quot;5-1-并发编程，JDK并发包Executor&quot;&gt;&lt;a href=&quot;#5-1-并发编程，JDK并发包Executor&quot; class=&quot;headerlink&quot; title=&quot;5.1 并发编程，JDK并发包Executor&quot;&gt;&lt;/a&gt;5.1 并发编程，JDK并发包Executor&lt;/h4&gt;&lt;h4 id=&quot;5-2-guava断言checkNotNull&quot;&gt;&lt;a href=&quot;#5-2-guava断言checkNotNull&quot; class=&quot;headerlink&quot; title=&quot;5.2 guava断言checkNotNull&quot;&gt;&lt;/a&gt;5.2 guava断言checkNotNull&lt;/h4&gt;&lt;h4 id=&quot;5-3-静态导入&quot;&gt;&lt;a href=&quot;#5-3-静态导入&quot; class=&quot;headerlink&quot; title=&quot;5.3 静态导入&quot;&gt;&lt;/a&gt;5.3 静态导入&lt;/h4&gt;&lt;h4 id=&quot;5-4-注解方法cache&quot;&gt;&lt;a href=&quot;#5-4-注解方法cache&quot; class=&quot;headerlink&quot; title=&quot;5.4 注解方法cache&quot;&gt;&lt;/a&gt;5.4 注解方法cache&lt;/h4&gt;&lt;h4 id=&quot;5-5-缓存配置ImmutableList不可变list&quot;&gt;&lt;a href=&quot;#5-5-缓存配置ImmutableList不可变list&quot; class=&quot;headerlink&quot; title=&quot;5.5 缓存配置ImmutableList不可变list&quot;&gt;&lt;/a&gt;5.5 缓存配置ImmutableList不可变list&lt;/h4&gt;&lt;h4 id=&quot;5-6-获取类型TypeToken&quot;&gt;&lt;a href=&quot;#5-6-获取类型TypeToken&quot; class=&quot;headerlink&quot; title=&quot;5.6 获取类型TypeToken&quot;&gt;&lt;/a&gt;5.6 获取类型TypeToken&lt;/h4&gt;&lt;h4 id=&quot;5-7-ThreadLocal&quot;&gt;&lt;a href=&quot;#5-7-ThreadLocal&quot; class=&quot;headerlink&quot; title=&quot;5.7 ThreadLocal&quot;&gt;&lt;/a&gt;5.7 ThreadLocal&lt;/h4&gt;&lt;h4 id=&quot;5-8-test-update&quot;&gt;&lt;a href=&quot;#5-8-test-update&quot; class=&quot;headerlink&quot; title=&quot;5.8 test update&quot;&gt;&lt;/a&gt;5.8 test update&lt;/h4&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Guava-Event-Bus-学习笔记&quot;&gt;&lt;a href=&quot;#Guava-Event-Bus-学习笔记&quot; class=&quot;headerlink&quot; title=&quot;Guava-Event-Bus 学习笔记&quot;&gt;&lt;/a&gt;Guava-Event-Bus 学习笔记&lt;/h1&gt;&lt;p&gt;Guava的EventBus源码学习，基于Guava的18.0版本&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;分析者：&lt;a href=&quot;https://github.com/qq291462491&quot;&gt;Allen&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;1-背景简介&quot;&gt;&lt;a href=&quot;#1-背景简介&quot; class=&quot;headerlink&quot; title=&quot;1. 背景简介&quot;&gt;&lt;/a&gt;1. 背景简介&lt;/h3&gt;&lt;p&gt;EventBus是google的一个Java工具包其中的一个工具类，类似的有多个版本其中包括移植到Android端的&lt;a href=&quot;https://github.com/greenrobot/EventBus&quot;&gt;greenrobot-EventBus&lt;/a&gt;&lt;br&gt;和改良的&lt;a href=&quot;https://github.com/square/otto&quot;&gt;square-otto&lt;/a&gt;，功能基本都是一样的。此处主要是对Guava版的EventBus分析，关于&lt;a href=&quot;https://github.com/google/guava&quot;&gt;guava代码地址&lt;/a&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Guava" scheme="http://blog.bugk.info/categories/Guava/"/>
+    
+    
+      <category term="Guava" scheme="http://blog.bugk.info/tags/Guava/"/>
+    
+      <category term="Java" scheme="http://blog.bugk.info/tags/Java/"/>
+    
+      <category term="学习" scheme="http://blog.bugk.info/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>你可能不知道的Shell命令</title>
     <link href="http://blog.bugk.info/2015/08/12/2015-08-12-ni-ke-neng-bu-zhi-dao-de-shellming-ling/"/>
     <id>http://blog.bugk.info/2015/08/12/2015-08-12-ni-ke-neng-bu-zhi-dao-de-shellming-ling/</id>
