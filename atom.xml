@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.bugk.info/"/>
-  <updated>2016-02-15T07:35:32.000Z</updated>
+  <updated>2016-02-15T07:35:57.000Z</updated>
   <id>http://blog.bugk.info/</id>
   
   <author>
@@ -14,6 +14,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Groovy学习笔记（二）：初识</title>
+    <link href="http://blog.bugk.info/2016/02/15/Groovy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%88%9D%E8%AF%86/"/>
+    <id>http://blog.bugk.info/2016/02/15/Groovy学习笔记（二）：初识/</id>
+    <published>2016-02-15T07:31:27.000Z</published>
+    <updated>2016-02-15T07:35:57.000Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Groovy" scheme="http://blog.bugk.info/categories/Groovy/"/>
+    
+    
+      <category term="Groovy" scheme="http://blog.bugk.info/tags/Groovy/"/>
+    
+  </entry>
   
   <entry>
     <title>Groovy学习笔记（三）：语法</title>
@@ -41,26 +61,6 @@
     <id>http://blog.bugk.info/2016/02/15/Groovy学习笔记（一）：简介/</id>
     <published>2016-02-15T07:31:27.000Z</published>
     <updated>2016-02-15T07:32:28.000Z</updated>
-    
-    <content type="html"></content>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Groovy" scheme="http://blog.bugk.info/categories/Groovy/"/>
-    
-    
-      <category term="Groovy" scheme="http://blog.bugk.info/tags/Groovy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Groovy学习笔记（二）：初识</title>
-    <link href="http://blog.bugk.info/2016/02/15/Groovy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%88%9D%E8%AF%86/"/>
-    <id>http://blog.bugk.info/2016/02/15/Groovy学习笔记（二）：初识/</id>
-    <published>2016-02-15T07:31:27.000Z</published>
-    <updated>2016-02-15T07:35:57.000Z</updated>
     
     <content type="html"></content>
     
@@ -208,34 +208,6 @@
     
       <category term="杂" scheme="http://blog.bugk.info/categories/%E6%9D%82/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>VIM学习</title>
-    <link href="http://blog.bugk.info/2015/08/07/2015-08-07-vimxue-xi/"/>
-    <id>http://blog.bugk.info/2015/08/07/2015-08-07-vimxue-xi/</id>
-    <published>2015-08-07T07:57:16.000Z</published>
-    <updated>2016-02-14T07:36:56.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;文章&quot;&gt;&lt;a href=&quot;#文章&quot; class=&quot;headerlink&quot; title=&quot;文章&quot;&gt;&lt;/a&gt;文章&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://coolshell.cn/articles/5426.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://coolshell.cn/articles/5426.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;文章&quot;&gt;&lt;a href=&quot;#文章&quot; class=&quot;headerlink&quot; title=&quot;文章&quot;&gt;&lt;/a&gt;文章&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://coolshell.cn/articles/5426.html&quot; target=&quot;_blank&quot;
-    
-    </summary>
-    
-      <category term="linux" scheme="http://blog.bugk.info/categories/linux/"/>
-    
-    
-      <category term="linux" scheme="http://blog.bugk.info/tags/linux/"/>
-    
-      <category term="vim" scheme="http://blog.bugk.info/tags/vim/"/>
     
   </entry>
   
