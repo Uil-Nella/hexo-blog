@@ -44,7 +44,7 @@
     <link href="http://blog.bugk.info/2015/11/15/Guava-Event-Bus-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://blog.bugk.info/2015/11/15/Guava-Event-Bus-学习笔记/</id>
     <published>2015-11-15T06:12:56.000Z</published>
-    <updated>2016-02-15T07:09:27.000Z</updated>
+    <updated>2016-02-15T07:20:19.000Z</updated>
     
     <content type="html">&lt;p&gt;Guava的EventBus源码学习，基于Guava的18.0版本&lt;/p&gt;
 &lt;blockquote&gt;
@@ -61,12 +61,12 @@
 &lt;h3 id=&quot;3-总体设计&quot;&gt;&lt;a href=&quot;#3-总体设计&quot; class=&quot;headerlink&quot; title=&quot;3. 总体设计&quot;&gt;&lt;/a&gt;3. 总体设计&lt;/h3&gt;&lt;h4 id=&quot;3-1-类图设计&quot;&gt;&lt;a href=&quot;#3-1-类图设计&quot; class=&quot;headerlink&quot; title=&quot;3.1 类图设计&quot;&gt;&lt;/a&gt;3.1 类图设计&lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;ps:忽略类名后的下划线     &lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h5 id=&quot;3-1-1-EventBus简要类图&quot;&gt;&lt;a href=&quot;#3-1-1-EventBus简要类图&quot; class=&quot;headerlink&quot; title=&quot;3.1.1 EventBus简要类图&quot;&gt;&lt;/a&gt;3.1.1 EventBus简要类图&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;../images/pre-eventBus.png&quot; alt=&quot;pre-eventbus img&quot;&gt; &lt;/p&gt;
-&lt;h5 id=&quot;3-1-2-EventBus详细类图&quot;&gt;&lt;a href=&quot;#3-1-2-EventBus详细类图&quot; class=&quot;headerlink&quot; title=&quot;3.1.2 EventBus详细类图&quot;&gt;&lt;/a&gt;3.1.2 EventBus详细类图&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;../imagesEventBusDiagram.png&quot; alt=&quot;eventbus img&quot;&gt;  &lt;/p&gt;
-&lt;h4 id=&quot;3-2-流程设计&quot;&gt;&lt;a href=&quot;#3-2-流程设计&quot; class=&quot;headerlink&quot; title=&quot;3.2 流程设计&quot;&gt;&lt;/a&gt;3.2 流程设计&lt;/h4&gt;&lt;h5 id=&quot;3-2-1-创建流程&quot;&gt;&lt;a href=&quot;#3-2-1-创建流程&quot; class=&quot;headerlink&quot; title=&quot;3.2.1 创建流程&quot;&gt;&lt;/a&gt;3.2.1 创建流程&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;../images/create.png&quot; alt=&quot;create img&quot;&gt;  &lt;/p&gt;
-&lt;h5 id=&quot;3-2-2-register流程&quot;&gt;&lt;a href=&quot;#3-2-2-register流程&quot; class=&quot;headerlink&quot; title=&quot;3.2.2 register流程&quot;&gt;&lt;/a&gt;3.2.2 register流程&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;../images/register-progress.png&quot; alt=&quot;register-progress img&quot;&gt;  &lt;/p&gt;
-&lt;h5 id=&quot;3-2-3-unregister流程&quot;&gt;&lt;a href=&quot;#3-2-3-unregister流程&quot; class=&quot;headerlink&quot; title=&quot;3.2.3 unregister流程&quot;&gt;&lt;/a&gt;3.2.3 unregister流程&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;../images/unregister.png&quot; alt=&quot;unregister img&quot;&gt;  &lt;/p&gt;
-&lt;h5 id=&quot;3-2-4-post流程&quot;&gt;&lt;a href=&quot;#3-2-4-post流程&quot; class=&quot;headerlink&quot; title=&quot;3.2.4 post流程&quot;&gt;&lt;/a&gt;3.2.4 post流程&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;../images/post.png&quot; alt=&quot;post img&quot;&gt;  &lt;/p&gt;
+&lt;h5 id=&quot;3-1-1-EventBus简要类图&quot;&gt;&lt;a href=&quot;#3-1-1-EventBus简要类图&quot; class=&quot;headerlink&quot; title=&quot;3.1.1 EventBus简要类图&quot;&gt;&lt;/a&gt;3.1.1 EventBus简要类图&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;/images/pre-eventBus.png&quot; alt=&quot;pre-eventbus img&quot;&gt; &lt;/p&gt;
+&lt;h5 id=&quot;3-1-2-EventBus详细类图&quot;&gt;&lt;a href=&quot;#3-1-2-EventBus详细类图&quot; class=&quot;headerlink&quot; title=&quot;3.1.2 EventBus详细类图&quot;&gt;&lt;/a&gt;3.1.2 EventBus详细类图&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;/imagesEventBusDiagram.png&quot; alt=&quot;eventbus img&quot;&gt;  &lt;/p&gt;
+&lt;h4 id=&quot;3-2-流程设计&quot;&gt;&lt;a href=&quot;#3-2-流程设计&quot; class=&quot;headerlink&quot; title=&quot;3.2 流程设计&quot;&gt;&lt;/a&gt;3.2 流程设计&lt;/h4&gt;&lt;h5 id=&quot;3-2-1-创建流程&quot;&gt;&lt;a href=&quot;#3-2-1-创建流程&quot; class=&quot;headerlink&quot; title=&quot;3.2.1 创建流程&quot;&gt;&lt;/a&gt;3.2.1 创建流程&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;/images/create.png&quot; alt=&quot;create img&quot;&gt;  &lt;/p&gt;
+&lt;h5 id=&quot;3-2-2-register流程&quot;&gt;&lt;a href=&quot;#3-2-2-register流程&quot; class=&quot;headerlink&quot; title=&quot;3.2.2 register流程&quot;&gt;&lt;/a&gt;3.2.2 register流程&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;/images/register-progress.png&quot; alt=&quot;register-progress img&quot;&gt;  &lt;/p&gt;
+&lt;h5 id=&quot;3-2-3-unregister流程&quot;&gt;&lt;a href=&quot;#3-2-3-unregister流程&quot; class=&quot;headerlink&quot; title=&quot;3.2.3 unregister流程&quot;&gt;&lt;/a&gt;3.2.3 unregister流程&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;/images/unregister.png&quot; alt=&quot;unregister img&quot;&gt;  &lt;/p&gt;
+&lt;h5 id=&quot;3-2-4-post流程&quot;&gt;&lt;a href=&quot;#3-2-4-post流程&quot; class=&quot;headerlink&quot; title=&quot;3.2.4 post流程&quot;&gt;&lt;/a&gt;3.2.4 post流程&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;/images/post.png&quot; alt=&quot;post img&quot;&gt;  &lt;/p&gt;
 &lt;h3 id=&quot;4-源码详细分析&quot;&gt;&lt;a href=&quot;#4-源码详细分析&quot; class=&quot;headerlink&quot; title=&quot;4. 源码详细分析&quot;&gt;&lt;/a&gt;4. 源码详细分析&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;线程安全注解：&lt;/strong&gt; &lt;code&gt;AllowConcurrentEvents&lt;/code&gt;      &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;方法订阅注解：&lt;/strong&gt; &lt;code&gt;Subscribe&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;标准消息总线：&lt;/strong&gt; &lt;code&gt;EventBus&lt;/code&gt;&lt;/p&gt;
