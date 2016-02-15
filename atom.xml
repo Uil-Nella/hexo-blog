@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.bugk.info/"/>
-  <updated>2016-02-15T07:35:57.000Z</updated>
+  <updated>2016-02-15T07:35:32.000Z</updated>
   <id>http://blog.bugk.info/</id>
   
   <author>
@@ -14,26 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Groovy学习笔记（二）：初识</title>
-    <link href="http://blog.bugk.info/2016/02/15/Groovy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%88%9D%E8%AF%86/"/>
-    <id>http://blog.bugk.info/2016/02/15/Groovy学习笔记（二）：初识/</id>
-    <published>2016-02-15T07:31:27.000Z</published>
-    <updated>2016-02-15T07:35:57.000Z</updated>
-    
-    <content type="html"></content>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Groovy" scheme="http://blog.bugk.info/categories/Groovy/"/>
-    
-    
-      <category term="Groovy" scheme="http://blog.bugk.info/tags/Groovy/"/>
-    
-  </entry>
   
   <entry>
     <title>Groovy学习笔记（三）：语法</title>
@@ -76,26 +56,22 @@
   </entry>
   
   <entry>
-    <title>Test POST</title>
-    <link href="http://blog.bugk.info/2016/02/15/Test-POST/"/>
-    <id>http://blog.bugk.info/2016/02/15/Test-POST/</id>
-    <published>2016-02-15T03:58:13.000Z</published>
-    <updated>2016-02-15T16:00:00.000Z</updated>
+    <title>Groovy学习笔记（二）：初识</title>
+    <link href="http://blog.bugk.info/2016/02/15/Groovy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%88%9D%E8%AF%86/"/>
+    <id>http://blog.bugk.info/2016/02/15/Groovy学习笔记（二）：初识/</id>
+    <published>2016-02-15T07:31:27.000Z</published>
+    <updated>2016-02-15T07:35:57.000Z</updated>
     
-    <content type="html">&lt;p&gt;Test Post&lt;/p&gt;
-</content>
+    <content type="html"></content>
     
     <summary type="html">
     
-      &lt;p&gt;Test Post&lt;/p&gt;
-
-    
     </summary>
     
-      <category term="杂" scheme="http://blog.bugk.info/categories/%E6%9D%82/"/>
+      <category term="Groovy" scheme="http://blog.bugk.info/categories/Groovy/"/>
     
     
-      <category term="Test" scheme="http://blog.bugk.info/tags/Test/"/>
+      <category term="Groovy" scheme="http://blog.bugk.info/tags/Groovy/"/>
     
   </entry>
   
