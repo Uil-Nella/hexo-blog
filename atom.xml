@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.bugk.info/"/>
-  <updated>2016-02-18T06:08:18.000Z</updated>
+  <updated>2016-03-15T03:13:22.000Z</updated>
   <id>http://blog.bugk.info/</id>
   
   <author>
@@ -14,6 +14,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>菜谱</title>
+    <link href="http://blog.bugk.info/2016/03/15/%E8%8F%9C%E8%B0%B1/"/>
+    <id>http://blog.bugk.info/2016/03/15/菜谱/</id>
+    <published>2016-03-15T02:15:32.000Z</published>
+    <updated>2016-03-15T03:13:22.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;最近工作比较忙，技术博客更新比较慢，于是花时间整理一下不怎么耗费经历的一个记录文章～&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;热菜&quot;&gt;&lt;a href=&quot;#热菜&quot; class=&quot;headerlink&quot; title=&quot;热菜&quot;&gt;&lt;/a&gt;热菜&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;葱爆羊肉&lt;/li&gt;
+&lt;li&gt;回锅肉&lt;/li&gt;
+&lt;li&gt;腊肉荷兰豆&lt;/li&gt;
+&lt;li&gt;山药木耳&lt;/li&gt;
+&lt;li&gt;芹菜炖土豆&lt;/li&gt;
+&lt;li&gt;酸辣白菜&lt;/li&gt;
+&lt;li&gt;西红柿鸡蛋&lt;/li&gt;
+&lt;li&gt;香菇油菜&lt;/li&gt;
+&lt;li&gt;地三鲜&lt;/li&gt;
+&lt;li&gt;蒜薹炒肉&lt;/li&gt;
+&lt;li&gt;莴笋炒肉&lt;/li&gt;
+&lt;li&gt;烧茄子&lt;/li&gt;
+&lt;li&gt;尖椒鸡蛋&lt;/li&gt;
+&lt;li&gt;韭菜鸡蛋&lt;/li&gt;
+&lt;li&gt;酸辣土豆丝&lt;/li&gt;
+&lt;li&gt;酸菜白肉&lt;/li&gt;
+&lt;li&gt;冬瓜丸子&lt;/li&gt;
+&lt;li&gt;冬瓜排骨&lt;/li&gt;
+&lt;li&gt;小炒肉&lt;/li&gt;
+&lt;li&gt;大辣椒炒肉&lt;/li&gt;
+&lt;li&gt;西葫芦炒肉&lt;/li&gt;
+&lt;li&gt;尖椒肉丝&lt;/li&gt;
+&lt;li&gt;炖南瓜&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;凉菜&quot;&gt;&lt;a href=&quot;#凉菜&quot; class=&quot;headerlink&quot; title=&quot;凉菜&quot;&gt;&lt;/a&gt;凉菜&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;拍黄瓜&lt;/li&gt;
+&lt;li&gt;葱油木耳&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;最近工作比较忙，技术博客更新比较慢，于是花时间整理一下不怎么耗费经历的一个记录文章～&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://blog.bugk.info/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="吃" scheme="http://blog.bugk.info/tags/%E5%90%83/"/>
+    
+      <category term="生活" scheme="http://blog.bugk.info/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+      <category term="菜谱" scheme="http://blog.bugk.info/tags/%E8%8F%9C%E8%B0%B1/"/>
+    
+  </entry>
   
   <entry>
     <title>九句话</title>
