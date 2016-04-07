@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Groovy," />
+  <meta name="keywords" content="Groovy,Java," />
 
 
 
@@ -59,16 +59,25 @@
 
 
 
-<meta name="description" content="行胜于言">
+<meta name="description" content="给Java加点料最近在研究服务的动态校验规则，在厌倦了使用Java的静态语言进行校验时，开始尝试使用可以运行在JVM的脚本语言（Groovy,Scala,Clojure,JRuby,JPython）进行规则的DSL开发,在运行期通过改变DSL来动态的改变规则来达到动态校验的目的，通过一段时间的调研最终选型使用Groovy进行开发。选用Groovy的原因主要有：    
+
+学习成本较低
+元变成能力较">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Groovy学习笔记（三）：语法">
-<meta property="og:url" content="http://blog.bugk.info/2016/02/15/Groovy学习笔记（三）：语法/index.html">
+<meta property="og:title" content="Groovy性能优化三部曲">
+<meta property="og:url" content="http://blog.bugk.info/2016/04/07/Groovy性能优化三部曲/index.html">
 <meta property="og:site_name" content="似水流年">
-<meta property="og:description" content="行胜于言">
-<meta property="og:updated_time" content="2016-02-15T07:35:32.000Z">
+<meta property="og:description" content="给Java加点料最近在研究服务的动态校验规则，在厌倦了使用Java的静态语言进行校验时，开始尝试使用可以运行在JVM的脚本语言（Groovy,Scala,Clojure,JRuby,JPython）进行规则的DSL开发,在运行期通过改变DSL来动态的改变规则来达到动态校验的目的，通过一段时间的调研最终选型使用Groovy进行开发。选用Groovy的原因主要有：    
+
+学习成本较低
+元变成能力较">
+<meta property="og:updated_time" content="2016-04-07T08:05:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Groovy学习笔记（三）：语法">
-<meta name="twitter:description" content="行胜于言">
+<meta name="twitter:title" content="Groovy性能优化三部曲">
+<meta name="twitter:description" content="给Java加点料最近在研究服务的动态校验规则，在厌倦了使用Java的静态语言进行校验时，开始尝试使用可以运行在JVM的脚本语言（Groovy,Scala,Clojure,JRuby,JPython）进行规则的DSL开发,在运行期通过改变DSL来动态的改变规则来达到动态校验的目的，通过一段时间的调研最终选型使用Groovy进行开发。选用Groovy的原因主要有：    
+
+学习成本较低
+元变成能力较">
 
 
 
@@ -86,7 +95,7 @@
   };
 </script>
 
-  <title> Groovy学习笔记（三）：语法 | 似水流年 </title>
+  <title> Groovy性能优化三部曲 | 似水流年 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -264,7 +273,7 @@
             
             
               
-                Groovy学习笔记（三）：语法
+                Groovy性能优化三部曲
               
             
           </h1>
@@ -276,8 +285,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-15T15:31:27+08:00" content="2016-02-15">
-              2016-02-15
+            <time itemprop="dateCreated" datetime="2016-04-07T15:28:46+08:00" content="2016-04-07">
+              2016-04-07
             </time>
           </span>
 
@@ -306,8 +315,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/15/Groovy学习笔记（三）：语法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/02/15/Groovy学习笔记（三）：语法/" itemprop="commentsCount"></span>
+                <a href="/2016/04/07/Groovy性能优化三部曲/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/04/07/Groovy性能优化三部曲/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -334,7 +343,21 @@
       
 
       
-        
+        <h3 id="给Java加点料"><a href="#给Java加点料" class="headerlink" title="给Java加点料"></a>给Java加点料</h3><p>最近在研究服务的动态校验规则，在厌倦了使用Java的静态语言进行校验时，开始尝试使用可以运行在JVM的脚本语言（<code>Groovy</code>,<code>Scala</code>,<code>Clojure</code>,<code>JRuby</code>,<code>JPython</code>）进行规则的<code>DSL</code>开发,在运行期通过改变<code>DSL</code>来动态的改变规则来达到动态校验的目的，通过一段时间的调研最终选型使用Groovy进行开发。<br>选用Groovy的原因主要有：    </p>
+<ul>
+<li>学习成本较低</li>
+<li>元变成能力较强</li>
+<li>Gradle的流行</li>
+</ul>
+<p>关于运行在JVM的脚步语言可以参考一下这几篇文章：<a href="http://coolshell.cn/articles/2631.html" target="_blank" rel="external">五大基于JVM的脚本语言</a>、<a href="http://www.ibm.com/developerworks/cn/java/j-jn16/" target="_blank" rel="external">Java下一代</a>、<a href="http://www.oschina.net/question/213217_45561" target="_blank" rel="external">9个杀手级JVM编程语言</a></p>
+<p>在Groovy的DSL语法和校验API都准备就绪后就开始了在Java应用中集成，整个集成到最后优化完差不多耗时2个星期，过程相当的波折，下面就记录一下在集成Groovy中遇到问题到处理问题的三部曲。</p>
+<h3 id="三重境界"><a href="#三重境界" class="headerlink" title="三重境界"></a>三重境界</h3><blockquote>
+<p>古今之成大事业、大学问者，必经过三种之境界：”昨夜西风凋碧树。独上高楼，望尽天涯路。”此第一境也。”衣带渐宽终不悔，为伊消得人憔悴。”此第二境也。”众里寻他千百度，蓦然回首，那人却在灯火阑珊处。”此第三境也。此等语皆非大词人不能道。然遽以此意解释诸词，恐为晏欧诸公所不许也。” —— 王国维《人间词话》</p>
+</blockquote>
+<h3 id="一部曲"><a href="#一部曲" class="headerlink" title="一部曲"></a>一部曲</h3><blockquote>
+<p>“昨夜西风凋碧树。独上高楼，望尽天涯路。”</p>
+</blockquote>
+
       
     </div>
 
@@ -344,6 +367,8 @@
           
             <a href="/tags/Groovy/" rel="tag">#Groovy</a>
           
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
         </div>
       
 
@@ -351,17 +376,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/07/2015年终总结/" rel="next" title="2015年终总结">
-                <i class="fa fa-chevron-left"></i> 2015年终总结
+              <a href="/2016/04/07/Java中实现字符串反转的几种方法/" rel="next" title="java中实现字符串反转的几种方法">
+                <i class="fa fa-chevron-left"></i> java中实现字符串反转的几种方法
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/15/Groovy学习笔记（二）：初识/" rel="prev" title="Groovy学习笔记（二）：初识">
-                Groovy学习笔记（二）：初识 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -518,7 +539,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#给Java加点料"><span class="nav-number">1.</span> <span class="nav-text">给Java加点料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三重境界"><span class="nav-number">2.</span> <span class="nav-text">三重境界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一部曲"><span class="nav-number">3.</span> <span class="nav-text">一部曲</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -773,9 +794,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'BugkillersBlog';
-      var disqus_identifier = '2016/02/15/Groovy学习笔记（三）：语法/';
-      var disqus_title = 'Groovy学习笔记（三）：语法';
-      var disqus_url = 'http://blog.bugk.info/2016/02/15/Groovy学习笔记（三）：语法/';
+      var disqus_identifier = '2016/04/07/Groovy性能优化三部曲/';
+      var disqus_title = 'Groovy性能优化三部曲';
+      var disqus_url = 'http://blog.bugk.info/2016/04/07/Groovy性能优化三部曲/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
