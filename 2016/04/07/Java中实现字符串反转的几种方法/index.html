@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Groovy," />
+  <meta name="keywords" content="Java,字符串,算法," />
 
 
 
@@ -59,16 +59,16 @@
 
 
 
-<meta name="description" content="行胜于言">
+<meta name="description" content="今天记录一个在面试中经常被问到的一个字符串反转的问题（Java代码实现）～">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Groovy学习笔记（一）：简介">
-<meta property="og:url" content="http://blog.bugk.info/2016/02/15/Groovy学习笔记（一）：简介/index.html">
+<meta property="og:title" content="java中实现字符串反转的几种方法">
+<meta property="og:url" content="http://blog.bugk.info/2016/04/07/Java中实现字符串反转的几种方法/index.html">
 <meta property="og:site_name" content="似水流年">
-<meta property="og:description" content="行胜于言">
-<meta property="og:updated_time" content="2016-02-15T07:32:28.000Z">
+<meta property="og:description" content="今天记录一个在面试中经常被问到的一个字符串反转的问题（Java代码实现）～">
+<meta property="og:updated_time" content="2016-04-07T07:00:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Groovy学习笔记（一）：简介">
-<meta name="twitter:description" content="行胜于言">
+<meta name="twitter:title" content="java中实现字符串反转的几种方法">
+<meta name="twitter:description" content="今天记录一个在面试中经常被问到的一个字符串反转的问题（Java代码实现）～">
 
 
 
@@ -86,7 +86,7 @@
   };
 </script>
 
-  <title> Groovy学习笔记（一）：简介 | 似水流年 </title>
+  <title> java中实现字符串反转的几种方法 | 似水流年 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -264,7 +264,7 @@
             
             
               
-                Groovy学习笔记（一）：简介
+                java中实现字符串反转的几种方法
               
             
           </h1>
@@ -276,8 +276,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-15T15:31:27+08:00" content="2016-02-15">
-              2016-02-15
+            <time itemprop="dateCreated" datetime="2016-04-07T14:52:23+08:00" content="2016-04-07">
+              2016-04-07
             </time>
           </span>
 
@@ -290,8 +290,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Groovy/" itemprop="url" rel="index">
-                    <span itemprop="name">Groovy</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -306,8 +306,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/15/Groovy学习笔记（一）：简介/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/02/15/Groovy学习笔记（一）：简介/" itemprop="commentsCount"></span>
+                <a href="/2016/04/07/Java中实现字符串反转的几种方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/04/07/Java中实现字符串反转的几种方法/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -334,7 +334,18 @@
       
 
       
-        
+        <blockquote>
+<p>今天记录一个在面试中经常被问到的一个字符串反转的问题（Java代码实现）～</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="使用栈实现"><a href="#使用栈实现" class="headerlink" title="使用栈实现"></a>使用栈实现</h3><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 通过栈</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@param</span> source</span><br><span class="line"> * <span class="doctag">@return</span></span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function">String <span class="title">reverse01</span><span class="params">(String source)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span>[] chars = source.toCharArray();</span><br><span class="line"></span><br><span class="line">    Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack&lt;Character&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">char</span> ch : chars) &#123;</span><br><span class="line">        stack.push(ch);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    String <span class="keyword">target</span> = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">while</span> (!stack.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">target</span> += stack.pop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">target</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="通过异或实现"><a href="#通过异或实现" class="headerlink" title="通过异或实现"></a>通过异或实现</h3><p>这个看起来稍高端一些    </p>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 通过异或</span><br><span class="line"> *</span><br><span class="line"> * @param source</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line"><span class="keyword">public</span> static <span class="built_in">String</span> reverse02(<span class="built_in">String</span> source) &#123;</span><br><span class="line">    char[] chars = source.toCharArray();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">int</span> start = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">int</span> <span class="keyword">end</span> = chars.length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (start &lt; <span class="keyword">end</span>) &#123;</span><br><span class="line">        chars[start] ^= chars[<span class="keyword">end</span>];</span><br><span class="line">        chars[<span class="keyword">end</span>] ^= chars[start];</span><br><span class="line">        chars[start] ^= chars[<span class="keyword">end</span>];</span><br><span class="line">        start++;</span><br><span class="line">        <span class="keyword">end</span>--;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return <span class="keyword">new</span> <span class="built_in">String</span>(chars);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用StringBuffer实现"><a href="#使用StringBuffer实现" class="headerlink" title="使用StringBuffer实现"></a>使用StringBuffer实现</h3><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"> <span class="keyword">*</span> 通过StringBuffer</span><br><span class="line"> <span class="keyword">*</span></span><br><span class="line"> <span class="keyword">*</span> <span class="comment">@param source</span></span><br><span class="line"> <span class="keyword">*</span> <span class="comment">@return</span></span><br><span class="line"> <span class="keyword">*</span>/</span><br><span class="line">public static String reverse03(String source) &#123;</span><br><span class="line">    return new StringBuffer(source).reverse().toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用递归实现"><a href="#使用递归实现" class="headerlink" title="使用递归实现"></a>使用递归实现</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 通过递归</span><br><span class="line"> *</span><br><span class="line"> * @param source</span><br><span class="line"> * @return</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">reverse04</span><span class="params">(String source)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> length = source.length();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (length &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> source;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    String left = source.substring(<span class="number">0</span>, length / <span class="number">2</span>);</span><br><span class="line">    String right = source.substring(length / <span class="number">2</span>, length);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> reverse04(right) + reverse04(left);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用charAt实现"><a href="#使用charAt实现" class="headerlink" title="使用charAt实现"></a>使用charAt实现</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 使用string charAt</span><br><span class="line"> *</span><br><span class="line"> * @param source</span><br><span class="line"> * @return</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String reverse05(String <span class="keyword">source</span>) &#123;</span><br><span class="line">    <span class="keyword">int</span> length = <span class="keyword">source</span>.length();</span><br><span class="line">    String <span class="keyword">reverse</span> = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">        <span class="keyword">reverse</span> = <span class="keyword">source</span>.charAt(i) + <span class="keyword">reverse</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">reverse</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用for循环实现"><a href="#使用for循环实现" class="headerlink" title="使用for循环实现"></a>使用for循环实现</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 使用for循环</span><br><span class="line"> *</span><br><span class="line"> * @param source</span><br><span class="line"> * @return</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">reverse06</span><span class="params">(String source)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span>[] <span class="built_in">array</span> = source.toCharArray();</span><br><span class="line">    String reverse = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="built_in">array</span>.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        reverse += <span class="built_in">array</span>[i];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用二分法实现"><a href="#使用二分法实现" class="headerlink" title="使用二分法实现"></a>使用二分法实现</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 二分法</span><br><span class="line"> *</span><br><span class="line"> * @param source</span><br><span class="line"> * @return</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">reverse07</span><span class="params">(String source)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span>[] s = source.toCharArray();</span><br><span class="line">    <span class="keyword">int</span> n = s.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> halfLength = n / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= halfLength; i++) &#123;</span><br><span class="line">        <span class="keyword">char</span> temp = s[i];</span><br><span class="line">        s[i] = s[n - i];</span><br><span class="line">        s[n - i] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> String(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -342,7 +353,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Groovy/" rel="tag">#Groovy</a>
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+            <a href="/tags/字符串/" rel="tag">#字符串</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
           
         </div>
       
@@ -351,17 +366,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/15/Groovy学习笔记（二）：初识/" rel="next" title="Groovy学习笔记（二）：初识">
-                <i class="fa fa-chevron-left"></i> Groovy学习笔记（二）：初识
+              <a href="/2016/03/15/菜谱/" rel="next" title="菜谱">
+                <i class="fa fa-chevron-left"></i> 菜谱
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/18/序/" rel="prev" title="序">
-                序 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -518,7 +529,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用栈实现"><span class="nav-number">1.</span> <span class="nav-text">使用栈实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过异或实现"><span class="nav-number">2.</span> <span class="nav-text">通过异或实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用StringBuffer实现"><span class="nav-number">3.</span> <span class="nav-text">使用StringBuffer实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用递归实现"><span class="nav-number">4.</span> <span class="nav-text">使用递归实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用charAt实现"><span class="nav-number">5.</span> <span class="nav-text">使用charAt实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用for循环实现"><span class="nav-number">6.</span> <span class="nav-text">使用for循环实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用二分法实现"><span class="nav-number">7.</span> <span class="nav-text">使用二分法实现</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -773,9 +784,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'BugkillersBlog';
-      var disqus_identifier = '2016/02/15/Groovy学习笔记（一）：简介/';
-      var disqus_title = 'Groovy学习笔记（一）：简介';
-      var disqus_url = 'http://blog.bugk.info/2016/02/15/Groovy学习笔记（一）：简介/';
+      var disqus_identifier = '2016/04/07/Java中实现字符串反转的几种方法/';
+      var disqus_title = 'java中实现字符串反转的几种方法';
+      var disqus_url = 'http://blog.bugk.info/2016/04/07/Java中实现字符串反转的几种方法/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
