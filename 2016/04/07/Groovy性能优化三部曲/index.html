@@ -62,7 +62,7 @@
 <meta name="description" content="给Java加点料最近在研究服务的动态校验规则，在厌倦了使用Java的静态语言进行校验时，开始尝试使用可以运行在JVM的脚本语言（Groovy,Scala,Clojure,JRuby,JPython）进行规则的DSL开发,在运行期通过改变DSL来动态的改变规则来达到动态校验的目的，通过一段时间的调研最终选型使用Groovy进行开发。选用Groovy的原因主要有：    
 
 学习成本较低
-元变成能力较">
+元编程能力较">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Groovy性能优化三部曲">
 <meta property="og:url" content="http://blog.bugk.info/2016/04/07/Groovy性能优化三部曲/index.html">
@@ -70,14 +70,14 @@
 <meta property="og:description" content="给Java加点料最近在研究服务的动态校验规则，在厌倦了使用Java的静态语言进行校验时，开始尝试使用可以运行在JVM的脚本语言（Groovy,Scala,Clojure,JRuby,JPython）进行规则的DSL开发,在运行期通过改变DSL来动态的改变规则来达到动态校验的目的，通过一段时间的调研最终选型使用Groovy进行开发。选用Groovy的原因主要有：    
 
 学习成本较低
-元变成能力较">
-<meta property="og:updated_time" content="2016-04-07T08:05:17.000Z">
+元编程能力较">
+<meta property="og:updated_time" content="2016-04-07T08:09:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Groovy性能优化三部曲">
 <meta name="twitter:description" content="给Java加点料最近在研究服务的动态校验规则，在厌倦了使用Java的静态语言进行校验时，开始尝试使用可以运行在JVM的脚本语言（Groovy,Scala,Clojure,JRuby,JPython）进行规则的DSL开发,在运行期通过改变DSL来动态的改变规则来达到动态校验的目的，通过一段时间的调研最终选型使用Groovy进行开发。选用Groovy的原因主要有：    
 
 学习成本较低
-元变成能力较">
+元编程能力较">
 
 
 
@@ -343,14 +343,16 @@
       
 
       
-        <h3 id="给Java加点料"><a href="#给Java加点料" class="headerlink" title="给Java加点料"></a>给Java加点料</h3><p>最近在研究服务的动态校验规则，在厌倦了使用Java的静态语言进行校验时，开始尝试使用可以运行在JVM的脚本语言（<code>Groovy</code>,<code>Scala</code>,<code>Clojure</code>,<code>JRuby</code>,<code>JPython</code>）进行规则的<code>DSL</code>开发,在运行期通过改变<code>DSL</code>来动态的改变规则来达到动态校验的目的，通过一段时间的调研最终选型使用Groovy进行开发。<br>选用Groovy的原因主要有：    </p>
+        <h3 id="给Java加点料"><a href="#给Java加点料" class="headerlink" title="给Java加点料"></a>给Java加点料</h3><p>最近在研究服务的动态校验规则，在厌倦了使用<code>Java</code>的静态语言进行校验时，开始尝试使用可以运行在JVM的脚本语言（<code>Groovy</code>,<code>Scala</code>,<code>Clojure</code>,<code>JRuby</code>,<code>JPython</code>）进行规则的<code>DSL</code>开发,在运行期通过改变<code>DSL</code>来动态的改变规则来达到动态校验的目的，通过一段时间的调研最终选型使用<code>Groovy</code>进行开发。<br>选用<code>Groovy</code>的原因主要有：    </p>
 <ul>
 <li>学习成本较低</li>
-<li>元变成能力较强</li>
-<li>Gradle的流行</li>
+<li>元编程能力较强</li>
+<li><code>Gradle</code>的流行</li>
+<li>函数式编程</li>
 </ul>
 <p>关于运行在JVM的脚步语言可以参考一下这几篇文章：<a href="http://coolshell.cn/articles/2631.html" target="_blank" rel="external">五大基于JVM的脚本语言</a>、<a href="http://www.ibm.com/developerworks/cn/java/j-jn16/" target="_blank" rel="external">Java下一代</a>、<a href="http://www.oschina.net/question/213217_45561" target="_blank" rel="external">9个杀手级JVM编程语言</a></p>
-<p>在Groovy的DSL语法和校验API都准备就绪后就开始了在Java应用中集成，整个集成到最后优化完差不多耗时2个星期，过程相当的波折，下面就记录一下在集成Groovy中遇到问题到处理问题的三部曲。</p>
+<p>在<code>Groovy</code>的<code>DSL</code>语法和校验API都准备就绪后就开始了在<code>Java</code>应用中集成，整个集成到最后优化完差不多耗时2个星期，过程相当的波折，下面就记录一下在集成<code>Groovy</code>中遇到问题到处理问题的三部曲。</p>
+<a id="more"></a>
 <h3 id="三重境界"><a href="#三重境界" class="headerlink" title="三重境界"></a>三重境界</h3><blockquote>
 <p>古今之成大事业、大学问者，必经过三种之境界：”昨夜西风凋碧树。独上高楼，望尽天涯路。”此第一境也。”衣带渐宽终不悔，为伊消得人憔悴。”此第二境也。”众里寻他千百度，蓦然回首，那人却在灯火阑珊处。”此第三境也。此等语皆非大词人不能道。然遽以此意解释诸词，恐为晏欧诸公所不许也。” —— 王国维《人间词话》</p>
 </blockquote>
