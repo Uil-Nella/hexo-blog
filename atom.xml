@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.bugk.info/"/>
-  <updated>2016-04-07T09:47:41.000Z</updated>
+  <updated>2016-04-12T08:51:47.000Z</updated>
   <id>http://blog.bugk.info/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://blog.bugk.info/2016/04/07/Groovy%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B8%89%E9%83%A8%E6%9B%B2/"/>
     <id>http://blog.bugk.info/2016/04/07/Groovy性能优化三部曲/</id>
     <published>2016-04-07T07:28:46.000Z</published>
-    <updated>2016-04-07T09:47:41.000Z</updated>
+    <updated>2016-04-12T08:51:47.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;给Java加点料&quot;&gt;&lt;a href=&quot;#给Java加点料&quot; class=&quot;headerlink&quot; title=&quot;给Java加点料&quot;&gt;&lt;/a&gt;给Java加点料&lt;/h3&gt;&lt;p&gt;最近在研究服务的动态校验规则，在厌倦了使用&lt;code&gt;Java&lt;/code&gt;的静态语言进行校验时，开始尝试使用可以运行在JVM的脚本语言（&lt;code&gt;Groovy&lt;/code&gt;,&lt;code&gt;Scala&lt;/code&gt;,&lt;code&gt;Clojure&lt;/code&gt;,&lt;code&gt;JRuby&lt;/code&gt;,&lt;code&gt;JPython&lt;/code&gt;）进行规则的&lt;code&gt;DSL&lt;/code&gt;开发,在运行期通过改变&lt;code&gt;DSL&lt;/code&gt;来动态的改变规则来达到动态校验的目的，通过一段时间的调研最终选型使用&lt;code&gt;Groovy&lt;/code&gt;进行开发。&lt;br&gt;选用&lt;code&gt;Groovy&lt;/code&gt;的原因主要有：    &lt;/p&gt;
 &lt;ul&gt;
@@ -51,7 +51,7 @@
 &lt;p&gt;ScriptEngineTest.java&lt;/p&gt;
 &lt;figure class=&quot;highlight processing&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; class ScriptEngineTest &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; main(&lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; args[]) &lt;span class=&quot;keyword&quot;&gt;throws&lt;/span&gt; ResourceException, ScriptException, IOException &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt;[] roots = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt;[]&amp;#123;&lt;span class=&quot;string&quot;&gt;&quot;/Users/liuxinyu/code/github/Learning-code-demo/groovy-learning/src/main/java/org/bugkillers/groovy/test/zhenghe/&quot;&lt;/span&gt;&amp;#125;;&lt;span class=&quot;comment&quot;&gt;//定义Groovy脚本引擎的根路径&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        GroovyScriptEngine engine = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; GroovyScriptEngine(roots);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Binding binding = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Binding();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        binding.setVariable(&lt;span class=&quot;string&quot;&gt;&quot;language&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Groovy&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;Object&lt;/span&gt; value = engine.run(&lt;span class=&quot;string&quot;&gt;&quot;SimpleScript.groovy&quot;&lt;/span&gt;, binding);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;assert&lt;/span&gt; value.equals(&lt;span class=&quot;string&quot;&gt;&quot;The End&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h5 id=&quot;5-使用CompilationUnit&quot;&gt;&lt;a href=&quot;#5-使用CompilationUnit&quot; class=&quot;headerlink&quot; title=&quot;5.使用CompilationUnit&quot;&gt;&lt;/a&gt;5.使用&lt;code&gt;CompilationUnit&lt;/code&gt;&lt;/h5&gt;&lt;p&gt;我们甚至直接依靠 &lt;code&gt;org.codehaus.groovy.control.CompilationUnit&lt;/code&gt; 类在编译时执行更多的指令。该类负责确定编译的各种步骤，可以让我们引入更多新的步骤，或者甚至停止各种编译阶段。比如说在联合编译器中如何生成存根。&lt;br&gt;但是，不建议重写 &lt;code&gt;CompilationUnit&lt;/code&gt;，如果没有其他的办法时才应该这样做。 &lt;/p&gt;
-&lt;p&gt;在本次接入使用的是第三种使用&lt;code&gt;GroovyClassLoader&lt;/code&gt;来解析脚本，并将生成后的脚本class进行缓存后面再重新使用，在这块遇到的问题是程序运行一段时间后突然爆出JVM&lt;code&gt;perm&lt;/code&gt;使用达到100%并且gc无法回收，最终导致服务down掉，于是开始分析日志。&lt;br&gt;发现到都是在Groovy的ClassLoader在load class的时候发生的&lt;br&gt;&lt;img src=&quot;http://7xqxc9.com1.z0.glb.clouddn.com/groovy1-perm.png&quot; width=&quot;70%&quot; height=&quot;70%&quot;&gt;&lt;/p&gt;
+&lt;h5 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h5&gt;&lt;p&gt;在本次接入使用的是第三种使用&lt;code&gt;GroovyClassLoader&lt;/code&gt;来解析脚本，并将生成后的脚本class进行缓存后面再重新使用，在这块遇到的问题是程序运行一段时间后突然爆出JVM&lt;code&gt;perm&lt;/code&gt;使用达到100%并且gc无法回收，最终导致服务down掉，于是开始分析日志。&lt;br&gt;发现到都是在Groovy的ClassLoader在load class的时候发生的&lt;br&gt;&lt;img src=&quot;http://7xqxc9.com1.z0.glb.clouddn.com/groovy1-perm.png&quot; width=&quot;70%&quot; height=&quot;70%&quot;&gt;&lt;/p&gt;
 &lt;p&gt;于是在仔细分析&lt;code&gt;GroovyClassLoader&lt;/code&gt;，发现loader每次加载class都会生成一个脚本对应的class对象，并new一个InnerLoader去加载这个对象，而InnerLoader和脚本对象都无法在gc的时候被回收运行一段时间后将perm占满，一直触发fullgc。&lt;/p&gt;
 &lt;p&gt;在分析一下class为什么没有被卸载，我们都知道，在JVM中想要将JVM中的类卸载必须满足这几个条件：&lt;/p&gt;
 &lt;ol&gt;
@@ -69,7 +69,16 @@
 &lt;h3 id=&quot;二部&quot;&gt;&lt;a href=&quot;#二部&quot; class=&quot;headerlink&quot; title=&quot;二部&quot;&gt;&lt;/a&gt;二部&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;“衣带渐宽终不悔，为伊消得人憔悴。”&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;fullGC&lt;/p&gt;
+&lt;h4 id=&quot;问题-1&quot;&gt;&lt;a href=&quot;#问题-1&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h4&gt;&lt;p&gt;在经历了一次优化之后性能在一部分上得到了提升，但是好景不长，在逐渐加大程序的访问的QPS，突然又出现了FullGC现象并且服务不可用，于是立即登录服务器查看JVM状态。    &lt;/p&gt;
+&lt;p&gt;使用&lt;code&gt;jstat&lt;/code&gt;  查看当前gc情况&lt;br&gt;&lt;img src=&quot;http://7xqxc9.com1.z0.glb.clouddn.com/groovygroovy1-jmap.png&quot; width=&quot;70%&quot; height=&quot;70%&quot;&gt;    &lt;/p&gt;
+&lt;p&gt;再使用&lt;code&gt;jstat&lt;/code&gt;  查看gc发生的原因&lt;br&gt;&lt;img src=&quot;http://7xqxc9.com1.z0.glb.clouddn.com/groovygroovy-jstat.png&quot; width=&quot;70%&quot; height=&quot;70%&quot;&gt;    &lt;/p&gt;
+&lt;p&gt;通过上面两个数据可以推断到引起fullGC的仍然是Perm区，于是考虑到是否是Perm区太小导致容易内存打满。    &lt;/p&gt;
+&lt;p&gt;于是再使用&lt;code&gt;jmap&lt;/code&gt; 查看heap情况的perm区情况&lt;br&gt;&lt;img src=&quot;http://7xqxc9.com1.z0.glb.clouddn.com/groovygroovy-jmap-heap.png&quot; width=&quot;70%&quot; height=&quot;70%&quot;&gt;      &lt;/p&gt;
+&lt;p&gt;发现Perm区大小为默认值大小82M左右，80多M的perm区竟然全都被打满并且无法被回收，这显然不正常。    &lt;/p&gt;
+&lt;p&gt;关于java 1.7和1.6中Perm区的默认大小为82M请参考oracle的官网    &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Almost every JVM nowadays uses a separate region of memory, called the Permanent Generation (orPermGen for short), to hold internal representations of java classes. PermGen is also used to store more information – find out the details from &lt;a href=&quot;https://blogs.oracle.com/jonthecollector/entry/presenting_the_permanent_generation&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;this post&lt;/a&gt; if you are interested – but for our article it is safe to assume that only the class definitions are being stored in PermGen. The default size of this region on my two machines running java 1.7 is not a very impressive 82MB.        &lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&quot;三部&quot;&gt;&lt;a href=&quot;#三部&quot; class=&quot;headerlink&quot; title=&quot;三部&quot;&gt;&lt;/a&gt;三部&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;“众里寻他千百度，蓦然回首，那人却在灯火阑珊处。”&lt;/p&gt;
 &lt;/blockquote&gt;
