@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.bugk.info/"/>
-  <updated>2016-04-12T08:51:47.000Z</updated>
+  <updated>2016-04-12T08:53:50.000Z</updated>
   <id>http://blog.bugk.info/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://blog.bugk.info/2016/04/07/Groovy%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B8%89%E9%83%A8%E6%9B%B2/"/>
     <id>http://blog.bugk.info/2016/04/07/Groovy性能优化三部曲/</id>
     <published>2016-04-07T07:28:46.000Z</published>
-    <updated>2016-04-12T08:51:47.000Z</updated>
+    <updated>2016-04-12T08:53:50.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;给Java加点料&quot;&gt;&lt;a href=&quot;#给Java加点料&quot; class=&quot;headerlink&quot; title=&quot;给Java加点料&quot;&gt;&lt;/a&gt;给Java加点料&lt;/h3&gt;&lt;p&gt;最近在研究服务的动态校验规则，在厌倦了使用&lt;code&gt;Java&lt;/code&gt;的静态语言进行校验时，开始尝试使用可以运行在JVM的脚本语言（&lt;code&gt;Groovy&lt;/code&gt;,&lt;code&gt;Scala&lt;/code&gt;,&lt;code&gt;Clojure&lt;/code&gt;,&lt;code&gt;JRuby&lt;/code&gt;,&lt;code&gt;JPython&lt;/code&gt;）进行规则的&lt;code&gt;DSL&lt;/code&gt;开发,在运行期通过改变&lt;code&gt;DSL&lt;/code&gt;来动态的改变规则来达到动态校验的目的，通过一段时间的调研最终选型使用&lt;code&gt;Groovy&lt;/code&gt;进行开发。&lt;br&gt;选用&lt;code&gt;Groovy&lt;/code&gt;的原因主要有：    &lt;/p&gt;
 &lt;ul&gt;
@@ -88,6 +88,7 @@
 &lt;li&gt;&lt;a href=&quot;http://wiki.jikexueyuan.com/project/groovy-introduction/integrating-groovy-applications.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;极客学院&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://yq.aliyun.com/articles/2357&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Groovy的一些坑&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://hellojava.info/?tag=groovy-permgen-oom&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;正确使用Groovy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.codelast.com/%E5%8E%9F%E5%88%9B%EF%BC%88%E7%BF%BB%E8%AF%91%EF%BC%89%E4%BB%80%E4%B9%88%E6%98%AFjava%E7%9A%84%E6%B0%B8%E4%B9%85%E4%BB%A3%EF%BC%88permgen%EF%BC%89%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Java永久代泄露&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
     
