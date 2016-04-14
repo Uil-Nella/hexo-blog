@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JVM,Java,Linux," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -59,16 +59,16 @@
 
 
 
-<meta name="description" content="记录一下jvm问题排查的一些命令">
+<meta name="description" content="行胜于言">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线上问题排查命令----JVM篇">
-<meta property="og:url" content="http://blog.bugk.info/2015/06/25/线上问题排查命令-JVM篇/index.html">
+<meta property="og:title" content="SpringMVC项目接入Springfox">
+<meta property="og:url" content="http://blog.bugk.info/2016/04/14/SpringMVC项目接入Springfox/index.html">
 <meta property="og:site_name" content="似水流年">
-<meta property="og:description" content="记录一下jvm问题排查的一些命令">
-<meta property="og:updated_time" content="2016-04-14T12:09:46.000Z">
+<meta property="og:description" content="行胜于言">
+<meta property="og:updated_time" content="2016-04-14T12:10:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="线上问题排查命令----JVM篇">
-<meta name="twitter:description" content="记录一下jvm问题排查的一些命令">
+<meta name="twitter:title" content="SpringMVC项目接入Springfox">
+<meta name="twitter:description" content="行胜于言">
 
 
 
@@ -86,7 +86,7 @@
   };
 </script>
 
-  <title> 线上问题排查命令----JVM篇 | 似水流年 </title>
+  <title> SpringMVC项目接入Springfox | 似水流年 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -264,7 +264,7 @@
             
             
               
-                线上问题排查命令----JVM篇
+                SpringMVC项目接入Springfox
               
             
           </h1>
@@ -276,38 +276,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-25T15:28:46+08:00" content="2015-06-25">
-              2015-06-25
+            <time itemprop="dateCreated" datetime="2016-04-14T20:10:55+08:00" content="2016-04-14">
+              2016-04-14
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/06/25/线上问题排查命令-JVM篇/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/06/25/线上问题排查命令-JVM篇/" itemprop="commentsCount"></span>
+                <a href="/2016/04/14/SpringMVC项目接入Springfox/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/04/14/SpringMVC项目接入Springfox/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -334,70 +315,24 @@
       
 
       
-        <p>记录一下jvm问题排查的一些命令</p>
-<a id="more"></a>
-<h3 id="0-分类"><a href="#0-分类" class="headerlink" title="0.分类"></a>0.分类</h3><table>
-<thead>
-<tr>
-<th>功能</th>
-<th>命令</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>线程</td>
-<td>jstack</td>
-</tr>
-<tr>
-<td>内存</td>
-<td>jmap</td>
-</tr>
-<tr>
-<td>性能</td>
-<td>jstat</td>
-</tr>
-</tbody>
-</table>
-<h3 id="1-查找到Jvm的进程id-以后所有命令基本都需要"><a href="#1-查找到Jvm的进程id-以后所有命令基本都需要" class="headerlink" title="1.查找到Jvm的进程id,以后所有命令基本都需要"></a>1.查找到Jvm的进程id,以后所有命令基本都需要</h3><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">jps</span><br><span class="line"><span class="preprocessor"># 附带jvm参数信息</span></span><br><span class="line">jps -v</span><br><span class="line"><span class="preprocessor"># 只显示id</span></span><br><span class="line">jps -q</span><br><span class="line"><span class="preprocessor">#输出main method的参数</span></span><br><span class="line">jps -m</span><br><span class="line"><span class="preprocessor">#输出完全的包名，应用主类名，jar的完全路径</span></span><br><span class="line">jps -l</span><br><span class="line"><span class="preprocessor"># 向下个命令输出pid</span></span><br><span class="line">jps | grep <span class="string">'Bootstrap'</span> | awk <span class="string">'&#123;print $1&#125;'</span> |</span><br></pre></td></tr></table></figure>
-<h3 id="2-jstat命令使用"><a href="#2-jstat命令使用" class="headerlink" title="2.jstat命令使用"></a>2.jstat命令使用</h3><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">jps  -opt  <span class="keyword">pid</span> -h n (每隔多少行出现行头)interval(间隔多久)  count（多少次）</span><br><span class="line"><span class="comment"># 查询gc百分比</span></span><br><span class="line">jstat -gcutil <span class="keyword">pid</span> <span class="number">1000</span></span><br><span class="line"><span class="comment"># 显示三代的使用量</span></span><br><span class="line">jstat -gccapacity <span class="keyword">pid</span> <span class="number">1000</span></span><br><span class="line"><span class="comment"># 显示加载class的数量，及所占空间等信息</span></span><br><span class="line">jstat -class <span class="keyword">pid</span></span><br><span class="line"><span class="comment"># 显示VM实时编译的数量等信息</span></span><br><span class="line">jstat -compiler <span class="keyword">pid</span></span><br><span class="line"><span class="comment"># 可以显示gc的信息，查看gc的次数，及时间。其中最后五项，分别是young gc的次数，young gc的时间，full gc的次数，full gc的时间，gc的总时间。</span></span><br><span class="line">jstat -gc <span class="keyword">pid</span></span><br><span class="line"><span class="comment"># 当前VM执行的信息</span></span><br><span class="line">jstat -printcompilation <span class="keyword">pid</span></span><br><span class="line"><span class="comment"># 用于查看垃圾收集的统计情况（这个和-gcutil选项一样），如果有发生垃圾收集，它还会显示最后一次及当前正在发生垃圾收集的原因</span></span><br><span class="line">jstat -gccause <span class="keyword">pid</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-jinfo可以输出并修改运行时的java-进程的参数"><a href="#3-jinfo可以输出并修改运行时的java-进程的参数" class="headerlink" title="3.jinfo可以输出并修改运行时的java 进程的参数"></a>3.jinfo可以输出并修改运行时的java 进程的参数</h3><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">jinfo -opt  pid</span><br><span class="line"><span class="preprocessor"># 打印所有pid相关的vm配置</span></span><br><span class="line">jinfo pid</span><br><span class="line"><span class="preprocessor"># 只显示某个配置 例如永久代：MaxPermSize</span></span><br><span class="line">jinfo -flag MaxPermSize pid</span><br><span class="line"><span class="preprocessor"># -flag [+|-]&lt; name &gt;：设置或取消指定java虚拟机参数的布尔值</span></span><br><span class="line">jinfo -flag +PrintGCDetails <span class="number">2000</span></span><br><span class="line"><span class="preprocessor"># jinfo虽然可以在java程序运行时动态地修改虚拟机参数，但并不是所有的参数都支持动态修改</span></span><br></pre></td></tr></table></figure>
-<h3 id="4-jmap打印出某个java进程内存内的，所有‘对象’的情况"><a href="#4-jmap打印出某个java进程内存内的，所有‘对象’的情况" class="headerlink" title="4.jmap打印出某个java进程内存内的，所有‘对象’的情况"></a>4.jmap打印出某个java进程内存内的，所有‘对象’的情况</h3><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">jmap  -opt  <span class="keyword">pid</span></span><br><span class="line"><span class="comment"># 使用hprof二进制形式,输出jvm的heap内容到文件=. live子选项是可选的，假如指定live选项,那么只输出活的对象到文件</span></span><br><span class="line">jmap -dump:<span class="keyword">format</span>=b,<span class="keyword">file</span>=test.bin <span class="keyword">pid</span></span><br><span class="line"><span class="comment"># 打印正等候回收的对象的信息</span></span><br><span class="line">jmap -finalizerinfo <span class="keyword">pid</span></span><br><span class="line"><span class="comment"># 打印heap的概要信息，GC使用的算法，heap的配置及wise heap的使用情况</span></span><br><span class="line">jmap -heap <span class="keyword">pid</span></span><br><span class="line"><span class="comment"># 打印每个class的实例数目,内存占用,类全名信息. VM的内部类名字开头会加上前缀”*”. 如果live子参数加上后,只统计活的对象数量.</span></span><br><span class="line"><span class="comment"># 统计大对象的时候很实用 但是会触发一次full gc</span></span><br><span class="line">jmap histo:live <span class="keyword">pid</span> | head -n <span class="number">23</span></span><br><span class="line"><span class="comment"># 打印classload和jvm heap长久层的信息. 包含每个classloader的名字,活泼性,地址,父classloader和加载的class数量. 另外,内部String的数量和占用内存数也会打印出来</span></span><br><span class="line">jmap -permstat <span class="keyword">pid</span></span><br></pre></td></tr></table></figure>
-<h3 id="5-jstack用于打印出给定的java进程ID或core-file或远程调试服务的Java堆栈信息"><a href="#5-jstack用于打印出给定的java进程ID或core-file或远程调试服务的Java堆栈信息" class="headerlink" title="5.jstack用于打印出给定的java进程ID或core file或远程调试服务的Java堆栈信息"></a>5.jstack用于打印出给定的java进程ID或core file或远程调试服务的Java堆栈信息</h3><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">jstack -opt  <span class="keyword">pid</span></span><br><span class="line"><span class="comment"># 一般使用是将jstack的结果输出到文件中来查看</span></span><br><span class="line">jstat <span class="keyword">pid</span> &gt; jstat01.log</span><br><span class="line"><span class="comment"># 或者直接使用grep查找</span></span><br><span class="line">jstat <span class="keyword">pid</span> |grep -C <span class="number">10</span> <span class="keyword">pid</span>(<span class="number">16</span>进制转换之后)</span><br><span class="line"><span class="comment"># 或者直接搜索关键字 Deadlock 之类的</span></span><br></pre></td></tr></table></figure>
-<p>转换工具 <a href="http://tool.oschina.net/hexconvert" target="_blank" rel="external">http://tool.oschina.net/hexconvert</a></p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dump 文件里，值得关注的线程状态有：</span><br><span class="line">     死锁，Deadlock（重点关注）</span><br><span class="line">     执行中，Runnable  </span><br><span class="line">     等待资源，Waiting on condition（重点关注）</span><br><span class="line">     等待获取监视器，Waiting on<span class="instruction"> monitor </span>entry（重点关注）</span><br><span class="line">     暂停，Suspended</span><br><span class="line">    <span class="function"> 对象等待中，Object.wait(</span><span class="function">)</span> 或 TIMED_WAITING</span><br><span class="line">     阻塞，Blocked（重点关注） </span><br><span class="line">     停止，Parked</span><br></pre></td></tr></table></figure>
-<p>参考：<br>1.<a href="http://blog.csdn.net/fenglibing/article/details/6411951" target="_blank" rel="external">http://blog.csdn.net/fenglibing/article/details/6411951</a><br>2.<a href="http://xianqi-h.iteye.com/blog/1346491" target="_blank" rel="external">http://xianqi-h.iteye.com/blog/1346491</a><br>3.<a href="http://docs.oracle.com/javase/7/docs/technotes/tools/share/jstat.html" target="_blank" rel="external">http://docs.oracle.com/javase/7/docs/technotes/tools/share/jstat.html</a><br>4.<a href="http://fengbin2005.iteye.com/blog/2167316" target="_blank" rel="external">http://fengbin2005.iteye.com/blog/2167316</a></p>
-
+        
       
     </div>
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/JVM/" rel="tag">#JVM</a>
-          
-            <a href="/tags/Java/" rel="tag">#Java</a>
-          
-            <a href="/tags/Linux/" rel="tag">#Linux</a>
-          
-        </div>
       
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/19/线上问题排查命令-Shell篇/" rel="next" title="线上问题排查命令----Shell篇">
-                <i class="fa fa-chevron-left"></i> 线上问题排查命令----Shell篇
+              <a href="/2016/04/07/Groovy性能优化三部曲/" rel="next" title="Groovy性能优化三部曲">
+                <i class="fa fa-chevron-left"></i> Groovy性能优化三部曲
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/07/29/2015-07-29-develpmentandcontributing/" rel="prev" title="DevelpmentAndContributing">
-                DevelpmentAndContributing <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -554,7 +489,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-分类"><span class="nav-number">1.</span> <span class="nav-text">0.分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-查找到Jvm的进程id-以后所有命令基本都需要"><span class="nav-number">2.</span> <span class="nav-text">1.查找到Jvm的进程id,以后所有命令基本都需要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-jstat命令使用"><span class="nav-number">3.</span> <span class="nav-text">2.jstat命令使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-jinfo可以输出并修改运行时的java-进程的参数"><span class="nav-number">4.</span> <span class="nav-text">3.jinfo可以输出并修改运行时的java 进程的参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-jmap打印出某个java进程内存内的，所有‘对象’的情况"><span class="nav-number">5.</span> <span class="nav-text">4.jmap打印出某个java进程内存内的，所有‘对象’的情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-jstack用于打印出给定的java进程ID或core-file或远程调试服务的Java堆栈信息"><span class="nav-number">6.</span> <span class="nav-text">5.jstack用于打印出给定的java进程ID或core file或远程调试服务的Java堆栈信息</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -809,9 +744,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'BugkillersBlog';
-      var disqus_identifier = '2015/06/25/线上问题排查命令-JVM篇/';
-      var disqus_title = '线上问题排查命令----JVM篇';
-      var disqus_url = 'http://blog.bugk.info/2015/06/25/线上问题排查命令-JVM篇/';
+      var disqus_identifier = '2016/04/14/SpringMVC项目接入Springfox/';
+      var disqus_title = 'SpringMVC项目接入Springfox';
+      var disqus_url = 'http://blog.bugk.info/2016/04/14/SpringMVC项目接入Springfox/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
