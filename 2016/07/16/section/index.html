@@ -69,7 +69,7 @@ UsageCreate section使用Section提供的工厂方法build来创建对象
 <meta property="og:description" content="Sectionsection是一个区间merge工具类，工具类采用泛型+Comparator+递归来实现通用性处理，并预留data merge SPI提供具体的数据merge策略。
 UsageCreate section使用Section提供的工厂方法build来创建对象
 1Section&amp;lt;T&amp;gt; build(int startDate, int endDate, T data, Com">
-<meta property="og:updated_time" content="2016-08-17T05:39:56.000Z">
+<meta property="og:updated_time" content="2016-08-17T05:41:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="区间合并工具Section">
 <meta name="twitter:description" content="Sectionsection是一个区间merge工具类，工具类采用泛型+Comparator+递归来实现通用性处理，并预留data merge SPI提供具体的数据merge策略。
@@ -343,6 +343,7 @@ UsageCreate section使用Section提供的工厂方法build来创建对象
         <h2 id="Section"><a href="#Section" class="headerlink" title="Section"></a>Section</h2><p>section是一个区间merge工具类，工具类采用泛型+Comparator+递归来实现通用性处理，并预留data merge SPI提供具体的数据merge策略。</p>
 <h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><h3 id="Create-section"><a href="#Create-section" class="headerlink" title="Create section"></a>Create section</h3><p>使用Section提供的工厂方法<code>build</code>来创建对象</p>
 <figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Section&lt;T&gt; build(<span class="built_in">int</span> startDate, <span class="built_in">int</span> endDate, T <span class="type">data</span>, Comparator comparator, DataProcessor&lt;T&gt; dataProcessor)</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="Merge-method"><a href="#Merge-method" class="headerlink" title="Merge method"></a>Merge method</h3><h4 id="merge-one-to-one"><a href="#merge-one-to-one" class="headerlink" title="merge one to one"></a>merge one to one</h4><figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;<span class="function"><span class="keyword">Section</span>&lt;T&gt;&gt; merge(<span class="keyword">Section</span>&lt;T&gt; source, <span class="keyword">Section</span>&lt;T&gt; target)</span></span><br></pre></td></tr></table></figure>
 <h4 id="merge-one-to-List"><a href="#merge-one-to-List" class="headerlink" title="merge one to List"></a>merge one to List</h4><figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;<span class="function"><span class="keyword">Section</span>&lt;T&gt;&gt; merge(<span class="keyword">Section</span>&lt;T&gt; source, List&lt;<span class="keyword">Section</span>&lt;T&gt;&gt; target, boolean mergeSelf)</span></span><br></pre></td></tr></table></figure>
 <h4 id="merge-List-to-one"><a href="#merge-List-to-one" class="headerlink" title="merge List to one"></a>merge List to one</h4><figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;<span class="function"><span class="keyword">Section</span>&lt;T&gt;&gt; merge(List&lt;<span class="keyword">Section</span>&lt;T&gt;&gt; source, <span class="keyword">Section</span>&lt;T&gt; target, boolean mergeSelf)</span></span><br></pre></td></tr></table></figure>
