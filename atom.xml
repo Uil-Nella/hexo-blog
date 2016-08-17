@@ -54,11 +54,11 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://blog.bugk.info/2016/08/12/section/"/>
-    <id>http://blog.bugk.info/2016/08/12/section/</id>
-    <published>2016-08-12T06:56:07.000Z</published>
-    <updated>2016-08-12T06:56:07.000Z</updated>
+    <title>区间合并工具Section</title>
+    <link href="http://blog.bugk.info/2016/07/16/section/"/>
+    <id>http://blog.bugk.info/2016/07/16/section/</id>
+    <published>2016-07-16T04:28:46.000Z</published>
+    <updated>2016-08-17T05:39:56.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;Section&quot;&gt;&lt;a href=&quot;#Section&quot; class=&quot;headerlink&quot; title=&quot;Section&quot;&gt;&lt;/a&gt;Section&lt;/h2&gt;&lt;p&gt;section是一个区间merge工具类，工具类采用泛型+Comparator+递归来实现通用性处理，并预留data merge SPI提供具体的数据merge策略。&lt;/p&gt;
 &lt;h2 id=&quot;Usage&quot;&gt;&lt;a href=&quot;#Usage&quot; class=&quot;headerlink&quot; title=&quot;Usage&quot;&gt;&lt;/a&gt;Usage&lt;/h2&gt;&lt;h3 id=&quot;Create-section&quot;&gt;&lt;a href=&quot;#Create-section&quot; class=&quot;headerlink&quot; title=&quot;Create section&quot;&gt;&lt;/a&gt;Create section&lt;/h3&gt;&lt;p&gt;使用Section提供的工厂方法&lt;code&gt;build&lt;/code&gt;来创建对象&lt;/p&gt;
@@ -110,6 +110,12 @@
     
     </summary>
     
+      <category term="Java" scheme="http://blog.bugk.info/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://blog.bugk.info/tags/Java/"/>
+    
+      <category term="学习" scheme="http://blog.bugk.info/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
