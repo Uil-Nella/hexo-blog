@@ -395,6 +395,159 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/16/section/" itemprop="url">
+                  区间合并工具Section
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-16T12:28:46+08:00" content="2016-07-16">
+              2016-07-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/16/section/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/16/section/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Section"><a href="#Section" class="headerlink" title="Section"></a>Section</h2><p>section是一个区间merge工具类，工具类采用泛型+Comparator+递归来实现通用性处理，并预留data merge SPI提供具体的数据merge策略。</p>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><h3 id="Create-section"><a href="#Create-section" class="headerlink" title="Create section"></a>Create section</h3><p>使用Section提供的工厂方法<code>build</code>来创建对象</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Section&lt;T&gt; build(<span class="built_in">int</span> startDate, <span class="built_in">int</span> endDate, T <span class="type">data</span>, Comparator comparator, DataProcessor&lt;T&gt; dataProcessor)</span><br></pre></td></tr></table></figure>
+<h3 id="Merge-method"><a href="#Merge-method" class="headerlink" title="Merge method"></a>Merge method</h3><h4 id="merge-one-to-one"><a href="#merge-one-to-one" class="headerlink" title="merge one to one"></a>merge one to one</h4><figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;<span class="function"><span class="keyword">Section</span>&lt;T&gt;&gt; merge(<span class="keyword">Section</span>&lt;T&gt; source, <span class="keyword">Section</span>&lt;T&gt; target)</span></span><br></pre></td></tr></table></figure>
+<h4 id="merge-one-to-List"><a href="#merge-one-to-List" class="headerlink" title="merge one to List"></a>merge one to List</h4><figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;<span class="function"><span class="keyword">Section</span>&lt;T&gt;&gt; merge(<span class="keyword">Section</span>&lt;T&gt; source, List&lt;<span class="keyword">Section</span>&lt;T&gt;&gt; target, boolean mergeSelf)</span></span><br></pre></td></tr></table></figure>
+<h4 id="merge-List-to-one"><a href="#merge-List-to-one" class="headerlink" title="merge List to one"></a>merge List to one</h4><figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;<span class="function"><span class="keyword">Section</span>&lt;T&gt;&gt; merge(List&lt;<span class="keyword">Section</span>&lt;T&gt;&gt; source, <span class="keyword">Section</span>&lt;T&gt; target, boolean mergeSelf)</span></span><br></pre></td></tr></table></figure>
+<h4 id="merge-List-to-List"><a href="#merge-List-to-List" class="headerlink" title="merge List to List"></a>merge List to List</h4><figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;<span class="function"><span class="keyword">Section</span>&lt;T&gt;&gt; merge(List&lt;<span class="keyword">Section</span>&lt;T&gt;&gt; source, List&lt;<span class="keyword">Section</span>&lt;T&gt;&gt; target)</span></span><br></pre></td></tr></table></figure>
+<h3 id="Comparator"><a href="#Comparator" class="headerlink" title="Comparator"></a>Comparator</h3><p>merge对象比较使用，用于判断两个数据是否可以合并，例如：</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public <span class="keyword">static</span> class <span class="type">SectionComparator</span> implements <span class="type">Comparator</span>&lt;<span class="type">SectionModel</span>&gt; &#123;</span><br><span class="line">        @<span class="type">Override</span></span><br><span class="line">        public <span class="type">int</span> compare(<span class="type">SectionModel</span> o1, <span class="type">SectionModel</span> o2) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="type">ComparisonChain</span>.start()</span><br><span class="line">                    .compare(o1.day, o2.day)</span><br><span class="line">                    .compare(o1.desc, o2.desc)</span><br><span class="line">                    .<span class="literal">result</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### Merge SPI</span></span><br><span class="line"><span class="comment">#### SPI</span></span><br></pre></td></tr></table></figure>
+<p>interface DataProcessor<t> {<br>        T dataMerge(T source, T target);<br>    }<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#### Default Handler</span></span><br></pre></td></tr></table></figure></t></p>
+<p>public static class DefaultDataProcessor<t> implements DataProcessor<t> {</t></t></p>
+<pre><code>    @Override
+    public T dataMerge(T source, T target) {
+        return target;
+    }
+}
+</code></pre><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="vala"></span><br><span class="line"><span class="preprocessor">## Simple Example</span></span><br><span class="line"><span class="preprocessor">### unit test</span></span></span><br></pre></td></tr></table></figure>
+<p>@Test<br>public void buildTest() {</p>
+<pre><code>    SectionModel sectionModel = new SectionModel();
+
+    sectionModel.setStartDate(20150101);
+    sectionModel.setEndDate(20160101);
+    sectionModel.setDay(10);
+    sectionModel.setDesc(&quot;123&quot;);
+    Section&lt;SectionModel&gt; section = Section.build(sectionModel);
+
+    SectionModel sectionModel2 = new SectionModel();
+
+    sectionModel2.setStartDate(20151001);
+    sectionModel2.setEndDate(20160601);
+    sectionModel2.setDay(10);
+    sectionModel2.setDesc(&quot;1234&quot;);
+    Section&lt;SectionModel&gt; section2 = Section.build(sectionModel2);
+
+    List&lt;Section&lt;SectionModel&gt;&gt; sectionList =  Section.merge(section,section2);
+
+    System.out.println(sectionList);
+
+}
+</code></pre><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">### <span class="operator"><span class="keyword">merge</span> <span class="keyword">result</span></span></span><br></pre></td></tr></table></figure>
+<p>[Section{startDate=20150101, endDate=20150930, data=SectionModel{startDate=20150101, endDate=20160101, day=10, desc=123}}, Section{startDate=20151001, endDate=20160601, data=SectionModel{startDate=20151001, endDate=20160601, day=10, desc=1234}}]</p>
+<p>```</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/07/Groovy性能优化三部曲/" itemprop="url">
                   Groovy性能优化三部曲
                 </a>
