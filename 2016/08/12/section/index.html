@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java,Mac,Thrift," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -59,16 +59,22 @@
 
 
 
-<meta name="description" content="具体安装步骤：">
+<meta name="description" content="Sectionsection是一个区间merge工具类，工具类采用泛型+Comparator+递归来实现通用性处理，并预留data merge SPI提供具体的数据merge策略。
+UsageCreate section使用Section提供的工厂方法build来创建对象
+1Section&amp;lt;T&amp;gt; build(int startDate, int endDate, T data, Com">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac OSX下安装Thrift">
-<meta property="og:url" content="http://blog.bugk.info/2015/03/18/Mac-OSX下安装Thrift/index.html">
+<meta property="og:title" content="似水流年">
+<meta property="og:url" content="http://blog.bugk.info/2016/08/12/section/index.html">
 <meta property="og:site_name" content="似水流年">
-<meta property="og:description" content="具体安装步骤：">
-<meta property="og:updated_time" content="2016-04-18T10:20:09.000Z">
+<meta property="og:description" content="Sectionsection是一个区间merge工具类，工具类采用泛型+Comparator+递归来实现通用性处理，并预留data merge SPI提供具体的数据merge策略。
+UsageCreate section使用Section提供的工厂方法build来创建对象
+1Section&amp;lt;T&amp;gt; build(int startDate, int endDate, T data, Com">
+<meta property="og:updated_time" content="2016-08-12T06:56:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac OSX下安装Thrift">
-<meta name="twitter:description" content="具体安装步骤：">
+<meta name="twitter:title" content="似水流年">
+<meta name="twitter:description" content="Sectionsection是一个区间merge工具类，工具类采用泛型+Comparator+递归来实现通用性处理，并预留data merge SPI提供具体的数据merge策略。
+UsageCreate section使用Section提供的工厂方法build来创建对象
+1Section&amp;lt;T&amp;gt; build(int startDate, int endDate, T data, Com">
 
 
 
@@ -86,7 +92,7 @@
   };
 </script>
 
-  <title> Mac OSX下安装Thrift | 似水流年 </title>
+  <title>  | 似水流年 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -264,7 +270,7 @@
             
             
               
-                Mac OSX下安装Thrift
+                
               
             
           </h1>
@@ -276,38 +282,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-03-18T18:17:32+08:00" content="2015-03-18">
-              2015-03-18
+            <time itemprop="dateCreated" datetime="2016-08-12T14:56:07+08:00" content="2016-08-12">
+              2016-08-12
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Thrift/" itemprop="url" rel="index">
-                    <span itemprop="name">Thrift</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/03/18/Mac-OSX下安装Thrift/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/18/Mac-OSX下安装Thrift/" itemprop="commentsCount"></span>
+                <a href="/2016/08/12/section/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/12/section/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -334,45 +321,66 @@
       
 
       
-        <p>具体安装步骤：</p>
-<a id="more"></a>
-<p>在mac下安装软件跟Linux安装比较类似，在安装Thrift之前需要先安装依赖。</p>
-<h3 id="1、安装BOOST"><a href="#1、安装BOOST" class="headerlink" title="1、安装BOOST"></a>1、安装BOOST</h3><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">下载：http://www.<span class="keyword">boost.org/ </span>   （<span class="keyword">boost_1_57_0.tar.gz）</span><br><span class="line"></span>解压：tar -zvxf <span class="keyword">boost_1_57_0.tar.gz </span>     </span><br><span class="line">切换目录：cd <span class="keyword">boost_1_57_0</span><br><span class="line"></span>命令：./<span class="keyword">bootstrap.sh，该命令用于生成bjam可执行文件，这个东西就是用来编译boost库</span><br><span class="line"></span>命令：sudo ./<span class="keyword">b2 </span>threading<span class="label">=multi</span> <span class="keyword">address-model=64 </span>variant<span class="label">=release</span> stage install</span><br></pre></td></tr></table></figure>
-<h3 id="2、安装-libevent"><a href="#2、安装-libevent" class="headerlink" title="2、安装 libevent"></a>2、安装 libevent</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">下载：http:<span class="comment">//libevent.org/  （libevent-2.0.21-stable.tar.gz）</span></span><br><span class="line">解压：tar -zvxf libevent-<span class="number">2.0</span><span class="number">.21</span>-stable.tar.gz  </span><br><span class="line">切换目录：cd libevent-<span class="number">2.0</span><span class="number">.21</span>-stable    </span><br><span class="line">命令：./configure --prefix=/usr/local</span><br><span class="line">命令：make</span><br><span class="line">命令：sudo make install</span><br></pre></td></tr></table></figure>
-<h3 id="3、安装-Apache-Thrift"><a href="#3、安装-Apache-Thrift" class="headerlink" title="3、安装 Apache Thrift"></a>3、安装 Apache Thrift</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">下载：http:<span class="comment">//thrift.apache.org/  （thrift-0.8.0.tar.gz）</span></span><br><span class="line">解压：tar -zvxf thrift-<span class="number">0.8</span>.<span class="number">0</span><span class="class">.tar</span><span class="class">.gz</span></span><br><span class="line">切换目录：cd thrift-<span class="number">0.8</span>.<span class="number">0</span><span class="class">.tar</span><span class="class">.gz</span>  </span><br><span class="line">编译命令：./configure --prefix=/usr/local/ --with-boost=/usr/local --with-libevent=/usr/local</span><br><span class="line">安装命令：sudo make install</span><br></pre></td></tr></table></figure>
-<p>thrift －version 可以查看安装是否成功和版本<br>注意版本选择：选择Thrift 0.8.0版本，选择高的版本会报bison版本低的错误，在安装0.8.0时也报了一些错误，不过不影响正常使用。</p>
+        <h2 id="Section"><a href="#Section" class="headerlink" title="Section"></a>Section</h2><p>section是一个区间merge工具类，工具类采用泛型+Comparator+递归来实现通用性处理，并预留data merge SPI提供具体的数据merge策略。</p>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><h3 id="Create-section"><a href="#Create-section" class="headerlink" title="Create section"></a>Create section</h3><p>使用Section提供的工厂方法<code>build</code>来创建对象</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Section&lt;T&gt; build(<span class="built_in">int</span> startDate, <span class="built_in">int</span> endDate, T <span class="type">data</span>, Comparator comparator, DataProcessor&lt;T&gt; dataProcessor)</span><br></pre></td></tr></table></figure>
+<h3 id="Merge-method"><a href="#Merge-method" class="headerlink" title="Merge method"></a>Merge method</h3><h4 id="merge-one-to-one"><a href="#merge-one-to-one" class="headerlink" title="merge one to one"></a>merge one to one</h4><figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;<span class="function"><span class="keyword">Section</span>&lt;T&gt;&gt; merge(<span class="keyword">Section</span>&lt;T&gt; source, <span class="keyword">Section</span>&lt;T&gt; target)</span></span><br></pre></td></tr></table></figure>
+<h4 id="merge-one-to-List"><a href="#merge-one-to-List" class="headerlink" title="merge one to List"></a>merge one to List</h4><figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;<span class="function"><span class="keyword">Section</span>&lt;T&gt;&gt; merge(<span class="keyword">Section</span>&lt;T&gt; source, List&lt;<span class="keyword">Section</span>&lt;T&gt;&gt; target, boolean mergeSelf)</span></span><br></pre></td></tr></table></figure>
+<h4 id="merge-List-to-one"><a href="#merge-List-to-one" class="headerlink" title="merge List to one"></a>merge List to one</h4><figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;<span class="function"><span class="keyword">Section</span>&lt;T&gt;&gt; merge(List&lt;<span class="keyword">Section</span>&lt;T&gt;&gt; source, <span class="keyword">Section</span>&lt;T&gt; target, boolean mergeSelf)</span></span><br></pre></td></tr></table></figure>
+<h4 id="merge-List-to-List"><a href="#merge-List-to-List" class="headerlink" title="merge List to List"></a>merge List to List</h4><figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;<span class="function"><span class="keyword">Section</span>&lt;T&gt;&gt; merge(List&lt;<span class="keyword">Section</span>&lt;T&gt;&gt; source, List&lt;<span class="keyword">Section</span>&lt;T&gt;&gt; target)</span></span><br></pre></td></tr></table></figure>
+<h3 id="Comparator"><a href="#Comparator" class="headerlink" title="Comparator"></a>Comparator</h3><p>merge对象比较使用，用于判断两个数据是否可以合并，例如：</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public <span class="keyword">static</span> class <span class="type">SectionComparator</span> implements <span class="type">Comparator</span>&lt;<span class="type">SectionModel</span>&gt; &#123;</span><br><span class="line">        @<span class="type">Override</span></span><br><span class="line">        public <span class="type">int</span> compare(<span class="type">SectionModel</span> o1, <span class="type">SectionModel</span> o2) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="type">ComparisonChain</span>.start()</span><br><span class="line">                    .compare(o1.day, o2.day)</span><br><span class="line">                    .compare(o1.desc, o2.desc)</span><br><span class="line">                    .<span class="literal">result</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### Merge SPI</span></span><br><span class="line"><span class="comment">#### SPI</span></span><br></pre></td></tr></table></figure>
+<p>interface DataProcessor<t> {<br>        T dataMerge(T source, T target);<br>    }<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#### Default Handler</span></span><br></pre></td></tr></table></figure></t></p>
+<p>public static class DefaultDataProcessor<t> implements DataProcessor<t> {</t></t></p>
+<pre><code>    @Override
+    public T dataMerge(T source, T target) {
+        return target;
+    }
+}
+</code></pre><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="vala"></span><br><span class="line"><span class="preprocessor">## Simple Example</span></span><br><span class="line"><span class="preprocessor">### unit test</span></span></span><br></pre></td></tr></table></figure>
+<p>@Test<br>public void buildTest() {</p>
+<pre><code>    SectionModel sectionModel = new SectionModel();
+
+    sectionModel.setStartDate(20150101);
+    sectionModel.setEndDate(20160101);
+    sectionModel.setDay(10);
+    sectionModel.setDesc(&quot;123&quot;);
+    Section&lt;SectionModel&gt; section = Section.build(sectionModel);
+
+    SectionModel sectionModel2 = new SectionModel();
+
+    sectionModel2.setStartDate(20151001);
+    sectionModel2.setEndDate(20160601);
+    sectionModel2.setDay(10);
+    sectionModel2.setDesc(&quot;1234&quot;);
+    Section&lt;SectionModel&gt; section2 = Section.build(sectionModel2);
+
+    List&lt;Section&lt;SectionModel&gt;&gt; sectionList =  Section.merge(section,section2);
+
+    System.out.println(sectionList);
+
+}
+</code></pre><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">### <span class="operator"><span class="keyword">merge</span> <span class="keyword">result</span></span></span><br></pre></td></tr></table></figure>
+<p>[Section{startDate=20150101, endDate=20150930, data=SectionModel{startDate=20150101, endDate=20160101, day=10, desc=123}}, Section{startDate=20151001, endDate=20160601, data=SectionModel{startDate=20151001, endDate=20160601, day=10, desc=1234}}]</p>
+<p>```</p>
 
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Java/" rel="tag">#Java</a>
-          
-            <a href="/tags/Mac/" rel="tag">#Mac</a>
-          
-            <a href="/tags/Thrift/" rel="tag">#Thrift</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/01/18/某东公司的面试题/" rel="next" title="某东公司的面试题">
-                <i class="fa fa-chevron-left"></i> 某东公司的面试题
+              <a href="/2016/04/07/Groovy性能优化三部曲/" rel="next" title="Groovy性能优化三部曲">
+                <i class="fa fa-chevron-left"></i> Groovy性能优化三部曲
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/04/14/SpringMVC项目接入Springfox/" rel="prev" title="SpringMVC项目接入Springfox">
-                SpringMVC项目接入Springfox <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -398,8 +406,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/03/18/Mac-OSX下安装Thrift/"
-           data-title="Mac OSX下安装Thrift" data-url="http://blog.bugk.info/2015/03/18/Mac-OSX下安装Thrift/">
+      <div class="ds-thread" data-thread-key="2016/08/12/section/"
+           data-title="" data-url="http://blog.bugk.info/2016/08/12/section/">
       </div>
     
   </div>
@@ -526,7 +534,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、安装BOOST"><span class="nav-number">1.</span> <span class="nav-text">1、安装BOOST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、安装-libevent"><span class="nav-number">2.</span> <span class="nav-text">2、安装 libevent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、安装-Apache-Thrift"><span class="nav-number">3.</span> <span class="nav-text">3、安装 Apache Thrift</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Section"><span class="nav-number">1.</span> <span class="nav-text">Section</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Usage"><span class="nav-number">2.</span> <span class="nav-text">Usage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-section"><span class="nav-number">2.1.</span> <span class="nav-text">Create section</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Merge-method"><span class="nav-number">2.2.</span> <span class="nav-text">Merge method</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#merge-one-to-one"><span class="nav-number">2.2.1.</span> <span class="nav-text">merge one to one</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#merge-one-to-List"><span class="nav-number">2.2.2.</span> <span class="nav-text">merge one to List</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#merge-List-to-one"><span class="nav-number">2.2.3.</span> <span class="nav-text">merge List to one</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#merge-List-to-List"><span class="nav-number">2.2.4.</span> <span class="nav-text">merge List to List</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comparator"><span class="nav-number">2.3.</span> <span class="nav-text">Comparator</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
