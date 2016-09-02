@@ -60,6 +60,41 @@
   </entry>
   
   <entry>
+    <title>Guava从入坑到出坑</title>
+    <link href="http://blog.bugk.info/2016/07/16/Guava%E4%BB%8E%E5%85%A5%E5%9D%91%E5%88%B0%E5%87%BA%E5%9D%91/"/>
+    <id>http://blog.bugk.info/2016/07/16/Guava从入坑到出坑/</id>
+    <published>2016-07-16T04:28:46.000Z</published>
+    <updated>2016-09-02T06:06:28.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Guava简介&quot;&gt;&lt;a href=&quot;#Guava简介&quot; class=&quot;headerlink&quot; title=&quot;Guava简介&quot;&gt;&lt;/a&gt;Guava简介&lt;/h2&gt;&lt;p&gt;Guava是google公司开源的Java工具包，主要包含集合 [collections] 、缓存 [caching] 、原生类型扩展[primitives support] 、并发库 [concurrency libraries] 、字符串处理 [string processing] 、I/O 等。 &lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;讲在前面&quot;&gt;&lt;a href=&quot;#讲在前面&quot; class=&quot;headerlink&quot; title=&quot;讲在前面&quot;&gt;&lt;/a&gt;讲在前面&lt;/h2&gt;&lt;p&gt;在正式开始之前，我们先来了解两个比较重要的接口Function和Predicates.&lt;/p&gt;
+&lt;h3 id=&quot;Fuction&quot;&gt;&lt;a href=&quot;#Fuction&quot; class=&quot;headerlink&quot; title=&quot;Fuction&quot;&gt;&lt;/a&gt;Fuction&lt;/h3&gt;&lt;p&gt;Function可以说是Guava中函数式编程的核心，其代码如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight less&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;@GwtCompatible&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public interface Function&amp;lt;F, T&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;variable&quot;&gt;@Nullable&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  T &lt;span class=&quot;function&quot;&gt;apply&lt;/span&gt;(&lt;span class=&quot;variable&quot;&gt;@Nullable&lt;/span&gt; F input);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;variable&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  boolean &lt;span class=&quot;function&quot;&gt;equals&lt;/span&gt;(&lt;span class=&quot;variable&quot;&gt;@Nullable&lt;/span&gt; Object object);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;可以看到这个接口是一个泛型接口，分别给出了F和T两个泛型约束，F可以理解成为From也就是函数式的输入，T可以理解为To也就是函数式的输入，其核心方法&lt;code&gt;apply&lt;/code&gt;就是表示从From到To的一个转换。&lt;br&gt;关于函数式编程可以看下这两篇blog。&lt;a href=&quot;http://www.ruanyifeng.com/blog/2012/04/functional_programming.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;函数式编程初探&lt;/a&gt; &lt;a href=&quot;http://coolshell.cn/articles/10822.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;函数式编程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;函数式编程的优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;逃逸分析&lt;/li&gt;
+&lt;li&gt;不会修改外部数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;Fuctions&quot;&gt;&lt;a href=&quot;#Fuctions&quot; class=&quot;headerlink&quot; title=&quot;Fuctions&quot;&gt;&lt;/a&gt;Fuctions&lt;/h4&gt;&lt;h3 id=&quot;Predicate&quot;&gt;&lt;a href=&quot;#Predicate&quot; class=&quot;headerlink&quot; title=&quot;Predicate&quot;&gt;&lt;/a&gt;Predicate&lt;/h3&gt;&lt;h4 id=&quot;Predicates&quot;&gt;&lt;a href=&quot;#Predicates&quot; class=&quot;headerlink&quot; title=&quot;Predicates&quot;&gt;&lt;/a&gt;Predicates&lt;/h4&gt;&lt;h3 id=&quot;Supplier&quot;&gt;&lt;a href=&quot;#Supplier&quot; class=&quot;headerlink&quot; title=&quot;Supplier&quot;&gt;&lt;/a&gt;Supplier&lt;/h3&gt;&lt;h4 id=&quot;Suppliers&quot;&gt;&lt;a href=&quot;#Suppliers&quot; class=&quot;headerlink&quot; title=&quot;Suppliers&quot;&gt;&lt;/a&gt;Suppliers&lt;/h4&gt;&lt;h2 id=&quot;集合&quot;&gt;&lt;a href=&quot;#集合&quot; class=&quot;headerlink&quot; title=&quot;集合&quot;&gt;&lt;/a&gt;集合&lt;/h2&gt;&lt;h2 id=&quot;基本类型&quot;&gt;&lt;a href=&quot;#基本类型&quot; class=&quot;headerlink&quot; title=&quot;基本类型&quot;&gt;&lt;/a&gt;基本类型&lt;/h2&gt;&lt;h2 id=&quot;缓存&quot;&gt;&lt;a href=&quot;#缓存&quot; class=&quot;headerlink&quot; title=&quot;缓存&quot;&gt;&lt;/a&gt;缓存&lt;/h2&gt;&lt;h2 id=&quot;IO&quot;&gt;&lt;a href=&quot;#IO&quot; class=&quot;headerlink&quot; title=&quot;IO&quot;&gt;&lt;/a&gt;IO&lt;/h2&gt;&lt;h2 id=&quot;并发&quot;&gt;&lt;a href=&quot;#并发&quot; class=&quot;headerlink&quot; title=&quot;并发&quot;&gt;&lt;/a&gt;并发&lt;/h2&gt;&lt;h2 id=&quot;其他&quot;&gt;&lt;a href=&quot;#其他&quot; class=&quot;headerlink&quot; title=&quot;其他&quot;&gt;&lt;/a&gt;其他&lt;/h2&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Guava简介&quot;&gt;&lt;a href=&quot;#Guava简介&quot; class=&quot;headerlink&quot; title=&quot;Guava简介&quot;&gt;&lt;/a&gt;Guava简介&lt;/h2&gt;&lt;p&gt;Guava是google公司开源的Java工具包，主要包含集合 [collections] 、缓存 [caching] 、原生类型扩展[primitives support] 、并发库 [concurrency libraries] 、字符串处理 [string processing] 、I/O 等。 &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="http://blog.bugk.info/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://blog.bugk.info/tags/Java/"/>
+    
+      <category term="学习" scheme="http://blog.bugk.info/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>区间合并工具Section</title>
     <link href="http://blog.bugk.info/2016/07/16/section/"/>
     <id>http://blog.bugk.info/2016/07/16/section/</id>
@@ -415,6 +450,26 @@
   </entry>
   
   <entry>
+    <title>Groovy学习笔记（一）：简介</title>
+    <link href="http://blog.bugk.info/2016/02/15/Groovy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%AE%80%E4%BB%8B/"/>
+    <id>http://blog.bugk.info/2016/02/15/Groovy学习笔记（一）：简介/</id>
+    <published>2016-02-15T07:31:27.000Z</published>
+    <updated>2016-02-15T07:32:28.000Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Groovy" scheme="http://blog.bugk.info/categories/Groovy/"/>
+    
+    
+      <category term="Groovy" scheme="http://blog.bugk.info/tags/Groovy/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Groovy学习笔记（二）：初识</title>
     <link href="http://blog.bugk.info/2016/02/15/Groovy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%88%9D%E8%AF%86/"/>
     <id>http://blog.bugk.info/2016/02/15/Groovy学习笔记（二）：初识/</id>
@@ -440,26 +495,6 @@
     <id>http://blog.bugk.info/2016/02/15/Groovy学习笔记（三）：语法/</id>
     <published>2016-02-15T07:31:27.000Z</published>
     <updated>2016-02-15T07:35:32.000Z</updated>
-    
-    <content type="html"></content>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Groovy" scheme="http://blog.bugk.info/categories/Groovy/"/>
-    
-    
-      <category term="Groovy" scheme="http://blog.bugk.info/tags/Groovy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Groovy学习笔记（一）：简介</title>
-    <link href="http://blog.bugk.info/2016/02/15/Groovy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%AE%80%E4%BB%8B/"/>
-    <id>http://blog.bugk.info/2016/02/15/Groovy学习笔记（一）：简介/</id>
-    <published>2016-02-15T07:31:27.000Z</published>
-    <updated>2016-02-15T07:32:28.000Z</updated>
     
     <content type="html"></content>
     
@@ -939,42 +974,6 @@
       <category term="Linux" scheme="http://blog.bugk.info/tags/Linux/"/>
     
       <category term="Shell" scheme="http://blog.bugk.info/tags/Shell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>脚本自动登陆shell脚本（简洁版）</title>
-    <link href="http://blog.bugk.info/2015/04/29/%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E7%99%BB%E9%99%86shell%E8%84%9A%E6%9C%AC%EF%BC%88%E7%AE%80%E6%B4%81%E7%89%88%EF%BC%89/"/>
-    <id>http://blog.bugk.info/2015/04/29/脚本自动登陆shell脚本（简洁版）/</id>
-    <published>2015-04-29T10:27:38.000Z</published>
-    <updated>2016-04-18T11:12:00.000Z</updated>
-    
-    <content type="html">&lt;h4 id=&quot;背景：工作中各种线上机器的登陆脚本，有的还要需要先登录跳板机再登陆线上机器，有的还有动态口令，每次输入起来都很麻烦，使用自动化登陆脚本来管理太方便不过啦&quot;&gt;&lt;a href=&quot;#背景：工作中各种线上机器的登陆脚本，有的还要需要先登录跳板机再登陆线上机器，有的还有动态口令，每次输入起来都很麻烦，使用自动化登陆脚本来管理太方便不过啦&quot; class=&quot;headerlink&quot; title=&quot;背景：工作中各种线上机器的登陆脚本，有的还要需要先登录跳板机再登陆线上机器，有的还有动态口令，每次输入起来都很麻烦，使用自动化登陆脚本来管理太方便不过啦~&quot;&gt;&lt;/a&gt;背景：工作中各种线上机器的登陆脚本，有的还要需要先登录跳板机再登陆线上机器，有的还有动态口令，每次输入起来都很麻烦，使用自动化登陆脚本来管理太方便不过啦~&lt;/h4&gt;&lt;h4 id=&quot;原理：shell调用expect来远程登陆&quot;&gt;&lt;a href=&quot;#原理：shell调用expect来远程登陆&quot; class=&quot;headerlink&quot; title=&quot;原理：shell调用expect来远程登陆&quot;&gt;&lt;/a&gt;原理：shell调用expect来远程登陆&lt;/h4&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h4 id=&quot;脚本代码&quot;&gt;&lt;a href=&quot;#脚本代码&quot; class=&quot;headerlink&quot; title=&quot;脚本代码&quot;&gt;&lt;/a&gt;脚本代码&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;login.sh&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;shebang&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;relay_name=&lt;span class=&quot;string&quot;&gt;&quot;&lt;span class=&quot;variable&quot;&gt;$relay_name&lt;/span&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;relay_password=&lt;span class=&quot;string&quot;&gt;&quot;&lt;span class=&quot;variable&quot;&gt;$relay_password&lt;/span&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;relay_host=&lt;span class=&quot;string&quot;&gt;&quot;xxx.xxx&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;token=&lt;span class=&quot;variable&quot;&gt;$1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;输入对应编号回车！&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;select server &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;server01&quot;&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;server02&quot;&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;server03&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;break&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;done&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;expect -c &lt;span class=&quot;string&quot;&gt;&quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;set timeout -1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;puts &lt;span class=&quot;variable&quot;&gt;$server&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;spawn ssh &lt;span class=&quot;variable&quot;&gt;$relay_name&lt;/span&gt;@&lt;span class=&quot;variable&quot;&gt;$relay_host&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;set timeout 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;expect -re \&quot;*Password*\&quot; &amp;#123;send \&quot;&lt;span class=&quot;variable&quot;&gt;$password&lt;/span&gt;\r\&quot;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;send \&quot;ssh &lt;span class=&quot;variable&quot;&gt;$server&lt;/span&gt;\r\&quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;interact&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;将脚本设置可执行，并添加到环境，以后就可直接调用了~&lt;/p&gt;
-&lt;p&gt;ps：设置一下长连接，每天只需登陆一次&lt;br&gt;在 ~/.ssh/config 中加入以下内容，如果没有这个文件就touch一个，权限需要600才可以生效&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Host *
-    ControlPersist yes
-    ControlMaster auto
-    ControlPath ~/.ssh/master-%r@%h:%p
-    Compression yes
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;背景：工作中各种线上机器的登陆脚本，有的还要需要先登录跳板机再登陆线上机器，有的还有动态口令，每次输入起来都很麻烦，使用自动化登陆脚本来管理太方便不过啦&quot;&gt;&lt;a href=&quot;#背景：工作中各种线上机器的登陆脚本，有的还要需要先登录跳板机再登陆线上机器，有的还有动态口令，每次输入起来都很麻烦，使用自动化登陆脚本来管理太方便不过啦&quot; class=&quot;headerlink&quot; title=&quot;背景：工作中各种线上机器的登陆脚本，有的还要需要先登录跳板机再登陆线上机器，有的还有动态口令，每次输入起来都很麻烦，使用自动化登陆脚本来管理太方便不过啦~&quot;&gt;&lt;/a&gt;背景：工作中各种线上机器的登陆脚本，有的还要需要先登录跳板机再登陆线上机器，有的还有动态口令，每次输入起来都很麻烦，使用自动化登陆脚本来管理太方便不过啦~&lt;/h4&gt;&lt;h4 id=&quot;原理：shell调用expect来远程登陆&quot;&gt;&lt;a href=&quot;#原理：shell调用expect来远程登陆&quot; class=&quot;headerlink&quot; title=&quot;原理：shell调用expect来远程登陆&quot;&gt;&lt;/a&gt;原理：shell调用expect来远程登陆&lt;/h4&gt;
-    
-    </summary>
-    
-      <category term="Liunx" scheme="http://blog.bugk.info/categories/Liunx/"/>
-    
-    
-      <category term="Linux" scheme="http://blog.bugk.info/tags/Linux/"/>
-    
-      <category term="Shell，relay" scheme="http://blog.bugk.info/tags/Shell%EF%BC%8Crelay/"/>
     
   </entry>
   
