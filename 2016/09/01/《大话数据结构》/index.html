@@ -1,0 +1,948 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Groovy,Java,数据结构,算法,读书笔记," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="似水流年" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="第一章 数据结构绪论
+数据结构定义：数据结构是相互之间存在一种或多种的关系的数据元素组合。
+
+结构分类：
+
+逻辑结构
+
+集合结构
+线性结构
+树形结构
+图形结构
+
+
+物理结构
+
+顺序存储结构
+链接存储结构
+
+
+
+第二章 算法定义1算法的定义：算法是解决特定问题求解步骤的描述，在计算机中为指令的优先序列，并且每条质量表示一个或者多个操作。
+特性有穷性、确定性、可行性、输入、输出
+算法的设计要求正确性、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《大话数据结构》读书笔记">
+<meta property="og:url" content="http://blog.bugk.info/2016/09/01/《大话数据结构》/index.html">
+<meta property="og:site_name" content="似水流年">
+<meta property="og:description" content="第一章 数据结构绪论
+数据结构定义：数据结构是相互之间存在一种或多种的关系的数据元素组合。
+
+结构分类：
+
+逻辑结构
+
+集合结构
+线性结构
+树形结构
+图形结构
+
+
+物理结构
+
+顺序存储结构
+链接存储结构
+
+
+
+第二章 算法定义1算法的定义：算法是解决特定问题求解步骤的描述，在计算机中为指令的优先序列，并且每条质量表示一个或者多个操作。
+特性有穷性、确定性、可行性、输入、输出
+算法的设计要求正确性、">
+<meta property="og:updated_time" content="2016-09-11T09:31:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《大话数据结构》读书笔记">
+<meta name="twitter:description" content="第一章 数据结构绪论
+数据结构定义：数据结构是相互之间存在一种或多种的关系的数据元素组合。
+
+结构分类：
+
+逻辑结构
+
+集合结构
+线性结构
+树形结构
+图形结构
+
+
+物理结构
+
+顺序存储结构
+链接存储结构
+
+
+
+第二章 算法定义1算法的定义：算法是解决特定问题求解步骤的描述，在计算机中为指令的优先序列，并且每条质量表示一个或者多个操作。
+特性有穷性、确定性、可行性、输入、输出
+算法的设计要求正确性、">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 《大话数据结构》读书笔记 | 似水流年 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-73795916-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57dc8fe71dcb1f47a14d77d6fc6eff20";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">似水流年</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">勤奋的搬运工</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'ke9ct4m8s8cxdroxzmGC','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《大话数据结构》读书笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-01T15:28:46+08:00" content="2016-09-01">
+              2016-09-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/01/《大话数据结构》/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/01/《大话数据结构》/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          <span>&nbsp; | &nbsp;
+          <span id="busuanzi_value_page_pv" ></span>次阅读
+          </span>    
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第一章-数据结构绪论"><a href="#第一章-数据结构绪论" class="headerlink" title="第一章 数据结构绪论"></a>第一章 数据结构绪论</h2><blockquote>
+<p>数据结构定义：数据结构是相互之间存在一种或多种的关系的数据元素组合。</p>
+</blockquote>
+<p>结构分类：</p>
+<ul>
+<li><p>逻辑结构</p>
+<ol>
+<li>集合结构</li>
+<li>线性结构</li>
+<li>树形结构</li>
+<li>图形结构</li>
+</ol>
+</li>
+<li><p>物理结构</p>
+<ol>
+<li>顺序存储结构</li>
+<li>链接存储结构</li>
+</ol>
+</li>
+</ul>
+<h2 id="第二章-算法"><a href="#第二章-算法" class="headerlink" title="第二章 算法"></a>第二章 算法</h2><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">算法的定义：算法是解决特定问题求解步骤的描述，在计算机中为指令的优先序列，并且每条质量表示一个或者多个操作。</span><br></pre></td></tr></table></figure>
+<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><p>有穷性、确定性、可行性、输入、输出</p>
+<h4 id="算法的设计要求"><a href="#算法的设计要求" class="headerlink" title="算法的设计要求"></a>算法的设计要求</h4><p>正确性、可读性、健壮性、高效率、低存储量需求</p>
+<h4 id="度量方法"><a href="#度量方法" class="headerlink" title="度量方法"></a>度量方法</h4><p>事后统计方法（不科学、不准确）、事前分析估算方法。</p>
+<h4 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在进行算法分析时，语句总执行次数<span class="function"><span class="title">T</span><span class="params">(n)</span></span>是关于问题规模n的函数，进而分析<span class="function"><span class="title">T</span><span class="params">(n)</span></span>随n的变化情况并确定<span class="function"><span class="title">T</span><span class="params">(n)</span></span>的数量级。算法的时间复杂度，也就是算法的时间量度，记作：<span class="function"><span class="title">T</span><span class="params">(n)</span></span>=<span class="function"><span class="title">O</span><span class="params">(f(n)</span></span>),它表示随问题规模n的增大算法的执行时间的增长率和<span class="function"><span class="title">f</span><span class="params">(n)</span></span>的增长率相同，称作算法的渐进时间复杂度，简称为时间复杂度。其中<span class="function"><span class="title">f</span><span class="params">(n)</span></span>是问题规模n的某个函数。</span><br></pre></td></tr></table></figure>
+<h4 id="推到大O阶方法"><a href="#推到大O阶方法" class="headerlink" title="推到大O阶方法"></a>推到大O阶方法</h4><ol>
+<li>用常数1取代运行时间中的所有加法常数。</li>
+<li>在修改后的运行次数函数中只保留最高阶项。</li>
+<li>如果最高阶存在且不是1，则去除与这个项相乘的常数，最终得到的结果就是大O阶。</li>
+</ol>
+<p>对于分支结果而言，无论真假，执行的次数是恒定的，不会随n的变化而发生变化，所以单纯的分支结构（不在循环体内的），其时间复杂度是O(1).</p>
+<h4 id="常见的时间复杂度"><a href="#常见的时间复杂度" class="headerlink" title="常见的时间复杂度"></a>常见的时间复杂度</h4><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>阶</th>
+<th>简称  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12</td>
+<td>O(1)</td>
+<td>常数阶</td>
+</tr>
+<tr>
+<td>2n+3</td>
+<td>O(n)</td>
+<td>线性阶</td>
+</tr>
+<tr>
+<td>3n^2 + 2n +1</td>
+<td>O(n^2)</td>
+<td>平方阶</td>
+</tr>
+<tr>
+<td>5log2n</td>
+<td>O(logn)</td>
+<td>对数阶</td>
+</tr>
+<tr>
+<td>2n+3nlog2n +19</td>
+<td>O(nlogn)</td>
+<td>nlogn阶</td>
+</tr>
+<tr>
+<td>6n^3 + 2n^2 + 3n +4</td>
+<td>O(n^3)</td>
+<td>立方阶</td>
+</tr>
+<tr>
+<td>2^n</td>
+<td>O(2^n)</td>
+<td>指数阶</td>
+</tr>
+</tbody>
+</table>
+<p>常用时间复杂度耗费时间从小到大排序：<br><strong> O(1)&lt;O(logn)&lt;O(n)&lt;O(nlogn)&lt;O(n^2)&lt;O(n^3)&lt;O(2^n)&lt;O(n!)&lt;O(n^n) </strong></p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Groovy/" rel="tag">#Groovy</a>
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+            <a href="/tags/数据结构/" rel="tag">#数据结构</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+            <a href="/tags/读书笔记/" rel="tag">#读书笔记</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/16/如何快速成为一个优秀的RD/" rel="next" title="(逐字稿)如何快速成为一个优秀的RD">
+                <i class="fa fa-chevron-left"></i> (逐字稿)如何快速成为一个优秀的RD
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/01/《大话数据结构》/"
+           data-title="《大话数据结构》读书笔记" data-url="http://blog.bugk.info/2016/09/01/《大话数据结构》/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/headpic.png"
+               alt="Xinyu LIU" />
+          <p class="site-author-name" itemprop="name">Xinyu LIU</p>
+          <p class="site-description motion-element" itemprop="description">行胜于言</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qq291462491" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/liu-xin-yu-79-68" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> zhihu
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://macshuo.com/" target="_blank">MacTalk</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-数据结构绪论"><span class="nav-number">1.</span> <span class="nav-text">第一章 数据结构绪论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-算法"><span class="nav-number">2.</span> <span class="nav-text">第二章 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义"><span class="nav-number">2.0.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特性"><span class="nav-number">2.0.2.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法的设计要求"><span class="nav-number">2.0.3.</span> <span class="nav-text">算法的设计要求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#度量方法"><span class="nav-number">2.0.4.</span> <span class="nav-text">度量方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#时间复杂度"><span class="nav-number">2.0.5.</span> <span class="nav-text">时间复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推到大O阶方法"><span class="nav-number">2.0.6.</span> <span class="nav-text">推到大O阶方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的时间复杂度"><span class="nav-number">2.0.7.</span> <span class="nav-text">常见的时间复杂度</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xinyu LIU</span>
+</div>
+
+<div class="theme-info">
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+您是第<span id="busuanzi_value_site_uv"></span>个来到的小伙伴
+
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"bugkillers"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+</body>
+</html>

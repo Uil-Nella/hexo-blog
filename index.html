@@ -249,15 +249,195 @@
 
     
     
+
+    
       
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/01/《大话数据结构》/" itemprop="url">
+                  《大话数据结构》读书笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-01T15:28:46+08:00" content="2016-09-01">
+              2016-09-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/01/《大话数据结构》/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/01/《大话数据结构》/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
-        
-        
-        
       
 
       
-    
+        
+          
+            <h2 id="第一章-数据结构绪论"><a href="#第一章-数据结构绪论" class="headerlink" title="第一章 数据结构绪论"></a>第一章 数据结构绪论</h2><blockquote>
+<p>数据结构定义：数据结构是相互之间存在一种或多种的关系的数据元素组合。</p>
+</blockquote>
+<p>结构分类：</p>
+<ul>
+<li><p>逻辑结构</p>
+<ol>
+<li>集合结构</li>
+<li>线性结构</li>
+<li>树形结构</li>
+<li>图形结构</li>
+</ol>
+</li>
+<li><p>物理结构</p>
+<ol>
+<li>顺序存储结构</li>
+<li>链接存储结构</li>
+</ol>
+</li>
+</ul>
+<h2 id="第二章-算法"><a href="#第二章-算法" class="headerlink" title="第二章 算法"></a>第二章 算法</h2><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">算法的定义：算法是解决特定问题求解步骤的描述，在计算机中为指令的优先序列，并且每条质量表示一个或者多个操作。</span><br></pre></td></tr></table></figure>
+<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><p>有穷性、确定性、可行性、输入、输出</p>
+<h4 id="算法的设计要求"><a href="#算法的设计要求" class="headerlink" title="算法的设计要求"></a>算法的设计要求</h4><p>正确性、可读性、健壮性、高效率、低存储量需求</p>
+<h4 id="度量方法"><a href="#度量方法" class="headerlink" title="度量方法"></a>度量方法</h4><p>事后统计方法（不科学、不准确）、事前分析估算方法。</p>
+<h4 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在进行算法分析时，语句总执行次数<span class="function"><span class="title">T</span><span class="params">(n)</span></span>是关于问题规模n的函数，进而分析<span class="function"><span class="title">T</span><span class="params">(n)</span></span>随n的变化情况并确定<span class="function"><span class="title">T</span><span class="params">(n)</span></span>的数量级。算法的时间复杂度，也就是算法的时间量度，记作：<span class="function"><span class="title">T</span><span class="params">(n)</span></span>=<span class="function"><span class="title">O</span><span class="params">(f(n)</span></span>),它表示随问题规模n的增大算法的执行时间的增长率和<span class="function"><span class="title">f</span><span class="params">(n)</span></span>的增长率相同，称作算法的渐进时间复杂度，简称为时间复杂度。其中<span class="function"><span class="title">f</span><span class="params">(n)</span></span>是问题规模n的某个函数。</span><br></pre></td></tr></table></figure>
+<h4 id="推到大O阶方法"><a href="#推到大O阶方法" class="headerlink" title="推到大O阶方法"></a>推到大O阶方法</h4><ol>
+<li>用常数1取代运行时间中的所有加法常数。</li>
+<li>在修改后的运行次数函数中只保留最高阶项。</li>
+<li>如果最高阶存在且不是1，则去除与这个项相乘的常数，最终得到的结果就是大O阶。</li>
+</ol>
+<p>对于分支结果而言，无论真假，执行的次数是恒定的，不会随n的变化而发生变化，所以单纯的分支结构（不在循环体内的），其时间复杂度是O(1).</p>
+<h4 id="常见的时间复杂度"><a href="#常见的时间复杂度" class="headerlink" title="常见的时间复杂度"></a>常见的时间复杂度</h4><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>阶</th>
+<th>简称  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12</td>
+<td>O(1)</td>
+<td>常数阶</td>
+</tr>
+<tr>
+<td>2n+3</td>
+<td>O(n)</td>
+<td>线性阶</td>
+</tr>
+<tr>
+<td>3n^2 + 2n +1</td>
+<td>O(n^2)</td>
+<td>平方阶</td>
+</tr>
+<tr>
+<td>5log2n</td>
+<td>O(logn)</td>
+<td>对数阶</td>
+</tr>
+<tr>
+<td>2n+3nlog2n +19</td>
+<td>O(nlogn)</td>
+<td>nlogn阶</td>
+</tr>
+<tr>
+<td>6n^3 + 2n^2 + 3n +4</td>
+<td>O(n^3)</td>
+<td>立方阶</td>
+</tr>
+<tr>
+<td>2^n</td>
+<td>O(2^n)</td>
+<td>指数阶</td>
+</tr>
+</tbody>
+</table>
+<p>常用时间复杂度耗费时间从小到大排序：<br><strong> O(1)&lt;O(logn)&lt;O(n)&lt;O(nlogn)&lt;O(n^2)&lt;O(n^3)&lt;O(2^n)&lt;O(n!)&lt;O(n^n) </strong></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -729,122 +909,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/07/Java中实现字符串反转的几种方法/" itemprop="url">
-                  java中实现字符串反转的几种方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-07T14:52:23+08:00" content="2016-04-07">
-              2016-04-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/07/Java中实现字符串反转的几种方法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/07/Java中实现字符串反转的几种方法/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>今天记录一个在面试中经常被问到的一个字符串反转的问题（Java代码实现）～</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/07/Java中实现字符串反转的几种方法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -891,7 +955,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -899,7 +963,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -908,7 +972,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
