@@ -249,11 +249,6 @@
 
     
     
-      
-      
-
-      
-    
 
     
       
@@ -277,8 +272,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/03/18/Mac-OSX下安装Thrift/" itemprop="url">
-                  Mac OSX下安装Thrift
+                <a class="post-title-link" href="/2015/06/19/线上问题排查命令-Shell篇/" itemprop="url">
+                  线上问题排查命令----Shell篇
                 </a>
               
             
@@ -291,8 +286,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-03-18T18:17:32+08:00" content="2015-03-18">
-              2015-03-18
+            <time itemprop="dateCreated" datetime="2015-06-19T19:20:25+08:00" content="2015-06-19">
+              2015-06-19
             </time>
           </span>
 
@@ -305,8 +300,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Thrift/" itemprop="url" rel="index">
-                    <span itemprop="name">Thrift</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
 
@@ -321,8 +316,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/03/18/Mac-OSX下安装Thrift/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/18/Mac-OSX下安装Thrift/" itemprop="commentsCount"></span>
+                <a href="/2015/06/19/线上问题排查命令-Shell篇/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/19/线上问题排查命令-Shell篇/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -346,9 +341,9 @@
 
       
         
-          <p>具体安装步骤：</p>
+          <p>最近在Linux上花的时间比较多，稍微整理一下比较常用的一些命令</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/03/18/Mac-OSX下安装Thrift/#more" rel="contents">
+            <a class="btn" href="/2015/06/19/线上问题排查命令-Shell篇/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -391,8 +386,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/01/18/某东公司的面试题/" itemprop="url">
-                  某东公司的面试题
+                <a class="post-title-link" href="/2015/04/29/脚本自动登陆shell脚本（简洁版）/" itemprop="url">
+                  脚本自动登陆shell脚本（简洁版）
                 </a>
               
             
@@ -405,8 +400,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-01-18T18:11:54+08:00" content="2015-01-18">
-              2015-01-18
+            <time itemprop="dateCreated" datetime="2015-04-29T18:27:38+08:00" content="2015-04-29">
+              2015-04-29
             </time>
           </span>
 
@@ -419,8 +414,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/面试/" itemprop="url" rel="index">
-                    <span itemprop="name">面试</span>
+                  <a href="/categories/Liunx/" itemprop="url" rel="index">
+                    <span itemprop="name">Liunx</span>
                   </a>
                 </span>
 
@@ -435,8 +430,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/01/18/某东公司的面试题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/18/某东公司的面试题/" itemprop="commentsCount"></span>
+                <a href="/2015/04/29/脚本自动登陆shell脚本（简洁版）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/29/脚本自动登陆shell脚本（简洁版）/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -460,9 +455,9 @@
 
       
         
-          <p>由于最近比较躁动，动了跳槽的念想，于是便有了这次经历，在这里记录下来，分享给大家。好了废话不多说，开始正文。</p>
+          <h4 id="背景：工作中各种线上机器的登陆脚本，有的还要需要先登录跳板机再登陆线上机器，有的还有动态口令，每次输入起来都很麻烦，使用自动化登陆脚本来管理太方便不过啦"><a href="#背景：工作中各种线上机器的登陆脚本，有的还要需要先登录跳板机再登陆线上机器，有的还有动态口令，每次输入起来都很麻烦，使用自动化登陆脚本来管理太方便不过啦" class="headerlink" title="背景：工作中各种线上机器的登陆脚本，有的还要需要先登录跳板机再登陆线上机器，有的还有动态口令，每次输入起来都很麻烦，使用自动化登陆脚本来管理太方便不过啦~"></a>背景：工作中各种线上机器的登陆脚本，有的还要需要先登录跳板机再登陆线上机器，有的还有动态口令，每次输入起来都很麻烦，使用自动化登陆脚本来管理太方便不过啦~</h4><h4 id="原理：shell调用expect来远程登陆"><a href="#原理：shell调用expect来远程登陆" class="headerlink" title="原理：shell调用expect来远程登陆"></a>原理：shell调用expect来远程登陆</h4>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/01/18/某东公司的面试题/#more" rel="contents">
+            <a class="btn" href="/2015/04/29/脚本自动登陆shell脚本（简洁版）/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -505,8 +500,8 @@
             
               
                 
-                <a class="post-title-link" href="/1992/07/18/1992-07-18-start/" itemprop="url">
-                  Start
+                <a class="post-title-link" href="/2015/04/28/使用python和shell监控linux服务器/" itemprop="url">
+                  使用python和shell监控linux服务器
                 </a>
               
             
@@ -519,8 +514,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="1992-07-18T09:15:16+08:00" content="1992-07-18">
-              1992-07-18
+            <time itemprop="dateCreated" datetime="2015-04-28T18:27:17+08:00" content="2015-04-28">
+              2015-04-28
             </time>
           </span>
 
@@ -533,8 +528,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/总结/" itemprop="url" rel="index">
-                    <span itemprop="name">总结</span>
+                  <a href="/categories/Liunx/" itemprop="url" rel="index">
+                    <span itemprop="name">Liunx</span>
                   </a>
                 </span>
 
@@ -549,8 +544,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/1992/07/18/1992-07-18-start/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="1992/07/18/1992-07-18-start/" itemprop="commentsCount"></span>
+                <a href="/2015/04/28/使用python和shell监控linux服务器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/28/使用python和shell监控linux服务器/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -574,10 +569,240 @@
 
       
         
-          
-            <p>The story starts here!</p>
+          <p><a href="https://github.com/qq291462491/Learning-code-demo/blob/master/server-monitor/README.md">github</a>欢迎各位大神一起探讨学习~</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/04/28/使用python和shell监控linux服务器/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/04/15/Swagger框架学习分享/" itemprop="url">
+                  Swagger框架学习分享
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-04-15T10:35:02+08:00" content="2015-04-15">
+              2015-04-15
+            </time>
+          </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/04/15/Swagger框架学习分享/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/15/Swagger框架学习分享/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="一、背景介绍"><a href="#一、背景介绍" class="headerlink" title="一、背景介绍"></a>一、背景介绍</h3><h4 id="1-1-项目简介"><a href="#1-1-项目简介" class="headerlink" title="1.1.项目简介"></a>1.1.项目简介</h4><p>Swagger项目是由Dilip Krishnan和Adrian Kelly等人维护开发的一个为Spring Web MVC 项目提供方法文档的一个框架。该框架最主要的功能是将Controller的方法进行可视化的展现，像方法注释，方法参数，方法返回值等都提供了相应的用户界面，尤其是对JSON参数的支持。同时可以结合swagger-ui可以对用户界面进行不同程度的定制，也可以对方法进行一个简单的测试。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/04/15/Swagger框架学习分享/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/04/14/SpringMVC项目接入Springfox/" itemprop="url">
+                  SpringMVC项目接入Springfox
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-04-14T20:10:55+08:00" content="2015-04-14">
+              2015-04-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/04/14/SpringMVC项目接入Springfox/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/14/SpringMVC项目接入Springfox/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h3><p>Springfox的前身是swagger-springmvc,是一个开源的API doc框架，可以将我们的Controller的方法以文档的形式展现。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/04/14/SpringMVC项目接入Springfox/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -601,7 +826,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -642,7 +867,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -729,7 +954,7 @@
         <div class="copyright" >
   
   &copy;  2013 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
